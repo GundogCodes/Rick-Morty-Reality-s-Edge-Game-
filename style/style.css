@@ -1,27 +1,31 @@
 *{
     margin:0;
     padding: 0;
-   < border: solid red;
+   ! border: solid red;
 }
 html{
     background-color: black;
-    height: 760px;
+    display: flex;
     width: 1000px;
+    height: 760px;
+
+ 
+}
+
+body{
+    height: 750px;
+    width: 1000px;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     border: 1vmin rgb(58, 54, 54) solid;
-}
-
-body{
-
-    
 
 }
 
 header{
     background-color: black;
-    height: 190px;
+    height: 10px;
     color:yellow;
     display: flex;
     flex-direction: row;
@@ -32,7 +36,7 @@ header{
 }
 
 main{
-    height: 380px;
+    height: 500px;
 
     background-color: rgba(2,0,67);
     border-top-right-radius: 40%;
@@ -66,6 +70,6 @@ footer > button{
 
 img{
     position: absolute;
-    top: 310px;
-    transform: scale(0.4);
+    top: 295px;
+    transform: scale(0.33);
 }
