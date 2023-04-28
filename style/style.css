@@ -1,35 +1,55 @@
-body{
-    margin: 0;
-    border: solid red ;
+*{
+    margin:0;
+    padding: 0;
+   < border: solid red;
+}
+html{
+    background-color: black;
+    height: 760px;
+    width: 1000px;
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    width: 100vw;
-    max-height: 100vh;
-    max-width: 100vw;
+    justify-content: center;
+    border: 1vmin rgb(58, 54, 54) solid;
+}
+
+body{
+
+    
+
 }
 
 header{
     background-color: black;
-    height: 20vmin;
-    width: auto;
-    color: yellow;
+    height: 190px;
+    color:yellow;
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: flex-end;
+    font-family: 'Bruno Ace', cursive;
+    font-size: 25px;
 }
 
 main{
+    height: 380px;
+
+    background-color: rgba(2,0,67);
+    border-top-right-radius: 40%;
+    border-top-left-radius: 10%;
+    border-bottom-left-radius: 8%;
+    border-bottom-right-radius: 8%;
+  
+}
+#road{
+    height: 20px;
+    background-color: rgb(189, 202, 202);
     
-    height: 60vmin;
-    width: auto;
-    background-color: blue;
 }
 
 footer{
     background-color: black;
-    height: 20vmin;
-    width: auto;
+    height: 190px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -37,8 +57,15 @@ footer{
 }
 
 footer > button{
-    font-size: 2vmin;
+    font-family: 'Bruno Ace', cursive;
+
     background-color: darkgray;
     color: white;
-    
+    border-radius: 10%;
+}
+
+img{
+    position: absolute;
+    top: 310px;
+    transform: scale(0.4);
 }
