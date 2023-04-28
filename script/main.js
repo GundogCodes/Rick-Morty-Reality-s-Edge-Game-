@@ -20,11 +20,13 @@ const player = document.getElementById('player')
 /*----- event listeners -----*/
 player.addEventListener('click',handleClick)
 
+
 /*----- functions -----*/
-let x = 300
-function handleClick(){
+function handleClick(e){
+    
+}
     
   
 
-}
+
 

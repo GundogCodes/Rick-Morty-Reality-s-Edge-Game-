@@ -1,7 +1,7 @@
 *{
     margin:0;
     padding: 0;
-   ! border: solid red;
+    !border: solid red;
 }
 html{
     background-color: black;
@@ -71,5 +71,17 @@ footer > button{
 img{
     position: absolute;
     top: 295px;
-    transform: scale(0.33);
+   
+    animation: jump 1s cubic-bezier(0.16, 0.85, 0.79, 1.19);       
+    animation-play-state:initial; 
+
+}
+
+@keyframes jump{
+    100%{
+        top:295px;
+    }
+    50%{
+        transform:translateY(-200%);
+    }
 }
