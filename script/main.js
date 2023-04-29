@@ -1,9 +1,13 @@
 
-console.log('work2!!!')
+console.log('works!!!')
 class Player{
-    constructor(name){
-
+    constructor(){
+        this.element = document.getElementById('player')
+    
+    
     }
+
+    
 }
 
 class Enemy{
@@ -11,22 +15,35 @@ class Enemy{
 
     }
 }
+
+
 /*----- constants -----*/
+
+const player =document.getElementById('player')
+player.addEventListener('click',player.jump)
+console.log('playerr',player)
+
 /*----- state variables -----*/
+
 let gameOn =true
+
 /*----- cached elements  -----*/
-const keyBoard = document.getElementsByClassName('keyboard')
-const player = document.getElementById('player')
+
 /*----- event listeners -----*/
-player.addEventListener('click',handleClick)
+
+document.body.addEventListener('keydown', function(e){
+    console.log(e)
+if(e.key === ' '){jump()} 
+})
 
 
 /*----- functions -----*/
-function handleClick(e){
+
+function jump() {
+    
+    console.log('playerCLICKED!')
+    player.classList.toggle('jump')
+
+      
     
 }
-    
-  
-
-
-

@@ -15,7 +15,7 @@ html{
 body{
     height: 750px;
     width: 1000px;
-
+    border-radius: 3%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -37,7 +37,7 @@ header{
 
 main{
     height: 500px;
-
+    border: solid gray;
     background-color: rgba(2,0,67);
     border-top-right-radius: 40%;
     border-top-left-radius: 10%;
@@ -71,10 +71,10 @@ footer > button{
 img{
     position: absolute;
     top: 295px;
-   
-    animation: jump 1s cubic-bezier(0.16, 0.85, 0.79, 1.19);       
-    animation-play-state:initial; 
-
+        
+}
+.jump{
+    animation: jump 1s cubic-bezier(0.16, 0.85, 0.79, 1.19); 
 }
 
 @keyframes jump{
@@ -85,3 +85,4 @@ img{
         transform:translateY(-200%);
     }
 }
+
