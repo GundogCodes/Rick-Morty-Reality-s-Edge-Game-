@@ -1,7 +1,7 @@
 *{
     margin:0;
     padding: 0;
-    !border: solid red;
+    border: solid red;
 }
 html{
     background-color: black;
@@ -74,7 +74,7 @@ footer > button{
 }
 
 #player{
-    position: absolute;
+    position: relative;
     transform: rotateY(180deg);
     
 }
@@ -95,17 +95,39 @@ footer > button{
 }
 
 #enemy{
-    position: absolute;
+    position:relative;
 }
 .move{
     animation: move 1s ease-in-out;
     
 }
 
+#bullet{
+    position: relative;
+   
+
+}
+
+.shoot{
+    animation: shoot 0.3s;
+}
+
+
+@keyframes shoot{
+    100%{
+        transform: translateX(3500%)
+
+    }
+    50%{
+
+    }
+}
+
+
 @keyframes move {
     
     100%{
-        transform: translateX(-1200%);
+        transform: translateX(-1000%);
     }
 
     50%{
