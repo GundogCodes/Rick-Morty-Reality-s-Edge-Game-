@@ -102,7 +102,7 @@ const gazorpazorp = new GazorpazorpEnemy()
 const smwygHead = new SMWYGHead()
 /*----- state variables -----*/
 
-let gameOn =false
+
 /*----- cached elements  -----*/
 
 /*----- event listeners -----*/
@@ -125,7 +125,7 @@ document.body.addEventListener('keydown', function(e){
 /*----- functions -----*/
 init()
 function init(){
-
+    //let mainCharacter = prompt('Which character would you like to play as?')
     smwygHead.getEl().style.visibility = 'hidden'
     jerry.getEl().style.visibility = 'hidden'
     gazorpazorp.getEl().style.visibility = 'hidden'
@@ -135,7 +135,9 @@ function init(){
     gazorpazorp.moveX()
     smwygHead.moveX()
    
-
+    //startting screen to pick main character
+    //maybe a countdown
+    //play music and sounds when event happen
     //create enemies randomly and which side they come in 
     //check if bullet collides with enemys if so destory enemy
     //check if enemy collides with mainCharacter if so lives -1
@@ -153,3 +155,4 @@ while(numOfEnemies !== 20){
      }
     numOfEnemies++
 }
+
