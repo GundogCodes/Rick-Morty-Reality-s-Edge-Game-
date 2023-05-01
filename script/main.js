@@ -23,6 +23,16 @@ class Player{
         bullet.style.bottom = '-270px'
         bullet.classList.toggle('shoot')
     }
+    
+    moveLeft(){
+    
+        this.element.style.left = this.element.style.left - parseInt('5px')
+    }
+    moveRight(){
+    
+        this.element.style.left = this.element.style.left - parseInt('5px')
+    }
+    
     getEl(){
         return this.element
     }
@@ -34,6 +44,7 @@ class Player{
     getHealth(){
         return this.health
     }
+
 
 
     
@@ -113,12 +124,28 @@ document.body.addEventListener('keydown', function(e){
     console.log(e) 
     if(e.key === ' ' || e.key ==='ArrowUp'){player.jump()} }) 
 
+document.body.addEventListener('keyup', function(e){ 
+    console.log(e) 
+    if(e.key === ' ' || e.key ==='ArrowUp'){
+    setTimeout( function(){player.getEl().classList.remove('jump')},1010)
+       
+    
+    } }) 
+
+
+
+window.addEventListener('keydown', function(e){ 
+    console.log(e) 
+    if(e.key === ' ' || e.key ==='ArrowLeft'){player.moveLeft()} }) 
+    
+window.addEventListener('keydown', function(e){ 
+    console.log(e) 
+    if(e.key === ' ' || e.key ==='ArrowRight'){player.moveRight()} }) 
     
 document.body.addEventListener('keydown', function(e){
     console.log(e)
     if(e.key === 'f'){player.shoot()} }) 
         
-player.getEl().addEventListener('click',function(){player.jump()})
 
 /*----- functions -----*/
 init()
