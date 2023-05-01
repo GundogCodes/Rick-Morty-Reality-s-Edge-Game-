@@ -15,18 +15,14 @@ class Player{
     
         console.log('playerCLICKED!')
         this.element.classList.toggle('jump')
-       
         
     }
-
     shoot(){
         bullet.style.visibility = 'visible'
         bullet.style.left = '-555px'
         bullet.style.bottom = '-270px'
         bullet.classList.toggle('shoot')
-     
     }
- 
     getEl(){
         return this.element
     }
@@ -109,6 +105,7 @@ let playerPoints = 0
 const characterChangeBtn = document.getElementById('characterChange')
 const changeWeaponBtn = document.getElementById('changeWeapon')
 const musicToggleBtn = document.getElementById('musicToggle')
+
 /*----- event listeners -----*/
 
 

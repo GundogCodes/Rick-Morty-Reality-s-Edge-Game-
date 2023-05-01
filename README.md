@@ -45,6 +45,10 @@ https://png2.cleanpng.com/sh/02003aea150469d7cc6bbea8448a7096/L0KzQYm3V8E3N5D7i5
 hitRickPNG:
 https://png2.cleanpng.com/sh/af0cc0734be612f642d690288074f98a/L0KzQYm3VcExN5dwj5H0aYP2gLBuTgJqa5wyi9N3Y3join77TgNpcaN5Rd94coT8PcT0igRpNaF0e91udD3wf8P7mgMudZZqRadqZkTpSYa4UvJmP5Y6RqI5NEG0QYi9UcUzPmE1TKI9OUG6SYm1kP5o/kisspng-rick-sanchez-t-shirt-morty-smith-pocket-mortys-mee-5af4f9512be7e5.0041117615260040491798.png
 
+backgroundJPEG:
+
+https://wallup.net/wp-content/uploads/2017/11/17/271175-Rick_and_Morty.jpg
+
 -----------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------Psuedocode-------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------
