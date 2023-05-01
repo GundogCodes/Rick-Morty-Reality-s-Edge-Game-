@@ -1,7 +1,8 @@
 console.log('works!!!')
 class Player{
 
-    constructor(){
+    constructor(name){
+        this.name = name
         this.health =100
         this.lives = 3
         this.element = document.getElementById('player')
@@ -20,13 +21,10 @@ class Player{
 
     shoot(){
         bullet.style.visibility = 'visible'
-        bullet.style.left = '-600px'
-        bullet.style.bottom = '-153px'
+        bullet.style.left = '-555px'
+        bullet.style.bottom = '-270px'
         bullet.classList.toggle('shoot')
      
-      
-
-
     }
  
     getEl(){
@@ -51,6 +49,7 @@ class JerryEnemy{
     constructor(){  
         this.element = document.getElementById('jerry')
         this.name = 'jerry'
+        
         JerryEnemy.numOfEnemies++
         this.top = this.element.offsetTop 
         console.log(`${this.name} TOP`,this.top) 
@@ -79,6 +78,7 @@ class GazorpazorpEnemy extends JerryEnemy{
         this.name = 'gazorpazorp'
         console.log(`${this.name} TOP`,this.top) 
         this.element = document.getElementById('gazorpazorp')
+        this.element.style.bottom = '-100px'
        
     }
 }
@@ -96,31 +96,32 @@ class SMWYGHead extends JerryEnemy{
 /*----- constants -----*/
 const enemyList = ['jerry','gazorpazorp','showMeWhatYouGotHead']
 const bullet = document.getElementById('bullet')
-const player = new Player()
+const player = new Player('Morty')
 const jerry = new JerryEnemy()
 const gazorpazorp = new GazorpazorpEnemy()
 const smwygHead = new SMWYGHead()
 /*----- state variables -----*/
 
+let playerPoints = 0
 
 /*----- cached elements  -----*/
 
+const characterChangeBtn = document.getElementById('characterChange')
+const changeWeaponBtn = document.getElementById('changeWeapon')
+const musicToggleBtn = document.getElementById('musicToggle')
 /*----- event listeners -----*/
 
 
+document.body.addEventListener('keydown', function(e){ 
+    console.log(e) 
+    if(e.key === ' ' || e.key ==='ArrowUp'){player.jump()} }) 
+
+    
 document.body.addEventListener('keydown', function(e){
     console.log(e)
-if(e.key === ' '){player.jump()} 
-}) 
-
+    if(e.key === 'f'){player.shoot()} }) 
+        
 player.getEl().addEventListener('click',function(){player.jump()})
-
-document.body.addEventListener('keydown', function(e){
-    console.log(e)
-    if(e.key === 'f'){player.shoot()} 
-   
-
-}) 
 
 /*----- functions -----*/
 init()
