@@ -3,6 +3,8 @@ console.log('works!!!')
 class Player{
 
     constructor(){
+        this.health =100
+        this.lives = 3
         this.element = document.getElementById('player')
         this.element.style.bottom = '-170px'
         this.element.style.left ='-250px'
@@ -21,7 +23,7 @@ class Player{
         bullet.style.left = '-1320px'
         bullet.style.bottom = '-153px'
         bullet.classList.toggle('shoot')
-        
+
 
 
     }
@@ -29,18 +31,27 @@ class Player{
     getEl(){
         return this.element
     }
+    
+    getlives(){
+        return this.lives
+    }
+
+    getHealth(){
+        return this.health
+    }
 
 
     
     
 }
 
-class Enemy{
+class JerryEnemy{
+    static numOfEnemies = 0;
     constructor(){  
-        this.element = document.getElementById('enemy')
+        this.element = document.getElementById('jerry')
         this.element.style.bottom = '-210px'
         this.element.style.right = '-80px'
- 
+        JerryEnemy.numOfEnemies++
     }
 
     moveX() {
@@ -57,13 +68,31 @@ class Enemy{
     }  
 }
 
+class GazorpazorpEnemy extends JerryEnemy{
+    constructor(){
+        super()
+        this.element = document.getElementById('gazorpazorp')
+        this.element.style.bottom = '-50px'
+        this.element.style.left = '-950px'
+    }
+}
+
+class SMWYGHead extends JerryEnemy{
+    constructor(){
+        super()
+        this.element = document.getElementById('smwyg')
+        this.element.style.left = '-1450px'
+        this.element.style.top = '-50px'
+    }
+}
 
 /*----- constants -----*/
 
 
 const player = new Player()
-const enemy = new Enemy()
- 
+const jerry = new JerryEnemy()
+const gazorpazorp = new GazorpazorpEnemy()
+const smwygHead = new SMWYGHead()
 /*----- state variables -----*/
 
 let gameOn =false
@@ -85,5 +114,7 @@ if(e.key === 'q'){player.shoot()}
 }) 
 
 /*----- functions -----*/
-enemy.moveX()
+jerry.moveX()
 player.shoot()
+gazorpazorp.moveX()
+smwygHead.moveX()

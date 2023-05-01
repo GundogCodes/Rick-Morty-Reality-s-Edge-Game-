@@ -63,11 +63,11 @@ footer{
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+    font-family: 'Bruno Ace', cursive;
 }
 
 footer > button{
     font-family: 'Bruno Ace', cursive;
-
     background-color: darkgray;
     color: white;
     border-radius: 10%;
@@ -94,7 +94,7 @@ footer > button{
     }
 }
 
-#enemy{
+#jerry{
     position:relative;
 }
 .move{
@@ -112,7 +112,12 @@ footer > button{
     animation: shoot 0.3s;
 }
 
-
+#gazorpazorp{
+    position: relative;
+}
+#smwyg{
+    position: relative;
+}
 @keyframes shoot{
     100%{
         transform: translateX(3500%)
