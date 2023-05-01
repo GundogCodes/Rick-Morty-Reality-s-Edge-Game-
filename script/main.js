@@ -1,4 +1,3 @@
-
 console.log('works!!!')
 class Player{
 
@@ -6,8 +5,8 @@ class Player{
         this.health =100
         this.lives = 3
         this.element = document.getElementById('player')
-        this.element.style.bottom = '-170px'
-        this.element.style.left ='-250px'
+        
+    
         
     }
     
@@ -20,7 +19,7 @@ class Player{
 
     shoot(){
         const bullet = document.getElementById('bullet')
-        bullet.style.left = '-1320px'
+        bullet.style.left = '-600px'
         bullet.style.bottom = '-153px'
         bullet.classList.toggle('shoot')
 
@@ -49,8 +48,7 @@ class JerryEnemy{
     static numOfEnemies = 0;
     constructor(){  
         this.element = document.getElementById('jerry')
-        this.element.style.bottom = '-210px'
-        this.element.style.right = '-80px'
+  
         JerryEnemy.numOfEnemies++
     }
 
@@ -72,8 +70,7 @@ class GazorpazorpEnemy extends JerryEnemy{
     constructor(){
         super()
         this.element = document.getElementById('gazorpazorp')
-        this.element.style.bottom = '-50px'
-        this.element.style.left = '-950px'
+       
     }
 }
 
@@ -81,8 +78,7 @@ class SMWYGHead extends JerryEnemy{
     constructor(){
         super()
         this.element = document.getElementById('smwyg')
-        this.element.style.left = '-1450px'
-        this.element.style.top = '-50px'
+      
     }
 }
 
