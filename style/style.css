@@ -14,7 +14,7 @@ html{
 
 body{
     height: 750px;
-    width: 1000px;
+    width: 1800px;
     border-radius: 3%;
     display: flex;
     flex-direction: column;
@@ -32,7 +32,9 @@ header{
     justify-content: center;
     align-items: flex-end;
     font-family: 'Bruno Ace', cursive;
-    font-size: 25px;
+    padding-top: 50px;
+    padding-bottom: 25px;
+    font-size: 35px;
 }
 
 main{
@@ -41,13 +43,16 @@ main{
     justify-content:flex-start;
     align-items: center;
     height: 500px;
+    width: 1800px;
     border: solid gray;
     background-color: rgba(2,0,67);
-    border-top-right-radius: 40%;
-    border-top-left-radius: 10%;
+    border-top-right-radius: 8% ;/*/40%;*/
+    border-top-left-radius: 8%;
     border-bottom-left-radius: 8%;
     border-bottom-right-radius: 8%;
-  
+    background-image: url();
+    background-size:cover;
+    background-position: 0%;
 }
 
 #road{
@@ -64,11 +69,13 @@ footer{
     justify-content: space-evenly;
     align-items: center;
     font-family: 'Bruno Ace', cursive;
+    font-size: 30px;
 }
 
 footer > button{
     font-family: 'Bruno Ace', cursive;
-    background-color: darkgray;
+    font-size: 30px;
+    background-color: rgb(148, 58, 228);
     color: white;
     border-radius: 10%;
 }
@@ -101,7 +108,7 @@ footer > button{
 
 #enemyDiv{
     position:relative;
-    left: -30px;
+    left: 770px;
     top: 60px;
     display: flex;
     justify-content: center;
@@ -118,9 +125,11 @@ footer > button{
 
 #gazorpazorp{
     position: relative;
+    transform:rotateY(180deg);
 }
 #smwyg{
     position: relative;
+    transform:rotateY(180deg) ;
 }
 
 @keyframes shoot{
@@ -137,7 +146,8 @@ footer > button{
 @keyframes move {
     
     100%{
-        transform: translateX(-1000%);
+        transform: translateX(-1000%) rotateY(180deg);
+        
     }
     
     50%{
