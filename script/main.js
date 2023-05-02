@@ -1,4 +1,5 @@
 console.log('works!!!')
+/*---------------------------------------------------------- CLASSES ----------------------------------------------------------*/ 
 class Player{
 
     constructor(name,top,left){
@@ -19,7 +20,7 @@ class Player{
     }
     shoot(){
         bullet.style.visibility = 'visible'
-        bullet.style.left = '-555px'
+        bullet.style.left = '-470px'
         bullet.style.bottom = '-270px'
         bullet.classList.add('shoot')
     }
@@ -55,23 +56,29 @@ class Player{
 
 class Enemy{
     static numOfEnemies = 0;
-    constructor(element,name,top){  
+    constructor(element,name,top,left){  
         this.element = element
         this.name = name
         this.element.style.top = top
+        this.element.style.left = left
         Enemy.numOfEnemies++
 
     }
 
-    moveX() {
-        const randoInt = Math.floor(Math.random(0)*100)
-        console.log(randoInt)
-        if(randoInt%2 === 0){
-            this.element.style.visibility = 'visible'
-            this.element.classList.add('move')
-        }
+    moveLeft() {
+        this.element.style.visibility = 'visible'
+        this.element.classList.add('moveLeft')
+    
 
     }
+
+    moveRight() {
+        this.element.style.visibility = 'visible'
+        this.element.classList.add('moveRight')
+    
+
+    }
+
     getEl(){
         return this.element   
     } 
@@ -82,20 +89,26 @@ class Enemy{
 
 
 
+/*--------------------------------------------------------------- constants ---------------------------------------------------------------*/
 
-
-/*----- constants -----*/
 const enemyList = ['jerry','gazorpazorp','showMeWhatYouGotHead']
 
+//PLAYERS
+
 const bullet = document.getElementById('bullet')
-const player = new Player('Morty','275px','5px')
+const player = new Player('Morty','260px','0px')
 
-const jerry = new Enemy(document.getElementById('jerry'),'jerry','150px')
-const gazorpazorp = new Enemy(document.getElementById('gazorpazorp','gazorpazorp','150px'))
-const smwygHead = new Enemy(document.getElementById('smwyg','showMeWhatYouGotHead','50px'))
+//ENEMYS                                                                             //top, left
+const smwygHead2 = new Enemy(document.getElementById('smwyg2','showMeWhatYouGotHead','0px','0px'))
+const jerry2 = new Enemy(document.getElementById('jerry2'),'jerry','0px','0px')
+const gazorpazorp2 = new Enemy(document.getElementById('gazorpazorp2'),'gazorpazorp','0px','0px')
+
+const smwygHead1 = new Enemy(document.getElementById('smwyg1','showMeWhatYouGotHead','0px','0px'))
+const jerry1 = new Enemy(document.getElementById('jerry1'),'jerry','0px','0px')
+const gazorpazorp1 = new Enemy(document.getElementById('gazorpazorp1'),'gazorpazorp','0px','0px')
 
 
-/*----- state variables -----*/
+/*--------------------------------------------------------------- state variables---------------------------------------------------------------*/
 
 let playerPoints = 0
 console.log('POSITION',typeof(player.getRightPos()))
@@ -105,7 +118,7 @@ const characterChangeBtn = document.getElementById('characterChange')
 const changeWeaponBtn = document.getElementById('changeWeapon')
 const musicToggleBtn = document.getElementById('musicToggle')
 
-/*----- event listeners -----*/
+/*--------------------------------------------------------------- event listeners ---------------------------------------------------------------*/
 
 
 document.body.addEventListener('keydown', function(e){ 
@@ -119,8 +132,6 @@ document.body.addEventListener('keyup', function(e){
        
     
     } }) 
-
-
 
 window.addEventListener('keydown', function(e){ 
     console.log(e) 
@@ -141,20 +152,31 @@ document.body.addEventListener('keydown', function(e){
 
         },400)
         
+/*--------------------------------------------------------------- functions ---------------------------------------------------------------*/
 
-/*----- functions -----*/
-init()
+        let checkPlayerTop = setInterval(function(){
+            let playerTop = parseInt(window.getComputedStyle(player.getEl()).getPropertyValue('right'))
+      
+            console.log('player top (WHY DOES THIS NOT CHANGE??) ',playerTop)
+        },1000)
+
+
+
+
+        init()
 function init(){
   
     //let mainCharacter = prompt('Which character would you like to play as?')
-    smwygHead.getEl().style.visibility = 'hidden'
-    jerry.getEl().style.visibility = 'hidden'
-    gazorpazorp.getEl().style.visibility = 'hidden'
+    smwygHead1.getEl().style.visibility = 'hidden'
+    jerry1.getEl().style.visibility = 'hidden'
+    gazorpazorp1.getEl().style.visibility = 'hidden'
+    
+    smwygHead2.getEl().style.visibility = 'hidden'
+    jerry2.getEl().style.visibility = 'hidden'
+    gazorpazorp2.getEl().style.visibility = 'hidden'
     bullet.style.visibility = 'hidden'
     
-    jerry.moveX()
-    gazorpazorp.moveX()
-    smwygHead.moveX()
+  
    
     //startting screen to pick main character
     //maybe a countdown
@@ -163,7 +185,25 @@ function init(){
     //check if bullet collides with enemys if so destory enemy
     //check if enemy collides with mainCharacter if so lives -1
     //if lives  === 0 endgame
+    runGame()
+}
+
+function  runGame(){
+    randomizeEnemys()
     
+    jerry1.moveRight()
+    gazorpazorp1.moveRight()
+    smwygHead1.moveRight()
+
+    jerry2.moveLeft()
+    gazorpazorp2.moveLeft()
+    smwygHead2.moveLeft()
+}
+
+
+function randomizeEnemys(enemyArr){
+    const randoInt =  getRandomInt(2)
+
 }
 
 let numOfEnemies = 0
@@ -177,3 +217,7 @@ while(numOfEnemies !== 20){
     numOfEnemies++
 }
 
+function getRandomInt(range){
+   const randoInt = Math.floor(Math.random(0)*range)
+return randoInt
+}

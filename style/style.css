@@ -1,6 +1,7 @@
 
 *{
-    border: solid red;
+    
+    !border: solid red;
 }
 html{
     
@@ -11,30 +12,51 @@ html{
 
  
 }
+/*----------------------------- MAIN BODY -----------------------------*/
 
 body{
     height: 1000px;
-    width: 1800px;
+    width: 1600px;
     border-radius: 3%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     border: 1vmin rgb(58, 54, 54) solid;
+    padding-left: 100px;
+    padding-right: 100px;
 
 }
 
 header{
     background-color: black;
-    height: 10px;
+    height: 150px;
     color:yellow;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     font-family: 'Bruno Ace', cursive;
-    padding-top: 50px;
-    padding-bottom: 25px;
+
+}
+
+h1{
+    padding-top: 30px;
     font-size: 35px;
+}
+
+#points{
+    color: red;
+    font-size: 35px;
+
+
+}
+#points:hover{
+    color:rgb(139, 0, 139);
+    font-size: 50px;
+    transition: 2s ease-out;
+    background-color: rgb(27, 22, 22);
+    border-radius: 15px;
+    padding-bottom:10px ;
 }
 
 main{
@@ -43,7 +65,7 @@ main{
     justify-content:flex-start;
     align-items: center;
     height: 700px;
-    width: 1800px;
+    width: 1600px;
     border: solid gray;
     background-color: rgba(2,0,67);
     border-top-right-radius: 8% ;/*/40%;*/
@@ -71,11 +93,7 @@ footer{
     font-family: 'Bruno Ace', cursive;
     
 }
-#points:hover{
-    color:rgb(255, 0, 0);
-    font-size: 50px;
-    transition: 2s ease-out;
-}
+
 footer > button{
     font-family: 'Bruno Ace', cursive;
     font-size: 30px;
@@ -91,19 +109,28 @@ footer > button:hover{
 
 }
 
+#changeWeapon:hover{
+    color:white;
+    background-color: rgb(211, 3, 3);
+}
+#musicToggle:hover{
+    color:white;
+    background-color: rgb(49, 228, 0);
+}
+
 #livesBox{
-    background-color: rgb(34, 31, 31);
+    background-color: rgb(34, 30, 30);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1px;
-    padding: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
   
 }
 #livesBox:hover{
-    padding:20px;
+    padding:10px;
     background-color:rgb(0, 2, 16);
     transition: 2s;
 }
@@ -112,9 +139,34 @@ footer > button:hover{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap:10px;
+    
+}
+/*----------------------------- MAIN SIDE -----------------------------*/
+#enemyDiv1{
+    position:relative;
+    left: -110px;
+    top: 50px;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    height: 580px;
+    width: 120px;
 }
 
+#enemyDiv2{
+    position:relative;
+    left: 450px;
+    top: 50px;
+    display: flex;
+    justify-content: flex-end ;
+    flex-direction: column;
+    height: 580px;
+    width: 120px;
+}
+
+
+
+/*----------------------------- PLAYER -----------------------------*/
 #player{
     position: relative;
     transform: rotateY(180deg);
@@ -123,19 +175,8 @@ footer > button:hover{
 }
 .jump{
     animation: jump 1s cubic-bezier(0.16, 0.85, 0.79, 1.19); 
- 
-}
-
-#jerry{
-    position:relative;
     
 }
-.move{
-    animation: move 1s ease-in-out forwards;
-
-    
-}
-
 
 #bullet{
     position: relative;
@@ -143,32 +184,55 @@ footer > button:hover{
     
 }
 
-#enemyDiv{
-    position:relative;
-    left: 770px;
-    top: 60px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    height: 200px;
-    width: 120px;
-}
-
-
-
 .shoot{
-    animation: shoot 0.4s ease-in-out;
+    animation: shoot 0.4s ease-out ;
+}
+/*----------------------------- ENEMYS -----------------------------*/
+
+#jerry1{
+    position: relative;
+    transform: rotateY(180deg);
 }
 
-#gazorpazorp{
+#jerry2{
+    position:relative;
+
+}
+
+#gazorpazorp1{
+    position: relative;
+   
+}
+
+#gazorpazorp2{
     position: relative;
     transform:rotateY(180deg);
 }
-#smwyg{
+
+#smwyg1{
+    position: relative;
+  
+}
+
+#smwyg2{
     position: relative;
     transform:rotateY(180deg) ;
 }
 
+/*----------------------------- MOVE ANIMATIONS -----------------------------*/
+
+.moveLeft{
+    animation: moveLeft 1s ease-in-out forwards;
+
+    
+}
+
+.moveRight{
+    animation: moveRight 1s ease-in-out forwards;
+
+    
+}
+/*----------------------------- KEYFRAMES -----------------------------*/
 @keyframes shoot{
     100%{
         transform: translateX(1000%);
@@ -180,10 +244,26 @@ footer > button:hover{
 }
 
 
-@keyframes move {
+@keyframes moveLeft {
     
     100%{
         transform: translateX(-1000%) rotateY(180deg);
+        
+    }
+    
+    50%{
+        
+    }
+    0%{
+        
+    }
+    
+}
+
+@keyframes moveRight {
+    
+    100%{
+        transform: translateX(1000%) rotateY(180deg);
         
     }
     
