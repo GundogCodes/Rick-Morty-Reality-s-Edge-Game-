@@ -51,6 +51,8 @@ class Player{
         return this.health
     }
 
+   
+
 
 }
 
@@ -96,6 +98,7 @@ const enemyList = ['jerry','gazorpazorp','showMeWhatYouGotHead']
 //PLAYERS
 
 const bullet = document.getElementById('bullet')
+                                    //top, left
 const player = new Player('Morty','260px','0px')
 
 //ENEMYS                                                                             //top, left
@@ -112,7 +115,8 @@ const gazorpazorp1 = new Enemy(document.getElementById('gazorpazorp1'),'gazorpaz
 
 let playerPoints = 0
 console.log('POSITION',typeof(player.getRightPos()))
-/*----- cached elements  -----*/
+
+/*---------------------------------------------------------------cached elements  ---------------------------------------------------------------*/
 
 const characterChangeBtn = document.getElementById('characterChange')
 const changeWeaponBtn = document.getElementById('changeWeapon')
@@ -176,21 +180,22 @@ function init(){
     gazorpazorp2.getEl().style.visibility = 'hidden'
     bullet.style.visibility = 'hidden'
     
-  
-   
     //startting screen to pick main character
     //maybe a countdown
     //play music and sounds when event happen
-    //create enemies randomly and which side they come in 
-    //check if bullet collides with enemys if so destory enemy
-    //check if enemy collides with mainCharacter if so lives -1
-    //if lives  === 0 endgame
+
     runGame()
 }
 
 function  runGame(){
-    randomizeEnemys()
     
+    //create enemies randomly and which side they come in 
+    randomizeEnemys()
+   
+    
+    //check if bullet collides with enemys if so destory enemy
+    //check if enemy collides with mainCharacter if so lives -1
+    //if lives  === 0 endgame
     jerry1.moveRight()
     gazorpazorp1.moveRight()
     smwygHead1.moveRight()

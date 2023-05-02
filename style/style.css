@@ -4,7 +4,7 @@
     !border: solid red;
 }
 html{
-    
+
     background-color: black;
     display: flex;
     width: 1000px;
@@ -287,3 +287,5 @@ footer > button:hover{
     
     }
 } 
+
+/*----------------------------- @MEDIA QUERIES -----------------------------*/
