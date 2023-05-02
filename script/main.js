@@ -1,40 +1,45 @@
 console.log('works!!!')
 class Player{
 
-    constructor(name){
+    constructor(name,top,left){
         this.name = name
         this.health =100
         this.lives = 3
         this.element = document.getElementById('player')
-        this.top = this.element.offsetTop 
-        console.log('PLAYER TOP',this.top) 
+        this.element.style.top = top
+        this.element.style.left = left       
         
     }
     
     jump() {
     
         console.log('playerCLICKED!')
-        this.element.classList.toggle('jump')
+        this.element.classList.add('jump')
         
     }
     shoot(){
         bullet.style.visibility = 'visible'
         bullet.style.left = '-555px'
         bullet.style.bottom = '-270px'
-        bullet.classList.toggle('shoot')
+        bullet.classList.add('shoot')
     }
     
     moveLeft(){
     
-        this.element.style.left = this.element.style.left - parseInt('5px')
+        this.element.style.left = this.element.style.left-240
     }
     moveRight(){
     
         this.element.style.left = this.element.style.left - parseInt('5px')
     }
+
     
     getEl(){
         return this.element
+    }
+    getRightPos(){
+
+        return this.element.style.right
     }
     
     getlives(){
@@ -46,20 +51,16 @@ class Player{
     }
 
 
-
-    
-    
 }
 
-class JerryEnemy{
+class Enemy{
     static numOfEnemies = 0;
-    constructor(){  
-        this.element = document.getElementById('jerry')
-        this.name = 'jerry'
-        
-        JerryEnemy.numOfEnemies++
-        this.top = this.element.offsetTop 
-        console.log(`${this.name} TOP`,this.top) 
+    constructor(element,name,top){  
+        this.element = element
+        this.name = name
+        this.element.style.top = top
+        Enemy.numOfEnemies++
+
     }
 
     moveX() {
@@ -72,45 +73,32 @@ class JerryEnemy{
 
     }
     getEl(){
-        return this.element
+        return this.element   
     } 
     getName(){
         return this.name
     } 
 }
 
-class GazorpazorpEnemy extends JerryEnemy{
-    constructor(){
-        super()
-        this.name = 'gazorpazorp'
-        console.log(`${this.name} TOP`,this.top) 
-        this.element = document.getElementById('gazorpazorp')
-        this.element.style.bottom = '-100px'
-       
-    }
-}
 
-class SMWYGHead extends JerryEnemy{
-    constructor(){
-        super()
-        this.name  = 'showMeWhatYouGotHead'
-        console.log(`${this.name} TOP`,this.top) 
-        this.element = document.getElementById('smwyg')
-      
-    }
-}
+
+
 
 /*----- constants -----*/
 const enemyList = ['jerry','gazorpazorp','showMeWhatYouGotHead']
+
 const bullet = document.getElementById('bullet')
-const player = new Player('Morty')
-const jerry = new JerryEnemy()
-const gazorpazorp = new GazorpazorpEnemy()
-const smwygHead = new SMWYGHead()
+const player = new Player('Morty','275px','5px')
+
+const jerry = new Enemy(document.getElementById('jerry'),'jerry','150px')
+const gazorpazorp = new Enemy(document.getElementById('gazorpazorp','gazorpazorp','150px'))
+const smwygHead = new Enemy(document.getElementById('smwyg','showMeWhatYouGotHead','50px'))
+
+
 /*----- state variables -----*/
 
 let playerPoints = 0
-
+console.log('POSITION',typeof(player.getRightPos()))
 /*----- cached elements  -----*/
 
 const characterChangeBtn = document.getElementById('characterChange')
@@ -145,18 +133,26 @@ window.addEventListener('keydown', function(e){
 document.body.addEventListener('keydown', function(e){
     console.log(e)
     if(e.key === 'f'){player.shoot()} }) 
+    document.body.addEventListener('keyup', function(e){
+        console.log(e)
+        setTimeout(function(){
+
+        if(e.key === 'f'){bullet.classList.remove('shoot')} }) 
+
+        },400)
         
 
 /*----- functions -----*/
 init()
 function init(){
+  
     //let mainCharacter = prompt('Which character would you like to play as?')
     smwygHead.getEl().style.visibility = 'hidden'
     jerry.getEl().style.visibility = 'hidden'
     gazorpazorp.getEl().style.visibility = 'hidden'
     bullet.style.visibility = 'hidden'
+    
     jerry.moveX()
-
     gazorpazorp.moveX()
     smwygHead.moveX()
    
@@ -173,9 +169,9 @@ function init(){
 let numOfEnemies = 0
 while(numOfEnemies !== 20){
     let randoInt = Math.floor(Math.random(0)*3)
-    console.log('randoInt',randoInt)
+   // console.log('randoInt',randoInt)
      for(let enemy of enemyList){
-        console.log('enemy',enemy)
+       // console.log('enemy',enemy)
     
      }
     numOfEnemies++
