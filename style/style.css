@@ -147,7 +147,7 @@ footer > button:hover{
 }
 /*----------------------------- MAIN INSIDE -----------------------------*/
 #enemyDiv1{
-    position:absolute;
+    position:fixed;
     left: 0px;
     top: 250px;
     display: flex;
@@ -171,12 +171,11 @@ footer > button:hover{
 }
 
 
-
-
 /*----------------------------- PLAYER -----------------------------*/
 #player {  
     transform: rotateY(180deg);
     position: absolute;
+   
 
 
 }

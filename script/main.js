@@ -24,8 +24,14 @@ class Player{
     }
     
     moveLeft(){
+    console.log(this.element)
+    let x = parseInt(this.element.style.left)
+    x = x+300
+
+    this.element.style.left = x +'px'
     
-        this.element.style.left = this.element.style.left-240
+    console.log(this.element.style.left)
+
     }
     moveRight(){
 
@@ -99,6 +105,7 @@ const bullet = document.getElementById('bullet')
                                     //top, left
 let player = new Player('Morty','0px','0px')
 
+player.moveLeft()
 
 //ENEMYS                                                                             //top, left
 const gromflomite1 =  new Enemy(document.getElementById('gromflomite1'),'gromflomite','0px','0px')
