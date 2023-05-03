@@ -3,12 +3,12 @@ console.log('works!!!')
 class Player{
 
     constructor(name,top,left){
-        this.name = name
-        this.health =100
-        this.lives = 3
         this.element = document.getElementById('player')
+        this.name = name
         this.element.style.top = top
         this.element.style.left = left       
+        this.health =100
+        this.lives = 3
         
     }
     
@@ -97,7 +97,8 @@ const enemyList = ['jerry','gazorpazorp','showMeWhatYouGotHead']
 
 const bullet = document.getElementById('bullet')
                                     //top, left
-const player = new Player('Morty','255px','0px')
+let player = new Player('Morty','0px','0px')
+
 
 //ENEMYS                                                                             //top, left
 const gromflomite1 =  new Enemy(document.getElementById('gromflomite1'),'gromflomite','0px','0px')
@@ -116,7 +117,7 @@ const gazorpazorp2 = new Enemy(document.getElementById('gazorpazorp2'),'gazorpaz
 /*--------------------------------------------------------------- state variables---------------------------------------------------------------*/
 
 let playerPoints = 0
-console.log('POSITION',typeof(player.getRightPos()))  
+
 
 /*---------------------------------------------------------------cached elements  ---------------------------------------------------------------*/
 
@@ -125,92 +126,28 @@ const changeWeaponBtn = document.getElementById('changeWeapon')
 const musicToggleBtn = document.getElementById('musicToggle')
 
 /*--------------------------------------------------------------- event listeners ---------------------------------------------------------------*/
+// let x = 0
+// let y = 0 
+// let speed =-100
+// const windowHeight = window.innerHeight
+// let windowWidth = window.innerWidth
+// console.log(windowHeight,windowWidth)
 
+// window.addEventListener('keydown', (e) =>{
+//     console.log(e)
+//     if(e.key === 'ArrowUp'){
+//         if((x+100)< windowWidth){
+//             x+= speed;
+//             player.getEl().left = x + 'px'
 
-document.body.addEventListener('keydown', function(e){ 
-    console.log(e) 
-    if(e.key === ' ' || e.key ==='ArrowUp'){player.jump()} }) 
+//         }
+//     }
 
-document.body.addEventListener('keyup', function(e){ 
-    console.log(e) 
-    if(e.key === ' ' || e.key ==='ArrowUp'){
-    setTimeout( function(){player.getEl().classList.remove('jump')},1010)
-       
-    
-    } }) 
-
-
-document.body.addEventListener('keydown', function(e){
-    console.log(e)
-    if(e.key === 'f'){player.shoot()} }) 
-    document.body.addEventListener('keyup', function(e){
-        console.log(e)
-        setTimeout(function(){
-
-        if(e.key === 'f'){bullet.classList.remove('shoot')} }) 
-
-        },400)
-
-    //MOVE PLAYER
-    window.addEventListener('keydown',function(e){
-        if(e.key === 'ArrowRight'){
-            player.getEl().classList.add('moveMainRight')
-        }
-    })
-    
-    window.addEventListener('keyup',function(e){
-        if(e.key === 'ArrowRight'){
-            player.getEl().classList.remove('moveMainRight')
-        }
-    })
-
-window.addEventListener('keydown',function(e){
-    if(e.key === 'ArrowLeft'){
-        player.getEl().classList.add('moveMainLeft')
-        
-    }
-})
-
-window.addEventListener('keyup',function(e){
-    if(e.key === 'ArrowLeft'){
-        player.getEl().classList.remove('moveMainLeft')
-    }
-})
-
+// })
 
 /*--------------------------------------------------------------- functions ---------------------------------------------------------------*/
-/* DOESNT WORK
-let x = 0
-function getPos(){
-    
-    let playerPos = player.getEl()
 
 
-    setInterval(function(){
-        x++
-        player.getEl().style.left = `${x}px`
-        console.log(x)
-
-    },10)
-}
-
-getPos()
-*/
-
-
-window.addEventListener('keyup',(e)=>{
-    switch(e.key){
-        case 'ArrowLeft':
-            player.getEl().style.left =  parseInt(player.getEl().left) - 10 +'px'
-        case 'ArrowRight':
-            player.getEl().style.left =  parseInt(player.getEl().left) + 10 +'px'
-        case 'ArrowUp':
-            player.getEl().style.top =  parseInt(player.getEl().top) - 10 +'px'
-        case 'ArrowDown':
-            player.getEl().style.top =  parseInt(player.getEl().top) + 10 +'px'
-        
-    }
-})
 
 init()
 function init(){
@@ -244,7 +181,7 @@ function  runGame(){
     //check if bullet collides with enemys if so destory enemy
     //check if enemy collides with mainCharacter if so lives -1
     //if lives  === 0 endgame
-   
+
 }
 
 
@@ -253,18 +190,10 @@ function randomizeEnemys(enemyArr){
 
 }
 
-let numOfEnemies = 0
-while(numOfEnemies !== 20){
-    let randoInt = Math.floor(Math.random(0)*3)
-   // console.log('randoInt',randoInt)
-     for(let enemy of enemyList){
-       // console.log('enemy',enemy)
-    
-     }
-    numOfEnemies++
-}
+
 
 function getRandomInt(range){
    const randoInt = Math.floor(Math.random(0)*range)
 return randoInt
 }
+

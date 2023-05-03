@@ -7,37 +7,47 @@
 html{
 
     background-color: black;
+    border: solid blue;
+    position: relative;
  
 }
 /*----------------------------- MAIN BODY -----------------------------*/
 
 body{
-    height: 1100px;
+    height: 1000px;
     width: 1600px;
     border-radius: 3%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border: 1vmin rgb(58, 54, 54) solid;
+    border: 1vmin rgb(255, 45, 199) solid;
     padding-left: 100px;
     padding-right: 100px;
+    position:relative;
 
 }
 
 header{
     background-color: black;
     height: 150px;
+    width: 900px;
     color:yellow;
+    position: relative;
+    top:10px;
+    left: 350px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     font-family: 'Bruno Ace', cursive;
+    margin-top: 25px;
+    margin-bottom:25px;
+    
 
 }
 
 h1{
-    padding-top: 30px;
+
     font-size: 35px;
 }
 
@@ -60,7 +70,7 @@ main{
     height: 700px;
     width: 1600px;
     border: solid rgb(0, 255, 157);
-    
+    position: relative;
     background-color: rgba(2,0,67);
     border-top-right-radius: 8% ;/*/40%;*/
     border-top-left-radius: 8%;
@@ -74,7 +84,6 @@ main{
 
 
 footer{
-    
     background-color: black;
     height: 190px;
     display: flex;
@@ -82,6 +91,8 @@ footer{
     justify-content: space-evenly;
     align-items: center;
     font-family: 'Bruno Ace', cursive;
+    margin-top:25px;
+    position: relative;
     
 }
 
@@ -134,11 +145,11 @@ footer > button:hover{
     justify-content: center;
     
 }
-/*----------------------------- MAIN SIDE -----------------------------*/
+/*----------------------------- MAIN INSIDE -----------------------------*/
 #enemyDiv1{
     position:absolute;
-    left: 10px;
-    top: 300px;
+    left: 0px;
+    top: 250px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -149,8 +160,8 @@ footer > button:hover{
 
 #enemyDiv2{
     position:absolute;
-    left: 1710px;
-    top: 300px;
+    left: 1705px;
+    top: 250px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end ;
@@ -163,11 +174,10 @@ footer > button:hover{
 
 
 /*----------------------------- PLAYER -----------------------------*/
-#player > img{  
+#player {  
     transform: rotateY(180deg);
     position: absolute;
-    top:260px;
-    left: 0px;
+
 
 }
 #bullet{
