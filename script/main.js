@@ -13,15 +13,15 @@ class Player{
     }
     
     jump() {
-    
+
         console.log('playerCLICKED!')
         this.element.classList.add('jump')
         
     }
     shoot(){
         bullet.style.visibility = 'visible'
-        bullet.style.left = '-470px'
-        bullet.style.bottom = '-270px'
+        bullet.style.left = '-520px'
+        bullet.style.bottom = '-250px'
         bullet.classList.add('shoot')
     }
     
@@ -99,22 +99,26 @@ const enemyList = ['jerry','gazorpazorp','showMeWhatYouGotHead']
 
 const bullet = document.getElementById('bullet')
                                     //top, left
-const player = new Player('Morty','260px','0px')
+const player = new Player('Morty','255px','0px')
 
 //ENEMYS                                                                             //top, left
+const gromflomite1 =  new Enemy(document.getElementById('gromflomite1'),'gromflomite','0px','0px')
+const smwygHead1 = new Enemy(document.getElementById('smwyg1','showMeWhatYouGotHead','0px','0px'))
+const jerry1 = new Enemy(document.getElementById('jerry1'),'jerry','0px','0px')
+const gazorpazorp1 = new Enemy(document.getElementById('gazorpazorp1'),'gazorpazorp','0px','0px')
+
+const gromflomite2 =  new Enemy(document.getElementById('gromflomite2'),'gromflomite','0px','0px')
 const smwygHead2 = new Enemy(document.getElementById('smwyg2','showMeWhatYouGotHead','0px','0px'))
 const jerry2 = new Enemy(document.getElementById('jerry2'),'jerry','0px','0px')
 const gazorpazorp2 = new Enemy(document.getElementById('gazorpazorp2'),'gazorpazorp','0px','0px')
 
-const smwygHead1 = new Enemy(document.getElementById('smwyg1','showMeWhatYouGotHead','0px','0px'))
-const jerry1 = new Enemy(document.getElementById('jerry1'),'jerry','0px','0px')
-const gazorpazorp1 = new Enemy(document.getElementById('gazorpazorp1'),'gazorpazorp','0px','0px')
+
 
 
 /*--------------------------------------------------------------- state variables---------------------------------------------------------------*/
 
 let playerPoints = 0
-console.log('POSITION',typeof(player.getRightPos()))
+console.log('POSITION',typeof(player.getRightPos()))  
 
 /*---------------------------------------------------------------cached elements  ---------------------------------------------------------------*/
 
@@ -137,14 +141,7 @@ document.body.addEventListener('keyup', function(e){
     
     } }) 
 
-window.addEventListener('keydown', function(e){ 
-    console.log(e) 
-    if(e.key === ' ' || e.key ==='ArrowLeft'){player.moveLeft()} }) 
-    
-window.addEventListener('keydown', function(e){ 
-    console.log(e) 
-    if(e.key === ' ' || e.key ==='ArrowRight'){player.moveRight()} }) 
-    
+
 document.body.addEventListener('keydown', function(e){
     console.log(e)
     if(e.key === 'f'){player.shoot()} }) 
@@ -155,30 +152,50 @@ document.body.addEventListener('keydown', function(e){
         if(e.key === 'f'){bullet.classList.remove('shoot')} }) 
 
         },400)
+
+    //MOVE PLAYER
+    window.addEventListener('keydown',function(e){
+        if(e.key === 'ArrowRight'){
+            player.getEl().classList.add('moveMainRight')
+        }
+    })
+    
+    window.addEventListener('keyup',function(e){
+        if(e.key === 'ArrowRight'){
+            player.getEl().classList.remove('moveMainRight')
+        }
+    })
+
+window.addEventListener('keydown',function(e){
+    if(e.key === 'ArrowLeft'){
+        player.getEl().classList.add('moveMainLeft')
         
+    }
+})
+
+window.addEventListener('keyup',function(e){
+    if(e.key === 'ArrowLeft'){
+        player.getEl().classList.remove('moveMainLeft')
+    }
+})
+
+let x = player.getEl().clientLeft
+x +=100 
+console.log(x)
 /*--------------------------------------------------------------- functions ---------------------------------------------------------------*/
-
-        let checkPlayerTop = setInterval(function(){
-            let playerTop = parseInt(window.getComputedStyle(player.getEl()).getPropertyValue('right'))
-      
-            console.log('player top (WHY DOES THIS NOT CHANGE??) ',playerTop)
-        },1000)
-
-
-
-
         init()
 function init(){
   
     //let mainCharacter = prompt('Which character would you like to play as?')
-    smwygHead1.getEl().style.visibility = 'hidden'
-    jerry1.getEl().style.visibility = 'hidden'
-    gazorpazorp1.getEl().style.visibility = 'hidden'
     
-    smwygHead2.getEl().style.visibility = 'hidden'
-    jerry2.getEl().style.visibility = 'hidden'
-    gazorpazorp2.getEl().style.visibility = 'hidden'
-    bullet.style.visibility = 'hidden'
+    // smwygHead1.getEl().style.visibility = 'hidden'
+    // jerry1.getEl().style.visibility = 'hidden'
+    // gazorpazorp1.getEl().style.visibility = 'hidden'
+      
+    // smwygHead2.getEl().style.visibility = 'hidden'
+    // jerry2.getEl().style.visibility = 'hidden'
+    // gazorpazorp2.getEl().style.visibility = 'hidden'
+     bullet.style.visibility = 'hidden'
     
     //startting screen to pick main character
     //maybe a countdown
@@ -188,21 +205,24 @@ function init(){
 }
 
 function  runGame(){
-    
+
     //create enemies randomly and which side they come in 
     randomizeEnemys()
    
+    gromflomite1.moveRight()
+    smwygHead1.moveRight()
+    jerry1.moveRight()
+    gazorpazorp1.moveRight()
     
+    gromflomite2.moveLeft()
+    smwygHead2.moveLeft()
+    jerry2.moveLeft()
+    gazorpazorp2.moveLeft()
+
     //check if bullet collides with enemys if so destory enemy
     //check if enemy collides with mainCharacter if so lives -1
     //if lives  === 0 endgame
-    jerry1.moveRight()
-    gazorpazorp1.moveRight()
-    smwygHead1.moveRight()
-
-    jerry2.moveLeft()
-    gazorpazorp2.moveLeft()
-    smwygHead2.moveLeft()
+   
 }
 
 

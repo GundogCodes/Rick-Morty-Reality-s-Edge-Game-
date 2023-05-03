@@ -15,9 +15,9 @@
 
 https://png2.cleanpng.com/sh/d0bbf86ed47622a56b45e1d5c32af94f/L0KzQYm3VMA3N5p8iZH0aYP2gLBuTgBweqVmhJ87LYLsc7y0kBFva5lqkp9vdX7uf373jCJ1aZ14Rdt3LXbsc8XwjB4ueppog59qbnSwfbF5lQkuPZJoT6YAMkWzdbfqg8cvPmg1TKU8OEm0RYO6UMA5QGE6SKg6ND7zfri=/kisspng-portal-2-rick-sanchez-funko-portals-in-fiction-rick-and-morty-5ac745250efcc7.6704338915230088050614.png <==notWorkingForSomeReason==>
 
-drinkingRickPNG:
+rickJumpPNG:
 
- https://www.freepnglogos.com/uploads/rick-and-morty-png/rick-and-morty-rick-flying-transparent-png-stickpng-15.png
+https://banner2.cleanpng.com/20180430/ajw/kisspng-rick-sanchez-morty-smith-sticker-paper-meeseeks-an-5ae78f84d64ae5.0215684115251249968778.jpg 
 
 shootingBuffJerryPNG: 
 
@@ -49,7 +49,8 @@ backgroundJPEG:
 
 https://wallup.net/wp-content/uploads/2017/11/17/271175-Rick_and_Morty.jpg
 
-mrGoldenFoldPNG:
+gromflomitePNG:
+https://static.wikia.nocookie.net/rickandmorty/images/4/47/Micheal.png
 
 -----------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------Psuedocode-------------------------------------------------------------------
