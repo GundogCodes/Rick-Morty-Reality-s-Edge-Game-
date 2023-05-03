@@ -14,9 +14,7 @@ class Player{
     
     jump() {
 
-        console.log('playerCLICKED!')
-        this.element.classList.add('jump')
-        
+     
     }
     shoot(){
         bullet.style.visibility = 'visible'
@@ -30,8 +28,8 @@ class Player{
         this.element.style.left = this.element.style.left-240
     }
     moveRight(){
-    
-        this.element.style.left = this.element.style.left - parseInt('5px')
+
+     
     }
 
     
@@ -42,7 +40,7 @@ class Player{
 
         return this.element.style.right
     }
-    
+        
     getlives(){
         return this.lives
     }
@@ -179,11 +177,42 @@ window.addEventListener('keyup',function(e){
     }
 })
 
-let x = player.getEl().clientLeft
-x +=100 
-console.log(x)
+
 /*--------------------------------------------------------------- functions ---------------------------------------------------------------*/
-        init()
+/* DOESNT WORK
+let x = 0
+function getPos(){
+    
+    let playerPos = player.getEl()
+
+
+    setInterval(function(){
+        x++
+        player.getEl().style.left = `${x}px`
+        console.log(x)
+
+    },10)
+}
+
+getPos()
+*/
+
+
+window.addEventListener('keyup',(e)=>{
+    switch(e.key){
+        case 'ArrowLeft':
+            player.getEl().style.left =  parseInt(player.getEl().left) - 10 +'px'
+        case 'ArrowRight':
+            player.getEl().style.left =  parseInt(player.getEl().left) + 10 +'px'
+        case 'ArrowUp':
+            player.getEl().style.top =  parseInt(player.getEl().top) - 10 +'px'
+        case 'ArrowDown':
+            player.getEl().style.top =  parseInt(player.getEl().top) + 10 +'px'
+        
+    }
+})
+
+init()
 function init(){
   
     //let mainCharacter = prompt('Which character would you like to play as?')
@@ -197,6 +226,8 @@ function init(){
     // gazorpazorp2.getEl().style.visibility = 'hidden'
      bullet.style.visibility = 'hidden'
     
+     player.moveRight()
+
     //startting screen to pick main character
     //maybe a countdown
     //play music and sounds when event happen
@@ -208,16 +239,7 @@ function  runGame(){
 
     //create enemies randomly and which side they come in 
     randomizeEnemys()
-   
-    gromflomite1.moveRight()
-    smwygHead1.moveRight()
-    jerry1.moveRight()
-    gazorpazorp1.moveRight()
-    
-    gromflomite2.moveLeft()
-    smwygHead2.moveLeft()
-    jerry2.moveLeft()
-    gazorpazorp2.moveLeft()
+
 
     //check if bullet collides with enemys if so destory enemy
     //check if enemy collides with mainCharacter if so lives -1
