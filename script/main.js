@@ -8,34 +8,75 @@ class Player{
         this.element.style.top = top
         this.element.style.left = left       
         this.health =100
-        this.lives = 3
+        this.lives = 3 
         
     }
     
     jump() {
+       // this.element.classList.add('jump')
+        let y =  parseInt(this.element.style.top)
 
-     
+        let timer = setInterval(() => {
+            console.log(y)
+            if(y <-405){
+                let t2 = setInterval(()=>{
+                    y=y+20
+                    if(y>-5){
+                        clearInterval(timer)
+                        clearInterval(t2)
+                    }
+                },10)
+            }
+            y = y-20
+        this.element.style.top = y + 'px'
+        }, 10);
+   
     }
     shoot(){
+        const bullet = document.getElementById('bullet')
+        let x = parseInt(this.element.style.left)
+        x =x+180
+        let y =  parseInt(this.element.style.top)
+        y = y + 250
         bullet.style.visibility = 'visible'
-        bullet.style.left = '-520px'
-        bullet.style.bottom = '-250px'
-        bullet.classList.add('shoot')
+        bullet.style.left = x+ 'px'
+        bullet.style.top = y+ 'px'
+    
     }
     
     moveLeft(){
-    console.log(this.element)
-    let x = parseInt(this.element.style.left)
-    x = x+300
+        this.element.style.transform = 'rotateY(180deg)'
 
-    this.element.style.left = x +'px'
-    
-    console.log(this.element.style.left)
+        let x = parseInt(this.element.style.left)
 
+        let timer = setInterval(() =>{
+            if(x<-257){
+                x = -257
+               clearInterval(timer)
+            }
+            x = x-20
+            this.element.style.left = x +'px'
+        },10)
+        return timer
     }
+
     moveRight(){
 
-     
+        let x = parseInt(this.element.style.left)
+
+        let timer = setInterval(() =>{
+            if(x>1187){
+                x = 1187
+               clearInterval(timer)
+            }
+            x = x+20
+            this.element.style.left = x +'px'
+        },10)
+        return timer
+    }
+    
+    setPosition(timer){
+        clearInterval(timer)
     }
 
     
@@ -54,8 +95,6 @@ class Player{
     getHealth(){
         return this.health
     }
-
-   
 
 
 }
@@ -98,14 +137,14 @@ class Enemy{
 /*--------------------------------------------------------------- constants ---------------------------------------------------------------*/
 
 const enemyList = ['jerry','gazorpazorp','showMeWhatYouGotHead']
-
+const mainWidth = document.querySelector('main').style.right
+console.log(mainWidth)
 //PLAYERS
 
-const bullet = document.getElementById('bullet')
-                                    //top, left
-let player = new Player('Morty','0px','0px')
+                                   //top, left
+let player = new Player('Rick','-40px','450px')
 
-player.moveLeft()
+
 
 //ENEMYS                                                                             //top, left
 const gromflomite1 =  new Enemy(document.getElementById('gromflomite1'),'gromflomite','0px','0px')
@@ -133,25 +172,61 @@ const changeWeaponBtn = document.getElementById('changeWeapon')
 const musicToggleBtn = document.getElementById('musicToggle')
 
 /*--------------------------------------------------------------- event listeners ---------------------------------------------------------------*/
-// let x = 0
-// let y = 0 
-// let speed =-100
-// const windowHeight = window.innerHeight
-// let windowWidth = window.innerWidth
-// console.log(windowHeight,windowWidth)
+    //MOVE PLAYER
 
-// window.addEventListener('keydown', (e) =>{
-//     console.log(e)
-//     if(e.key === 'ArrowUp'){
-//         if((x+100)< windowWidth){
-//             x+= speed;
-//             player.getEl().left = x + 'px'
+window.addEventListener('keydown',function(e){
+    console.log(e)
+    if(e.key === 'ArrowLeft'){
+        let timer = player.moveLeft()
+        window.addEventListener('keyup',function(e){
+            console.log(e)
+            if(e.key === 'ArrowRight'|| e.key === 'ArrowLeft'){
+                player.setPosition(timer)
+                }    
+        })    
+    }    
 
-//         }
-//     }
+})
+window.addEventListener('keydown',function(e){
+    console.log(e)
+    if(e.key === 'ArrowRight'){
+        let timer = player.moveRight()
+        window.addEventListener('keyup',function(e){
+            console.log(e)
+            if(e.key === 'ArrowRight'|| e.key === 'ArrowLeft'){
+                player.setPosition(timer)
+                }    
+        })  
 
-// })
+        }    
+})
 
+window.addEventListener('keyup',function(e){
+    console.log(e)
+    if(e.key === 'ArrowRight'|| e.key === 'ArrowLeft'){
+        player.setPosition(a)
+        }    
+})
+
+window.addEventListener('keydown',function(e){
+    console.log(e)
+    if(e.key === ' ' || e.key === 'ArrowUp'){
+        player.jump()
+        }    
+})
+
+
+
+
+
+
+
+window.addEventListener('keydown',function(e){
+    console.log(e)
+    if(e.key === 'f'){
+        player.shoot()
+        }    
+})
 /*--------------------------------------------------------------- functions ---------------------------------------------------------------*/
 
 
@@ -161,16 +236,17 @@ function init(){
   
     //let mainCharacter = prompt('Which character would you like to play as?')
     
-    // smwygHead1.getEl().style.visibility = 'hidden'
-    // jerry1.getEl().style.visibility = 'hidden'
-    // gazorpazorp1.getEl().style.visibility = 'hidden'
+    gromflomite1.getEl().style.visibility = 'hidden'
+     smwygHead1.getEl().style.visibility = 'hidden'
+     jerry1.getEl().style.visibility = 'hidden'
+     gazorpazorp1.getEl().style.visibility = 'hidden'
       
     // smwygHead2.getEl().style.visibility = 'hidden'
     // jerry2.getEl().style.visibility = 'hidden'
     // gazorpazorp2.getEl().style.visibility = 'hidden'
      bullet.style.visibility = 'hidden'
     
-     player.moveRight()
+
 
     //startting screen to pick main character
     //maybe a countdown

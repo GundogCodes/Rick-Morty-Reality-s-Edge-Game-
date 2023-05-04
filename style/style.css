@@ -1,7 +1,7 @@
 
 *{
     
-    border: solid red;
+    !border: solid red;
     
 }
 html{
@@ -231,11 +231,21 @@ footer > button:hover{
 
 /*----------------------------- MOVE ANIMATIONS -----------------------------*/
 
-
+.jump{
+    animation: jump 1s;
+}
 
 
 /*----------------------------- KEYFRAMES -----------------------------*/
-
+@keyframes jump {
+    50%{
+        transform: translateY(-180%) rotateY(180deg);
+    }
+    100%{
+        transform: translateY(0%) rotateY(180deg);
+    }
+    
+}
 
 /*----------------------------- @MEDIA QUERIES -----------------------------*/
 
