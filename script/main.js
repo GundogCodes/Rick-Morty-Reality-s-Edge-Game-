@@ -305,8 +305,6 @@ window.addEventListener('keydown',function(e){
     if(e.key === ' ' || e.key === 'ArrowUp'){
         let timer = player.jump()
     }
-    
-    
 })
 
 
@@ -343,38 +341,38 @@ function init(){
     
     }
 
-    function startScreen(){
-        const x = document.createElement('div')
-        x.setAttribute('class','startingPage')
-        x.style.width = '1800px'
-        x.style.height = '1000px'
-        x.style.display = 'flex'
-        x.style.flexDirection = 'column'
-        x.style.justifyContent = 'center'
-        x.style.alignItems = 'center'
-        x.style.position = 'absolute'
-        x.style.left = '0'
-        x.style.borderRadius = '15px'
-        x.innerHTML = `<h1 id ='startingHeader'>RICK AND MORTY: REALITY'S EDGE</h1>
-        <h2 id = 'choosePlayer'>Choose Your Player</h2>
-        <img style = "scale:0.6;"src ="https://png2.cleanpng.com/sh/595196fd7059950d60ff2e70bd56235d/L0KzQYq3VME3N6h1e5H0aYP2gLBuTgNqbJZnhNHwLXPkgsX2jB4ucZ1xjeV9cnH3ebF1Tfh2dZJzRdRuaHH5ebF5TfNpaaNmReRyY3uwcbBrTf1weqVARdh4cj3kPbn8jvRzbZUykddqcoOwebW0kvVidJ1ARd42NXPlRbXshvUzOmJreag3MEG2R4eAUMkyPWY6TKQ7OUe3QYSCWL5xdpg=/kisspng-sideblog-cartoon-illustration-human-behavior-chara-rick-and-morty-for-a-hundred-years-id-really-l-5cb5defe221fa6.0137670915554229741398.png">
-        <div id ='buttonBox'>
-        <button id ='Rick' >RICK</button>
-        <button id = 'Morty' >MORTY</button>
-        </div>
-        <p id = 'Gunish'>Gunish<p>
-    `
-        x.style.color = 'white'
-        x.style.backgroundColor = 'blue'
-       document.querySelector('body').appendChild(x)
-       document.getElementById('buttonBox').addEventListener('click',function(e){
-        playerName = e.target.innerText
-        document.querySelector('body').removeChild(x)
-        
-        
-      //  console.log('got playerName by clicking button',playerName)
-        return playerName
-    })
+function startScreen(){
+    const x = document.createElement('div')
+    x.setAttribute('class','startingPage')
+    x.style.width = '1800px'
+    x.style.height = '1000px'
+    x.style.display = 'flex'
+    x.style.flexDirection = 'column'
+    x.style.justifyContent = 'center'
+    x.style.alignItems = 'center'
+    x.style.position = 'absolute'
+    x.style.left = '0'
+    x.style.borderRadius = '15px'
+    x.innerHTML = `<h1 id ='startingHeader'>RICK AND MORTY: REALITY'S EDGE</h1>
+    <h2 id = 'choosePlayer'>Choose Your Player</h2>
+    <img style = "scale:0.6;"src ="https://png2.cleanpng.com/sh/595196fd7059950d60ff2e70bd56235d/L0KzQYq3VME3N6h1e5H0aYP2gLBuTgNqbJZnhNHwLXPkgsX2jB4ucZ1xjeV9cnH3ebF1Tfh2dZJzRdRuaHH5ebF5TfNpaaNmReRyY3uwcbBrTf1weqVARdh4cj3kPbn8jvRzbZUykddqcoOwebW0kvVidJ1ARd42NXPlRbXshvUzOmJreag3MEG2R4eAUMkyPWY6TKQ7OUe3QYSCWL5xdpg=/kisspng-sideblog-cartoon-illustration-human-behavior-chara-rick-and-morty-for-a-hundred-years-id-really-l-5cb5defe221fa6.0137670915554229741398.png">
+    <div id ='buttonBox'>
+    <button id ='Rick' >RICK</button>
+    <button id = 'Morty' >MORTY</button>
+    </div>
+    <p id = 'Gunish'>Gunish<p>`
+    
+    x.style.color = 'white'
+    x.style.backgroundColor = 'blue'
+    document.querySelector('body').appendChild(x)
+    document.getElementById('buttonBox').addEventListener('click',function(e){
+    playerName = e.target.innerText
+    document.querySelector('body').removeChild(x)
+    
+    
+    //  console.log('got playerName by clicking button',playerName)
+    return playerName
+})
       
 }
     

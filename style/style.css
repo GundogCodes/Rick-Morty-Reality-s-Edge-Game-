@@ -184,8 +184,6 @@ footer > button:hover{
 }
 #bullet{
     position: absolute;
-
-    
     
 }
 
@@ -334,14 +332,7 @@ footer > button:hover{
 
 
 @media only screen and (min-width:1024){
-    main{
-      background-color:'blue';
-      color:'yellow';
-      font-size:40px;
-    }
-    aside{
-      background-color: 'pink';
-    }
+
     
   }
 
