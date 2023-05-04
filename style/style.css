@@ -9,6 +9,7 @@ html{
     background-color: black;
     border: solid blue;
     position: relative;
+    border-radius: 15px;
 
 
 }
@@ -159,17 +160,17 @@ footer > button:hover{
     
 }
 
-#enemyDiv2{
-    position:absolute;
+/* #enemyDiv2{
+    position:relative;
     left: 1705px;
     top: 250px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end ;
-    height: 580px;
-    width: 120px;
+    
+   
 
-}
+    height: 580px;
+    width: 220px;
+
+} */
 
 
 /*----------------------------- PLAYER -----------------------------*/
@@ -182,8 +183,7 @@ footer > button:hover{
 }
 #bullet{
     position: absolute;
-    top:270px;
-    left:650px;
+
     
     
 }
@@ -191,42 +191,42 @@ footer > button:hover{
 
 /*----------------------------- ENEMYS -----------------------------*/
 #gromflomite1{
-    position: relative;
+    position: absolute;
 
     transform: rotateY(180deg);
 }
 
 #gromflomite2{
-    position: relative;
+    position: absolute;
 }
 #jerry1{
-    position: relative;
+    position: absolute;
 
     transform: rotateY(180deg);
 }
 
 #jerry2{
-    position:relative;
+    position:absolute;
 
 }
 
 #gazorpazorp1{
-    position: relative;
+    position: absolute;
    
 }
 
 #gazorpazorp2{
-    position: relative;
+    position: absolute;
     transform:rotateY(180deg);
 }
 
 #smwyg1{
-    position: relative;
+    position: absolute;
   
 }
 
 #smwyg2{
-    position: relative;
+    position: absolute;
     transform:rotateY(180deg) ;
 }
 

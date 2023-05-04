@@ -46,9 +46,9 @@ class Player{
             if(x>1300){
                 clearInterval(timer)
             }
-            x =x+20
+            x =x+15
             bullet.style.left = x+'px'
-        }, 20);
+        }, 5);
         return timer
     
     }
@@ -117,24 +117,42 @@ class Enemy{
         Enemy.numOfEnemies++
 
     }
+    getEl(){
+        return this.element   
+    } 
 
     moveLeft() {
-        this.element.style.visibility = 'visible'
-        this.element.classList.add('moveLeft')
-    
+
+        let x = parseInt(this.element.style.left)
+        console.log(x)
+        let timer = setInterval(() =>{
+            if(x<-257){
+                x = -257
+               clearInterval(timer)
+            }
+            x = x-20
+            this.element.style.left = x +'px'
+        },10)
+
 
     }
 
     moveRight() {
-        this.element.style.visibility = 'visible'
-        this.element.classList.add('moveRight')
-    
+        let x = parseInt(this.element.style.left)
+
+        let timer = setInterval(() =>{
+            if(x>1187){
+                x = 1187
+               clearInterval(timer)
+            }
+            x = x+20
+            this.element.style.left = x +'px'
+        },10)
+        return timer
 
     }
 
-    getEl(){
-        return this.element   
-    } 
+   
     getName(){
         return this.name
     } 
@@ -155,15 +173,16 @@ let player = new Player('Rick','-40px','450px')
 
 
 //ENEMYS                                                                             //top, left
-const gromflomite1 =  new Enemy(document.getElementById('gromflomite1'),'gromflomite','0px','0px')
-const smwygHead1 = new Enemy(document.getElementById('smwyg1','showMeWhatYouGotHead','0px','0px'))
-const jerry1 = new Enemy(document.getElementById('jerry1'),'jerry','0px','0px')
-const gazorpazorp1 = new Enemy(document.getElementById('gazorpazorp1'),'gazorpazorp','0px','0px')
+// const gromflomite1 =  new Enemy(document.getElementById('gromflomite1'),'gromflomite','0px','0px')
+// const smwygHead1 = new Enemy(document.getElementById('smwyg1','showMeWhatYouGotHead','0px','0px'))
+// const jerry1 = new Enemy(document.getElementById('jerry1'),'jerry','0px','0px')
+// const gazorpazorp1 = new Enemy(document.getElementById('gazorpazorp1'),'gazorpazorp','0px','0px')
 
-const gromflomite2 =  new Enemy(document.getElementById('gromflomite2'),'gromflomite','0px','0px')
-const smwygHead2 = new Enemy(document.getElementById('smwyg2','showMeWhatYouGotHead','0px','0px'))
-const jerry2 = new Enemy(document.getElementById('jerry2'),'jerry','0px','0px')
-const gazorpazorp2 = new Enemy(document.getElementById('gazorpazorp2'),'gazorpazorp','0px','0px')
+const gromflomite2 =  new Enemy(document.getElementById('gromflomite2'),'gromflomite','150px','1635px')
+
+//const smwygHead2 = new Enemy(document.getElementById('smwyg2','showMeWhatYouGotHead','300px','115px'))
+const jerry2 = new Enemy(document.getElementById('jerry2'),'jerry','250px','1500px')
+const gazorpazorp2 = new Enemy(document.getElementById('gazorpazorp2'),'gazorpazorp','450px','1500px')
 
 
 
@@ -214,8 +233,9 @@ window.addEventListener('keydown',function(e){
 window.addEventListener('keydown',function(e){
     console.log(e)
     if(e.key === ' ' || e.key === 'ArrowUp'){
-        player.jump()
-        }    
+       let timer = player.jump()
+        }
+       
         
 })
 
@@ -236,11 +256,12 @@ function init(){
   
     //let mainCharacter = prompt('Which character would you like to play as?')
     
-    gromflomite1.getEl().style.visibility = 'hidden'
-     smwygHead1.getEl().style.visibility = 'hidden'
-     jerry1.getEl().style.visibility = 'hidden'
-     gazorpazorp1.getEl().style.visibility = 'hidden'
-      
+    // gromflomite1.getEl().style.visibility = 'hidden'
+    //  smwygHead1.getEl().style.visibility = 'hidden'
+    //  jerry1.getEl().style.visibility = 'hidden'
+    //  gazorpazorp1.getEl().style.visibility = 'hidden'
+
+     
     // smwygHead2.getEl().style.visibility = 'hidden'
     // jerry2.getEl().style.visibility = 'hidden'
     // gazorpazorp2.getEl().style.visibility = 'hidden'
@@ -260,7 +281,9 @@ function  runGame(){
     //create enemies randomly and which side they come in 
     randomizeEnemys()
 
-
+    checkCollision()
+    
+     
     //check if bullet collides with enemys if so destory enemy
     //check if enemy collides with mainCharacter if so lives -1
     //if lives  === 0 endgame
@@ -270,9 +293,13 @@ function  runGame(){
 
 function randomizeEnemys(enemyArr){
     const randoInt =  getRandomInt(2)
-
+    console.log(randoInt)
+    gazorpazorp2.moveLeft()
 }
 
+function checkCollision(element1,element2){
+
+}
 
 
 function getRandomInt(range){
