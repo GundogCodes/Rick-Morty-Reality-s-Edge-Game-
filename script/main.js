@@ -5,8 +5,14 @@ class Player{
     constructor(name,top,left){
         this.element = document.getElementById('player')
         this.name = name
-        this.element.style.top = top
-        this.element.style.left = left       
+        if (this.name  === 'RICK'){this.element.innerHTML = `<img style ='scale:0.2'src = "https://png2.cleanpng.com/sh/d0bbf86ed47622a56b45e1d5c32af94f/L0KzQYm3VMA3N5p8iZH0aYP2gLBuTgBweqVmhJ87LYLsc7y0kBFva5lqkp9vdX7uf373jCJ1aZ14Rdt3LXbsc8XwjB4ueppog59qbnSwfbF5lQkuPZJoT6YAMkWzdbfqg8cvPmg1TKU8OEm0RYO6UMA5QGE6SKg6ND7zfri=/kisspng-portal-2-rick-sanchez-funko-portals-in-fiction-rick-and-morty-5ac745250efcc7.6704338915230088050614.png">`
+            this.element.style.top = '-40px'
+            this.element.style.left = '450px'} 
+        else if(this.name === 'MORTY') {this.element.innerHTML = `<img style ='scale:0.3'src = "https://png2.cleanpng.com/sh/bff19f53056bc21c93f0ba64fa91e93e/L0KzQYm3VsE3N5tqjpH0aYP2gLBuTf1weqVAReV2aYTrPbTvggJia6Vqip9sYYL3f7F1TfZidl5miuY2cnBlf8W0kvlkc15mhtY2bXB1iX68gsI1bmQ9e6NqOUK7SHA7WMg3PGE1S6MAMkm0RIm6UMAyOGkARuJ3Zx==/kisspng-morty-smith-character-cartoon-fan-art-robot-rick-and-mory-5b24f38c1a9288.4886400315291483001089.png">`
+        this.element.style.top = '275px'
+        this.element.style.left = '550px'} 
+    
+    
         this.health =100
         this.lives = 3 
         
@@ -169,7 +175,7 @@ console.log(mainWidth)
 //PLAYERS
 
 //top, left
-let player = new Player('Rick','-40px','450px')
+
 
 
 
@@ -191,7 +197,7 @@ const gazorpazorp2 = new Enemy(document.getElementById('gazorpazorp2'),'gazorpaz
 /*--------------------------------------------------------------- state variables---------------------------------------------------------------*/
 
 let playerPoints = 0
-
+let playerName = null
 
 /*---------------------------------------------------------------cached elements  ---------------------------------------------------------------*/
 
@@ -248,11 +254,14 @@ window.addEventListener('keydown',function(e){
     } 
     
 })
+
+
+
 /*--------------------------------------------------------------- functions ---------------------------------------------------------------*/
 
 
 
-init()
+let getName = init()
 function init(){
     jerry2.getEl().style.visibility = 'hidden'
     gazorpazorp2.getEl().style.visibility = 'hidden'
@@ -260,7 +269,6 @@ function init(){
     gromflomite2.getEl().style.visibility = 'hidden'
 
 
-    setTimeout(function(){
         const x = document.createElement('div')
         x.setAttribute('class','startingPage')
         x.style.width = '1800px'
@@ -277,31 +285,35 @@ function init(){
         <img style = "scale:0.6;"src ="https://png2.cleanpng.com/sh/595196fd7059950d60ff2e70bd56235d/L0KzQYq3VME3N6h1e5H0aYP2gLBuTgNqbJZnhNHwLXPkgsX2jB4ucZ1xjeV9cnH3ebF1Tfh2dZJzRdRuaHH5ebF5TfNpaaNmReRyY3uwcbBrTf1weqVARdh4cj3kPbn8jvRzbZUykddqcoOwebW0kvVidJ1ARd42NXPlRbXshvUzOmJreag3MEG2R4eAUMkyPWY6TKQ7OUe3QYSCWL5xdpg=/kisspng-sideblog-cartoon-illustration-human-behavior-chara-rick-and-morty-for-a-hundred-years-id-really-l-5cb5defe221fa6.0137670915554229741398.png">
         <img src"">
         <div id ='buttonBox'>
-        <button id ='Rick'>RICK</button><button id = 'Morty'>MORTY</button>
+        <button id ='Rick' >RICK</button>
+        <button id = 'Morty' >MORTY</button>
         </div>
-        <p id = 'Gunish'>Gunish<p>`
+        <p id = 'Gunish'>Gunish<p>
+    `
         x.style.color = 'white'
         x.style.backgroundColor = 'blue'
        document.querySelector('body').appendChild(x)
+       document.getElementById('buttonBox').addEventListener('click',function(e){
+        playerName = e.target.innerText
+        document.querySelector('body').removeChild(x)
+        
+        console.log('got playerName by clicking button',playerName)
+        return playerName
+    })
     
-    },1)
+    }
 
+const player = new Player(playerName)
     //let mainCharacter = prompt('Which character would you like to play as?')
     
 
-    
-    
-    
-  
-    
-    
+
     
     //startting screen to pick main character
     //maybe a countdown
     //play music and sounds when event happen
     
-    runGame()
-}
+
 
 function  runGame(){
    

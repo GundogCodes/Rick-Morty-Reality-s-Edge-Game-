@@ -7,11 +7,7 @@
 ------------------------------------------------------------LINKS------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------
 
- marioPNG:
- 
-  https://www.freepnglogos.com/uploads/mario-png/super-mario-bros-clip-art-fiesta-for-geeks-0.png
-
-  mainRickPNG:
+mainRickPNG:
 
 https://png2.cleanpng.com/sh/d0bbf86ed47622a56b45e1d5c32af94f/L0KzQYm3VMA3N5p8iZH0aYP2gLBuTgBweqVmhJ87LYLsc7y0kBFva5lqkp9vdX7uf373jCJ1aZ14Rdt3LXbsc8XwjB4ueppog59qbnSwfbF5lQkuPZJoT6YAMkWzdbfqg8cvPmg1TKU8OEm0RYO6UMA5QGE6SKg6ND7zfri=/kisspng-portal-2-rick-sanchez-funko-portals-in-fiction-rick-and-morty-5ac745250efcc7.6704338915230088050614.png <==notWorkingForSomeReason==>
 
