@@ -43,10 +43,13 @@ class Player{
         bullet.style.top = y+ 'px'
         
         let timer = setInterval(() => {
+            if(x>1300){
+                clearInterval(timer)
+            }
             x =x+20
             bullet.style.left = x+'px'
         }, 20);
-        
+        return timer
     
     }
     
@@ -185,7 +188,7 @@ window.addEventListener('keydown',function(e){
         let timer = player.moveLeft()
         window.addEventListener('keyup',function(e){
             console.log(e)
-            if(e.key === 'ArrowRight'|| e.key === 'ArrowLeft'){
+            if(e.key === 'ArrowLeft'){
                 player.setPosition(timer)
                 }    
         })    
@@ -198,7 +201,7 @@ window.addEventListener('keydown',function(e){
         let timer = player.moveRight()
         window.addEventListener('keyup',function(e){
             console.log(e)
-            if(e.key === 'ArrowRight'|| e.key === 'ArrowLeft'){
+            if(e.key === 'ArrowRight'){
                 player.setPosition(timer)
                 }    
         })  
@@ -213,19 +216,16 @@ window.addEventListener('keydown',function(e){
     if(e.key === ' ' || e.key === 'ArrowUp'){
         player.jump()
         }    
+        
 })
-
-
-
-
-
 
 
 window.addEventListener('keydown',function(e){
     console.log(e)
     if(e.key === 'f'){
-        player.shoot()
-        }    
+        let timer = player.shoot()
+        } 
+      
 })
 /*--------------------------------------------------------------- functions ---------------------------------------------------------------*/
 
