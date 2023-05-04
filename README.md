@@ -52,6 +52,9 @@ https://wallup.net/wp-content/uploads/2017/11/17/271175-Rick_and_Morty.jpg
 gromflomitePNG:
 https://static.wikia.nocookie.net/rickandmorty/images/4/47/Micheal.png
 
+rickAndMortyStartitngScreen:
+https://png2.cleanpng.com/sh/595196fd7059950d60ff2e70bd56235d/L0KzQYq3VME3N6h1e5H0aYP2gLBuTgNqbJZnhNHwLXPkgsX2jB4ucZ1xjeV9cnH3ebF1Tfh2dZJzRdRuaHH5ebF5TfNpaaNmReRyY3uwcbBrTf1weqVARdh4cj3kPbn8jvRzbZUykddqcoOwebW0kvVidJ1ARd42NXPlRbXshvUzOmJreag3MEG2R4eAUMkyPWY6TKQ7OUe3QYSCWL5xdpg=/kisspng-sideblog-cartoon-illustration-human-behavior-chara-rick-and-morty-for-a-hundred-years-id-really-l-5cb5defe221fa6.0137670915554229741398.png
+
 -----------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------Psuedocode-------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------

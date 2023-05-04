@@ -10,6 +10,7 @@ html{
     border: solid blue;
     position: relative;
     border-radius: 15px;
+    max-width: 1850px;
 
 
 }
@@ -230,6 +231,99 @@ footer > button:hover{
     transform:rotateY(180deg) ;
 }
 
+
+/*----------------------------- STARTING PAGE -----------------------------*/
+
+.startingPage{
+    font-family: 'Bruno Ace', cursive;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+
+}
+#startingHeader{
+    font-size: 55px;
+    padding-top: 10px;
+    animation: colorChange 20s;
+}
+@keyframes colorChange {
+    100%{
+        color:yellow;
+    }
+    66%{
+        color:blueviolet;
+    }
+    33%{
+        color:green;
+    }
+    
+    0%{
+        color:red;
+    }
+    83%{
+        color:yellow;
+    }
+    57%{
+        color:rgb(255, 0, 238);
+    }
+    21%{
+        color:green;
+    }
+    
+    0%{
+        color:red;
+    }
+}
+.startingPage > #buttonBox{
+    font-family: 'Bruno Ace', cursive;
+}
+
+#choosePlayer{
+    font-size: 35px;
+    
+   
+}
+.startingPage > #buttonBox > button{
+    font-family: 'Bruno Ace', cursive;
+   
+    font-size: 55px;
+
+    border-radius: 35px;
+    color:white;
+    background-color:blueviolet;
+    box-shadow: 5px 5px 10px 2px rgba(0,0,0,.8);
+    
+    
+    
+}
+.startingPage > #buttonBox > #Rick{
+    position: absolute;
+    top:700px;
+    left: 600px;
+}
+.startingPage > #buttonBox > #Morty{
+    position: absolute;
+    top:800px;
+    
+}
+
+.startingPage > #buttonBox > #Rick:hover{
+    background-color: rgba(168,204,205);
+    color:rgba(246,236,132);
+    padding:15px;
+    transition: 1s;
+}
+.startingPage > #buttonBox > #Morty:hover{
+    padding:10px;
+    padding:15px;
+    transition: 1s;
+    color:rgba(168,204,205);
+    background-color: rgba(246,236,132);
+}
+#Gunish{
+    box-shadow: 5px 5px 10px 2px rgba(0,0,0,.8);
+}
 /*----------------------------- MOVE ANIMATIONS -----------------------------*/
 
 .jump{

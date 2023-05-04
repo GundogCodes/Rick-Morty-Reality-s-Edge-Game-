@@ -56,8 +56,8 @@ class Player{
     moveLeft(){
 
         let x = parseInt(this.element.style.left)
-
         let timer = setInterval(() =>{
+            console.log('PLAYER x',x)
             if(x<-257){
                 x = -257
                clearInterval(timer)
@@ -86,14 +86,13 @@ class Player{
     setPosition(timer){
         clearInterval(timer)
     }
-
     
+    getWidth(){
+        console.log('Width of player',this.element.clientWidth)
+    }
+
     getEl(){
         return this.element
-    }
-    getRightPos(){
-
-        return this.element.style.right
     }
         
     getlives(){
@@ -103,6 +102,7 @@ class Player{
     getHealth(){
         return this.health
     }
+
 
 
 }
@@ -122,10 +122,11 @@ class Enemy{
     } 
 
     moveLeft() {
-
+        this.element.style.visibility = 'visible'
         let x = parseInt(this.element.style.left)
-        console.log(x)
+       // console.log(x)
         let timer = setInterval(() =>{
+           // console.log('ENEMY x',x)
             if(x<-257){
                 x = -257
                clearInterval(timer)
@@ -137,10 +138,11 @@ class Enemy{
 
     }
 
+
     moveRight() {
         let x = parseInt(this.element.style.left)
-
         let timer = setInterval(() =>{
+            
             if(x>1187){
                 x = 1187
                clearInterval(timer)
@@ -152,7 +154,6 @@ class Enemy{
 
     }
 
-   
     getName(){
         return this.name
     } 
@@ -162,12 +163,12 @@ class Enemy{
 
 /*--------------------------------------------------------------- constants ---------------------------------------------------------------*/
 
-const enemyList = ['jerry','gazorpazorp','showMeWhatYouGotHead']
+
 const mainWidth = document.querySelector('main').style.right
 console.log(mainWidth)
 //PLAYERS
 
-                                   //top, left
+//top, left
 let player = new Player('Rick','-40px','450px')
 
 
@@ -199,53 +200,53 @@ const changeWeaponBtn = document.getElementById('changeWeapon')
 const musicToggleBtn = document.getElementById('musicToggle')
 
 /*--------------------------------------------------------------- event listeners ---------------------------------------------------------------*/
-    //MOVE PLAYER
+//MOVE PLAYER
 
 window.addEventListener('keydown',function(e){
-    console.log(e)
+   // console.log(e)
     if(e.key === 'ArrowLeft'){
         let timer = player.moveLeft()
         window.addEventListener('keyup',function(e){
             console.log(e)
             if(e.key === 'ArrowLeft'){
                 player.setPosition(timer)
-                }    
+            }    
         })    
     }    
-
+    
 })
 window.addEventListener('keydown',function(e){
-    console.log(e)
+   // console.log(e)
     if(e.key === 'ArrowRight'){
         let timer = player.moveRight()
         window.addEventListener('keyup',function(e){
-            console.log(e)
+          //  console.log(e)
             if(e.key === 'ArrowRight'){
                 player.setPosition(timer)
-                }    
+            }    
         })  
-
-        }    
-})
-
-
-
-window.addEventListener('keydown',function(e){
-    console.log(e)
-    if(e.key === ' ' || e.key === 'ArrowUp'){
-       let timer = player.jump()
-        }
-       
         
+    }    
+})
+
+
+
+window.addEventListener('keydown',function(e){
+   // console.log(e)
+    if(e.key === ' ' || e.key === 'ArrowUp'){
+        let timer = player.jump()
+    }
+    
+    
 })
 
 
 window.addEventListener('keydown',function(e){
-    console.log(e)
+   // console.log(e)
     if(e.key === 'f'){
         let timer = player.shoot()
-        } 
-      
+    } 
+    
 })
 /*--------------------------------------------------------------- functions ---------------------------------------------------------------*/
 
@@ -253,57 +254,94 @@ window.addEventListener('keydown',function(e){
 
 init()
 function init(){
-  
+    jerry2.getEl().style.visibility = 'hidden'
+    gazorpazorp2.getEl().style.visibility = 'hidden'
+    bullet.style.visibility = 'hidden'
+    gromflomite2.getEl().style.visibility = 'hidden'
+
+
+    setTimeout(function(){
+        const x = document.createElement('div')
+        x.setAttribute('class','startingPage')
+        x.style.width = '1800px'
+        x.style.height = '1000px'
+        x.style.display = 'flex'
+        x.style.flexDirection = 'column'
+        x.style.justifyContent = 'center'
+        x.style.alignItems = 'center'
+        x.style.position = 'absolute'
+        x.style.left = '0'
+        x.style.borderRadius = '15px'
+        x.innerHTML = `<h1 id ='startingHeader'>RICK AND MORTY: REALITY'S EDGE</h1>
+        <h2 id = 'choosePlayer'>Choose Your Player</h2>
+        <img style = "scale:0.6;"src ="https://png2.cleanpng.com/sh/595196fd7059950d60ff2e70bd56235d/L0KzQYq3VME3N6h1e5H0aYP2gLBuTgNqbJZnhNHwLXPkgsX2jB4ucZ1xjeV9cnH3ebF1Tfh2dZJzRdRuaHH5ebF5TfNpaaNmReRyY3uwcbBrTf1weqVARdh4cj3kPbn8jvRzbZUykddqcoOwebW0kvVidJ1ARd42NXPlRbXshvUzOmJreag3MEG2R4eAUMkyPWY6TKQ7OUe3QYSCWL5xdpg=/kisspng-sideblog-cartoon-illustration-human-behavior-chara-rick-and-morty-for-a-hundred-years-id-really-l-5cb5defe221fa6.0137670915554229741398.png">
+        <img src"">
+        <div id ='buttonBox'>
+        <button id ='Rick'>RICK</button><button id = 'Morty'>MORTY</button>
+        </div>
+        <p id = 'Gunish'>Gunish<p>`
+        x.style.color = 'white'
+        x.style.backgroundColor = 'blue'
+       document.querySelector('body').appendChild(x)
+    
+    },1)
+
     //let mainCharacter = prompt('Which character would you like to play as?')
     
-    // gromflomite1.getEl().style.visibility = 'hidden'
-    //  smwygHead1.getEl().style.visibility = 'hidden'
-    //  jerry1.getEl().style.visibility = 'hidden'
-    //  gazorpazorp1.getEl().style.visibility = 'hidden'
 
-     
-    // smwygHead2.getEl().style.visibility = 'hidden'
-    // jerry2.getEl().style.visibility = 'hidden'
-    // gazorpazorp2.getEl().style.visibility = 'hidden'
-     bullet.style.visibility = 'hidden'
     
-
-
+    
+    
+  
+    
+    
+    
     //startting screen to pick main character
     //maybe a countdown
     //play music and sounds when event happen
-
+    
     runGame()
 }
 
 function  runGame(){
-
+   
     //create enemies randomly and which side they come in 
     randomizeEnemys()
+    checkBulletCollsion()
+    checkEnemyCollsion()
+}
 
-    checkCollision()
     
-     
+    
     //check if bullet collides with enemys if so destory enemy
     //check if enemy collides with mainCharacter if so lives -1
     //if lives  === 0 endgame
+    
 
-}
 
 
-function randomizeEnemys(enemyArr){
-    const randoInt =  getRandomInt(2)
+function randomizeEnemys(){
+    const randoInt =  getRandomInt(3)
+    const enemyList = [jerry2,gromflomite2,gazorpazorp2]
     console.log(randoInt)
-    gazorpazorp2.moveLeft()
+    setTimeout(function(){
+
+        enemyList[2].moveLeft()
+    },1000)
+    
 }
 
-function checkCollision(element1,element2){
+function checkBulletCollsion(){
+
+}
+
+function checkEnemyCollsion(playerEl,EnemyEl){
 
 }
 
 
 function getRandomInt(range){
-   const randoInt = Math.floor(Math.random(0)*range)
-return randoInt
+    const randoInt = Math.floor(Math.random(0)*range)
+    return randoInt
 }
 
