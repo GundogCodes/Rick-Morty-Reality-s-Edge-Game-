@@ -35,17 +35,22 @@ class Player{
     shoot(){
         const bullet = document.getElementById('bullet')
         let x = parseInt(this.element.style.left)
-        x =x+180
         let y =  parseInt(this.element.style.top)
+        x =x+180
         y = y + 250
         bullet.style.visibility = 'visible'
         bullet.style.left = x+ 'px'
         bullet.style.top = y+ 'px'
+        
+        let timer = setInterval(() => {
+            x =x+20
+            bullet.style.left = x+'px'
+        }, 20);
+        
     
     }
     
     moveLeft(){
-        this.element.style.transform = 'rotateY(180deg)'
 
         let x = parseInt(this.element.style.left)
 
@@ -201,12 +206,7 @@ window.addEventListener('keydown',function(e){
         }    
 })
 
-window.addEventListener('keyup',function(e){
-    console.log(e)
-    if(e.key === 'ArrowRight'|| e.key === 'ArrowLeft'){
-        player.setPosition(a)
-        }    
-})
+
 
 window.addEventListener('keydown',function(e){
     console.log(e)
