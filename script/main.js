@@ -157,12 +157,8 @@ class Player{
     setPosition(timer){
         clearInterval(timer)
     }
+    
 
-    
-    
-    getWidth(){
-        console.log('Width of player',this.element.clientWidth)
-    }
 
     getEl(){
         return this.element
@@ -172,8 +168,8 @@ class Player{
         return this.lives
     }
 
-    getHealth(){
-        return this.health
+    getPosition(){
+        
     }
 
     
@@ -263,7 +259,7 @@ const gazorpazorp2 = new Enemy(document.getElementById('gazorpazorp2'),'gazorpaz
 
 /*--------------------------------------------------------------- state variables---------------------------------------------------------------*/
 
-let playerPoints = 0
+let playerPoints;
 let playerName;
 
 /*---------------------------------------------------------------cached elements  ---------------------------------------------------------------*/
@@ -271,6 +267,7 @@ let playerName;
 const characterChangeBtn = document.getElementById('characterChange')
 const changeWeaponBtn = document.getElementById('changeWeapon')
 const musicToggleBtn = document.getElementById('musicToggle')
+const pointsCounter = document.getElementById('pointsCounter')
 
 /*--------------------------------------------------------------- event listeners ---------------------------------------------------------------*/
 //MOVE PLAYER
@@ -332,20 +329,6 @@ window.addEventListener('keydown',function(e){
 //maybe a countdown
 //play music and sounds when event happen
 
-playerName = startScreen()
-
-init()
-
-
-function init(){
-    jerry2.getEl().style.visibility = 'hidden'
-    gazorpazorp2.getEl().style.visibility = 'hidden'
-    bullet.style.visibility = 'hidden'
-    gromflomite2.getEl().style.visibility = 'hidden'
-    
-    runGame()
-    
-    }
 
 function startScreen(){
     const x = document.createElement('div')
@@ -361,8 +344,8 @@ function startScreen(){
     x.style.borderRadius = '15px'
     x.innerHTML = `<h1 id ='startingHeader'>RICK AND MORTY: REALITY'S EDGE</h1>
     <h2 id = 'choosePlayer'>Choose Your Player</h2>
-    <h4>Use Arrow Keys to Move and 'F' Key to Shoot</h4>
-    <img style = "scale:0.6;"src ="https://png2.cleanpng.com/sh/595196fd7059950d60ff2e70bd56235d/L0KzQYq3VME3N6h1e5H0aYP2gLBuTgNqbJZnhNHwLXPkgsX2jB4ucZ1xjeV9cnH3ebF1Tfh2dZJzRdRuaHH5ebF5TfNpaaNmReRyY3uwcbBrTf1weqVARdh4cj3kPbn8jvRzbZUykddqcoOwebW0kvVidJ1ARd42NXPlRbXshvUzOmJreag3MEG2R4eAUMkyPWY6TKQ7OUe3QYSCWL5xdpg=/kisspng-sideblog-cartoon-illustration-human-behavior-chara-rick-and-morty-for-a-hundred-years-id-really-l-5cb5defe221fa6.0137670915554229741398.png">
+    <h4>Use Arrow Keys to Move and 'F' Key to Shoot, Goodluck!</h4>
+    <img id='startingImg'style = "scale:0.8;"src ="https://png2.cleanpng.com/sh/595196fd7059950d60ff2e70bd56235d/L0KzQYq3VME3N6h1e5H0aYP2gLBuTgNqbJZnhNHwLXPkgsX2jB4ucZ1xjeV9cnH3ebF1Tfh2dZJzRdRuaHH5ebF5TfNpaaNmReRyY3uwcbBrTf1weqVARdh4cj3kPbn8jvRzbZUykddqcoOwebW0kvVidJ1ARd42NXPlRbXshvUzOmJreag3MEG2R4eAUMkyPWY6TKQ7OUe3QYSCWL5xdpg=/kisspng-sideblog-cartoon-illustration-human-behavior-chara-rick-and-morty-for-a-hundred-years-id-really-l-5cb5defe221fa6.0137670915554229741398.png">
     <div id ='buttonBox'>
     <button id ='Rick' >RICK</button>
     <button id = 'Morty' >MORTY</button>
@@ -386,16 +369,24 @@ function startScreen(){
 }
 
 
+init()
+
+
+function init(){
+    jerry2.getEl().style.visibility = 'hidden'
+    gazorpazorp2.getEl().style.visibility = 'hidden'
+    bullet.style.visibility = 'hidden'
+    gromflomite2.getEl().style.visibility = 'hidden'
+    playerPoints = 0
+
+    startScreen()
+    runGame()
     
-    
-
-
-
+    }
 
  
 function  runGame(){
    
-    //create enemies randomly and which side they come in 
     randomizeEnemys()
     checkBulletCollsion()
     checkEnemyCollsion()
