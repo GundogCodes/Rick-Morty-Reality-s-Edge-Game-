@@ -238,12 +238,15 @@ footer > button:hover{
     flex-direction: column;
     justify-content: center;
     position: relative;
+    height: 1000px;
 
 }
 #startingHeader{
-    font-size: 55px;
+    font-size: 45px;
     padding-top: 10px;
     animation: colorChange 20s;
+    position: absolute;
+    top:150px;
 }
 @keyframes colorChange {
     100%{
@@ -298,12 +301,13 @@ footer > button:hover{
 }
 .startingPage > #buttonBox > #Rick{
     position: absolute;
-    top:700px;
-    left: 600px;
+    top:650px;
+    left: 650px;
 }
 .startingPage > #buttonBox > #Morty{
     position: absolute;
-    top:800px;
+    top:700px;
+    left: 900px;
     
 }
 
@@ -322,7 +326,7 @@ footer > button:hover{
 }
 #Gunish{
     box-shadow: 5px 5px 10px 2px rgba(0,0,0,.8);
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 /*----------------------------- MOVE ANIMATIONS -----------------------------*/
 
