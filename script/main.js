@@ -269,6 +269,8 @@ const changeWeaponBtn = document.getElementById('changeWeapon')
 const musicToggleBtn = document.getElementById('musicToggle')
 const pointsCounter = document.getElementById('pointsCounter')
 
+
+
 /*--------------------------------------------------------------- event listeners ---------------------------------------------------------------*/
 //MOVE PLAYER
 
@@ -380,6 +382,7 @@ function init(){
     playerPoints = 0
 
     startScreen()
+    //player.setName('RICK')
     runGame()
     
     }
@@ -405,6 +408,7 @@ function randomizeEnemys(){
     const randoInt =  getRandomInt(3)
     const enemyList = [jerry2,gromflomite2,gazorpazorp2]
     console.log(randoInt)
+
     setTimeout(function(){
 
         enemyList[randoInt].moveLeft()
@@ -424,4 +428,10 @@ function checkEnemyCollsion(playerEl,EnemyEl){
 function getRandomInt(range){
     const randoInt = Math.floor(Math.random(0)*range)
     return randoInt
+}
+
+function updatePoints(incrementVal){
+    let  points = parseInt(pointsCounter.innerHTML)
+     points = points + 100
+     pointsCounter.innerHTML = points
 }
