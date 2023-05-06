@@ -1,7 +1,7 @@
 
 *{
     
-    !border: solid red;
+    border: solid red;
     
 }
 html{
@@ -149,9 +149,9 @@ footer > button:hover{
     
 }
 /*----------------------------- MAIN INSIDE -----------------------------*/
-#enemyDiv1{
-    position:fixed;
-    left: 0px;
+#enemyDiv{
+    position:absolute;
+    left: 1750px;
     top: 250px;
     display: flex;
     flex-direction: column;
@@ -291,6 +291,8 @@ h4{
     position: absolute;
     top:700px;
     left:600px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 .startingPage > #buttonBox > #Morty{
     position: absolute;

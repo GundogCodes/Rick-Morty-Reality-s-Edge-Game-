@@ -123,6 +123,7 @@ class Player{
             },10)
             return timer
         }
+        
     }
 
     moveRight(){
@@ -193,19 +194,35 @@ class Enemy{
     } 
 
     moveLeft() {
-        this.element.style.visibility = 'visible'
+        if(this.name === 'gromflomite'){
+            this.element.style.visibility = 'visible'
         let x = parseInt(this.element.style.left)
        // console.log(x)
         let timer = setInterval(() =>{
            // console.log('ENEMY x',x)
-            if(x<-257){
-                x = -257
+            if(x<-60){
+                x = -60
                clearInterval(timer)
             }
             x = x-20
             this.element.style.left = x +'px'
         },10)
+        } else {
 
+            this.element.style.visibility = 'visible'
+            let x = parseInt(this.element.style.left)
+            // console.log(x)
+            let timer = setInterval(() =>{
+                // console.log('ENEMY x',x)
+                if(x<-200){
+                    x = -200
+                    clearInterval(timer)
+                }
+                x = x-20
+                this.element.style.left = x +'px'
+            },10)
+            
+        }
 
     }
 
@@ -248,11 +265,8 @@ const player = new Player()
 // const jerry1 = new Enemy(document.getElementById('jerry1'),'jerry','0px','0px')
 // const gazorpazorp1 = new Enemy(document.getElementById('gazorpazorp1'),'gazorpazorp','0px','0px')
 
-const gromflomite2 =  new Enemy(document.getElementById('gromflomite2'),'gromflomite','150px','1635px')
-
 //const smwygHead2 = new Enemy(document.getElementById('smwyg2','showMeWhatYouGotHead','300px','115px'))
-const jerry2 = new Enemy(document.getElementById('jerry2'),'jerry','250px','1500px')
-const gazorpazorp2 = new Enemy(document.getElementById('gazorpazorp2'),'gazorpazorp','450px','1500px')
+
 
 
 
@@ -332,6 +346,37 @@ window.addEventListener('keydown',function(e){
 //play music and sounds when event happen
 
 
+
+
+
+init()
+
+
+function init(){
+    // jerry2.getEl().style.visibility = 'hidden'
+    // gazorpazorp2.getEl().style.visibility = 'hidden'
+    // bullet.style.visibility = 'hidden'
+    // gromflomite2.getEl().style.visibility = 'hidden'
+    playerPoints = 0
+
+    //startScreen()
+    
+    player.setName('RICK')
+   
+
+    runGame()
+    
+    }
+
+ 
+function  runGame(){
+    createEnemies()
+    //randomizeEnemies()
+    checkBulletCollsion()
+    checkEnemyCollsion()
+}
+
+
 function startScreen(){
     const x = document.createElement('div')
     x.setAttribute('class','startingPage')
@@ -364,60 +409,56 @@ function startScreen(){
     document.querySelector('body').removeChild(x)
     
     
-    //  console.log('got playerName by clicking button',playerName)
+
 
 })
       
 }
 
+//element,name,top,left
 
-init()
 
+function createEnemies(){
+    const enemyNames = ['jerry','gromflomite','gazorpazorp','smwygHead']
+    const enemyListList =[]
+    let randoEnemy = enemyNames[getRandomInt(4)]
+    let randomTopPos =getRandomInt(270)
+    let leftPos = 1400
+    console.log('rando top pos ',randomTopPos,'left pos ',leftPos,'rando enemy ',randoEnemy)
+    let newEnemyDiv = document.createElement('div')
+    newEnemyDiv.style.height = '200px'
+    newEnemyDiv.style.width = '200px'
+    newEnemyDiv.style.position = 'absolute'
+    newEnemyDiv.left = '1000px'
+    if(randoEnemy === ('smwygHead')){
+        newEnemyDiv.innerHTML = `<img style= "scale:0.2;"src = "https://png2.cleanpng.com/sh/af0cc0734be612f642d690288074f98a/L0KzQYm3VcExN5dwj5H0aYP2gLBuTgJqa5wyi9N3Y3join77TgNpcaN5Rd94coT8PcT0igRpNaF0e91udD3wf8P7mgMudZZqRadqZkTpSYa4UvJmP5Y6RqI5NEG0QYi9UcUzPmE1TKI9OUG6SYm1kP5o/kisspng-rick-sanchez-t-shirt-morty-smith-pocket-mortys-mee-5af4f9512be7e5.0041117615260040491798.png">`
+    } else if (randoEnemy === 'gazorpazorp'){
+        newEnemyDiv.innerHTML = `<img  style="scale: 0.2;"  src = "https://png2.cleanpng.com/sh/b0aa5ceeaec8c5c9667ff07228bce0a4/L0KzQYm3VMA1N6N8iZH0aYP2gLBuTfNpaaNmeAZucj32cbB7gb1kdJJ6i59vYX6wccP7TgJqa5wyedDtLX3ygsXCTcVia2U7TadrOUfocYWBTsYxQGE1SKQBMUW1Qom5UMQ1O2c3SqU3cH7q/kisspng-character-santa-claus-fan-art-rick-and-morty-5ac4655b97ea48.6080002615228204436223.png">`
+    } else if (randoEnemy === 'gromflomite'){
+        leftPos = 1550
+        newEnemyDiv.innerHTML = ` <img style="scale: 0.3;"  src = "https://static.wikia.nocookie.net/rickandmorty/images/4/47/Micheal.png">`
+    } else if (randoEnemy === 'jerry'){
+        newEnemyDiv.innerHTML = ` <img style="scale: 0.2;"  src = "https://png2.cleanpng.com/sh/37411d6f92da59eaee915db2132e2933/L0KzQYm3V8IxN6d4f5H0aYP2gLBuTf1weqVAReV2aYTrPbTvggJia6Vqip9sYYL3f7F1TfZidl5miuY2dnnyfLr1TgJqa5wyedDtLX3ygsXCTcVjPWI8UaY9ZUO3SYW3TsI0PGM3T6g5MUW2QoG9VsEyPmo4SZD5bne=/kisspng-morty-smith-character-cartoon-fan-art-violin-rick-and-morty-5b517944e34940.234227601532066116931.png">`
+    } 
+    document.querySelector('main').appendChild(newEnemyDiv)
+    let newEnemy = new Enemy(newEnemyDiv,randoEnemy,`${randomTopPos}px`,`${leftPos}px`)
+    newEnemy.moveLeft()
 
-function init(){
-    jerry2.getEl().style.visibility = 'hidden'
-    gazorpazorp2.getEl().style.visibility = 'hidden'
-    bullet.style.visibility = 'hidden'
-    gromflomite2.getEl().style.visibility = 'hidden'
-    playerPoints = 0
+}
 
-    startScreen()
-    //player.setName('RICK')
-    runGame()
-    
-    }
-
- 
-function  runGame(){
+//jerry link https://png2.cleanpng.com/sh/37411d6f92da59eaee915db2132e2933/L0KzQYm3V8IxN6d4f5H0aYP2gLBuTf1weqVAReV2aYTrPbTvggJia6Vqip9sYYL3f7F1TfZidl5miuY2dnnyfLr1TgJqa5wyedDtLX3ygsXCTcVjPWI8UaY9ZUO3SYW3TsI0PGM3T6g5MUW2QoG9VsEyPmo4SZD5bne=/kisspng-morty-smith-character-cartoon-fan-art-violin-rick-and-morty-5b517944e34940.234227601532066116931.png
+//gazorpazorp link https://png2.cleanpng.com/sh/b0aa5ceeaec8c5c9667ff07228bce0a4/L0KzQYm3VMA1N6N8iZH0aYP2gLBuTfNpaaNmeAZucj32cbB7gb1kdJJ6i59vYX6wccP7TgJqa5wyedDtLX3ygsXCTcVia2U7TadrOUfocYWBTsYxQGE1SKQBMUW1Qom5UMQ1O2c3SqU3cH7q/kisspng-character-santa-claus-fan-art-rick-and-morty-5ac4655b97ea48.6080002615228204436223.png
+// 
+function randomizeEnemies(){
    
-    randomizeEnemys()
-    checkBulletCollsion()
-    checkEnemyCollsion()
-}
-
-    
-    
-    //check if bullet collides with enemys if so destory enemy
-    //check if enemy collides with mainCharacter if so lives -1
-    //if lives  === 0 endgame
-    
-
-
-
-function randomizeEnemys(){
-    const randoInt =  getRandomInt(3)
-    const enemyList = [jerry2,gromflomite2,gazorpazorp2]
-    console.log(randoInt)
-
-    setTimeout(function(){
-
-        enemyList[randoInt].moveLeft()
-    },1000)
     
 }
+
+
+
 
 function checkBulletCollsion(){
-
+    
 }
 
 function checkEnemyCollsion(playerEl,EnemyEl){
