@@ -159,6 +159,14 @@ class Player{
         clearInterval(timer)
     }
     
+    getPosition(){
+        let xL = parseInt(this.element.style.left)
+        let xR = parseInt(this.element.style.left) + 139
+        let yT = parseInt(this.element.style.top)
+        let yB = parseInt(this.element.style.top) + 216
+        console.log('left of Player: ',xL,'right of Player',xR,'top of player',yT,'bottom of player',yB)
+        return [xL,xR,yT,yB]
+    }
 
 
     getEl(){
@@ -169,11 +177,6 @@ class Player{
         return this.lives
     }
 
-    getPosition(){
-        
-    }
-
-    
 
 
 
@@ -242,6 +245,15 @@ class Enemy{
 
     }
 
+    getPosition(){
+        let xL = parseInt(this.element.style.left)
+        let xR = parseInt(this.element.style.left) + 139
+        let yT = parseInt(this.element.style.top)
+        let yB = parseInt(this.element.style.top) + 216
+        console.log('left of Enemy: ',xL,'right of Enemy',xR,'top of Enemy',yT,'bottom of Enemy',yB)
+        return [xL,xR,yT,yB]
+    }
+
     getName(){
         return this.name
     } 
@@ -251,25 +263,8 @@ class Enemy{
 
 /*--------------------------------------------------------------- constants ---------------------------------------------------------------*/
 
-//PLAYERS
-
-//top, left
+//PLAYER
 const player = new Player()
-
-
-
-
-//ENEMYS                                                                             //top, left
-// const gromflomite1 =  new Enemy(document.getElementById('gromflomite1'),'gromflomite','0px','0px')
-// const smwygHead1 = new Enemy(document.getElementById('smwyg1','showMeWhatYouGotHead','0px','0px'))
-// const jerry1 = new Enemy(document.getElementById('jerry1'),'jerry','0px','0px')
-// const gazorpazorp1 = new Enemy(document.getElementById('gazorpazorp1'),'gazorpazorp','0px','0px')
-
-//const smwygHead2 = new Enemy(document.getElementById('smwyg2','showMeWhatYouGotHead','300px','115px'))
-
-
-
-
 
 /*--------------------------------------------------------------- state variables---------------------------------------------------------------*/
 
@@ -286,9 +281,8 @@ const pointsCounter = document.getElementById('pointsCounter')
 
 
 /*--------------------------------------------------------------- event listeners ---------------------------------------------------------------*/
-//MOVE PLAYER
 
-     
+//MOVE PLAYER
 
 window.addEventListener('keydown',function(e){
    // console.log(e)
@@ -336,27 +330,16 @@ window.addEventListener('keydown',function(e){
 })
 
 
-
 /*--------------------------------------------------------------- functions ---------------------------------------------------------------*/
-
-
-//let mainCharacter = prompt('Which character would you like to play as?')
-//startting screen to pick main character
-//maybe a countdown
-//play music and sounds when event happen
-
-
-
-
 
 init()
 
 
 function init(){
-    // jerry2.getEl().style.visibility = 'hidden'
-    // gazorpazorp2.getEl().style.visibility = 'hidden'
+
+
      bullet.style.visibility = 'hidden'
-    // gromflomite2.getEl().style.visibility = 'hidden'
+
     playerPoints = 0
 
     //playerName = startScreen()
@@ -371,9 +354,9 @@ function init(){
  
 function  runGame(){
     let enemyList  = createEnemies()
-            randomizeEnemies(enemyList)
-            checkBulletCollsion()
-            checkEnemyCollsion()
+    let movingEnemy =  moveRandomEnemy(enemyList)
+    checkBulletCollsion()
+    
     
     
 }
@@ -424,7 +407,7 @@ function startScreen(){
 function createEnemies(){
     const enemyNames = ['jerry','gromflomite','gazorpazorp','smwygHead']
     const enemyList =[]
-    for (let i =0; i<50; i++){
+    for (let i =0; i<20; i++){
 
         let randoEnemy = enemyNames[getRandomInt(4)]
         let randomTopPos =getRandomInt(210)
@@ -446,6 +429,7 @@ function createEnemies(){
             newEnemyDiv.innerHTML = ` <img style="scale: 0.2;"  src = "https://png2.cleanpng.com/sh/37411d6f92da59eaee915db2132e2933/L0KzQYm3V8IxN6d4f5H0aYP2gLBuTf1weqVAReV2aYTrPbTvggJia6Vqip9sYYL3f7F1TfZidl5miuY2dnnyfLr1TgJqa5wyedDtLX3ygsXCTcVjPWI8UaY9ZUO3SYW3TsI0PGM3T6g5MUW2QoG9VsEyPmo4SZD5bne=/kisspng-morty-smith-character-cartoon-fan-art-violin-rick-and-morty-5b517944e34940.234227601532066116931.png">`
         } 
         document.querySelector('main').appendChild(newEnemyDiv)
+        newEnemyDiv.style.visibility = 'hidden'
         let newEnemy = new Enemy(newEnemyDiv,randoEnemy,`${randomTopPos}px`,`${leftPos}px`)
         enemyList.push(newEnemy)
        // console.log(Enemy.numOfEnemies, enemyList)
@@ -455,14 +439,17 @@ function createEnemies(){
 }
 
 
-function randomizeEnemies(enemyArr){
+function moveRandomEnemy(enemyArr){
+    let movingEnemy;
     setInterval(function(){
-        let moveRandoEnemy = getRandomInt(50)
-        console.log(moveRandoEnemy)
-        enemyArr[moveRandoEnemy].moveLeft()
-
-    },10)
-    
+        let moveRandoEnemy = getRandomInt(20)
+        movingEnemy = enemyArr[0]
+        movingEnemy.moveLeft()
+        
+        //console.log(movingEnemy)
+        checkEnemyCollsion(player,movingEnemy)
+        return movingEnemy
+    },1000)
 }
 
 
@@ -473,7 +460,10 @@ function checkBulletCollsion(){
 }
 
 function checkEnemyCollsion(playerEl,EnemyEl){
-
+    setInterval(function(){
+        EnemyEl.getPosition()
+       // playerEl.getPosition()
+    },100)
 }
 
 
@@ -487,3 +477,6 @@ function updatePoints(incrementVal){
      points = points + 100
      pointsCounter.innerHTML = points
 }
+
+
+

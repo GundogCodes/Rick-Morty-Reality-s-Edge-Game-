@@ -409,7 +409,9 @@ h4{
 
 
 @media only screen and (min-width:1024){
-
+    *{
+        transform: scale(0.1);
+    }
     
   }
 
