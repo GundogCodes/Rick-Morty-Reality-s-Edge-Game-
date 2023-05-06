@@ -70,7 +70,7 @@ class Player{
         }
     }
       shoot(){
-        bullet.setPosition()
+                bullet.moveRight()
 //             let xL = parseInt(this.element.style.left)
 //             let xR = parseInt(this.element.style.left+135)
 //             let yT = parseInt(this.element.style.top)
@@ -278,23 +278,23 @@ class Enemy{
 
 class Bullet{
     constructor(){  
-        this.element = document.getElementById('bullet')
-        //this.element.src = "https://png2.cleanpng.com/sh/6a09d6e41c4cf8e80e2bf8b9cf1810da/L0KzQYm3VsEzN6tBhJH0aYP2gLBuTgJqa5wyi9N3Y3join70jCJ1gV54hdt9aD3pcbA0ggJ1NaVqhNdBaYPsf7A0kBhwf146eqNvN0C8c7LrUPRjOF87SqI9MUa8RYK8Usg4QGg2SKICMEi7PsH1h5==/kisspng-rick-sanchez-morty-smith-fan-art-television-show-5b1f709cad0db0.6204169515287871007088.png"
+        this.element = document.createElement('img')
+        this.element.src = "https://png2.cleanpng.com/sh/6a09d6e41c4cf8e80e2bf8b9cf1810da/L0KzQYm3VsEzN6tBhJH0aYP2gLBuTgJqa5wyi9N3Y3join70jCJ1gV54hdt9aD3pcbA0ggJ1NaVqhNdBaYPsf7A0kBhwf146eqNvN0C8c7LrUPRjOF87SqI9MUa8RYK8Usg4QGg2SKICMEi7PsH1h5==/kisspng-rick-sanchez-morty-smith-fan-art-television-show-5b1f709cad0db0.6204169515287871007088.png"
         this.element.style.width = '50px'
         this.element.style.height = '50px'
-        this.element.style.visibility = 'visible'
+        this.element.style.visibility = 'hidden'
         this.element.style.position = 'absolute'
        
         document.querySelector('main').appendChild(this.element)
     }
-    setPosition(){
+    moveRight(){
         this.element.style.visibility = 'visible'
         let playerPos = player.getPosition()
         let xL = playerPos[0] +105
         let xR = playerPos[1]
-         let yT = playerPos[2] +50
-         let yB = playerPos[3]
-
+        let yT = playerPos[2] +50
+        let yB = playerPos[3]
+         console.log(xL,xR,yT,yB)
 
 
         this.element.style.left = xL+'px'
@@ -307,12 +307,25 @@ class Bullet{
                 clearInterval(timer)
             }
             
-            xL= xL +20
-            this.element.style.left = xL+ 'px'
+            xL= xL +10
+            xR= xR +10
+            this.element.style.left = xL+'px'
+            this.element.style.right = xR+'px'
+            
+        
         },10)
      
     }
-  
+
+    getPosition(){
+        let playerPos = player.getPosition()
+        let xL = playerPos[0] +105
+        let xR = playerPos[1]
+        let yT = playerPos[2] +50
+        let yB = playerPos[3]
+        return [xL,xR,yT,yB]
+    }
+    
     getEl(){
         return this.element
     }
@@ -420,7 +433,7 @@ window.addEventListener('keydown',function(e){
 window.addEventListener('keydown',function(e){
    // console.log(e)
     if(e.key === 'f'){
-       let bulletPos =  player.shoot()
+        player.shoot()
 
        
     } 
@@ -436,8 +449,8 @@ init()
 function init(){
 
     playerPoints = 0
-   // bullet.style.visibility ='hidden'
-    //playerName = startScreen()
+
+    playerName = startScreen()
 
     player.setName('MORTY')
    
