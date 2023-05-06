@@ -69,43 +69,33 @@ class Player{
             }, 10);
         }
     }
-    shoot(){
-        if(this.name === 'RICK'){
+     shoot(){
+            let xL = parseInt(this.element.style.left)
+            let yT = parseInt(this.element.style.top)
+            console.log(xL,yT)
+            const bullet = document.getElementById('bullet')
+            bullet.style.height = '50px'
+            bullet.style.width = '50px'
+            document.querySelector('main').appendChild(bullet)
+            bullet.style.visibility = 'visible'
 
-            const bullet = document.getElementById('bullet')
-            let x = parseInt(this.element.style.left)
-            let y =  parseInt(this.element.style.top)
-            bullet.style.visibility = 'visible'
-            bullet.style.left = x+ 'px'
-            bullet.style.top = y+ 'px'
+
+            bullet.style.left = xL+ 'px'
+   
+            bullet.style.top = yT+ 'px'
             
             let timer = setInterval(() => {
-                if(x>1300){
+                if(xL>1500){
                     clearInterval(timer)
                 }
-                x =x+20
-                bullet.style.left = x+'px'
+                xL =xL+20
+                bullet.style.left = xL+'px'
             }, 10);
             return timer
-        } else if (this.name === 'MORTY'){
-            const bullet = document.getElementById('bullet')
-            let x = parseInt(this.element.style.left)
-            let y =  parseInt(this.element.style.top)
-            bullet.style.visibility = 'visible'
-            bullet.style.left = x+ 'px'
-            bullet.style.top = y+ 'px'
-            
-            let timer = setInterval(() => {
-                if(x>1300){
-                    clearInterval(timer)
-                }
-                x =x+20
-                bullet.style.left = x+'px'
-            }, 10);
-            return timer
-        }
+   
+           
     
-    }
+     }
     
     moveLeft(){
         if(this.name === 'RICK'){
@@ -283,7 +273,19 @@ class Enemy{
 }
 
 
+// class Bullet{
+//     constructor(spawnPos){  
+//     this.spawnPos = spawnPos
+//     this.element = document.createElement('img')
+//     this.element.src = "https://png2.cleanpng.com/sh/6a09d6e41c4cf8e80e2bf8b9cf1810da/L0KzQYm3VsEzN6tBhJH0aYP2gLBuTgJqa5wyi9N3Y3join70jCJ1gV54hdt9aD3pcbA0ggJ1NaVqhNdBaYPsf7A0kBhwf146eqNvN0C8c7LrUPRjOF87SqI9MUa8RYK8Usg4QGg2SKICMEi7PsH1h5==/kisspng-rick-sanchez-morty-smith-fan-art-television-show-5b1f709cad0db0.6204169515287871007088.png"
+//     this.element.height = '100px'
+//     this.element.width = '100px'
+//     this.element.style.left = spawnPos[0]
+//     this.element.style.top = spawnPos[2]
+//     document.querySelector('#player').appendChild(this.element)    
+// }
 
+// }
 /*--------------------------------------------------------------- constants ---------------------------------------------------------------*/
 
 //PLAYER
@@ -303,7 +305,9 @@ const pointsCounter = document.getElementById('pointsCounter')
 const livesEl1 = document.getElementById('heart1')
 const livesEl2 = document.getElementById('heart2')
 const livesEl3 = document.getElementById('heart3')
-const heartsList = [livesEl1,livesEl2,livesEl3]
+const livesEl4 = document.getElementById('heart4')
+const livesEl5 = document.getElementById('heart5')
+const heartsList = [livesEl1,livesEl2,livesEl3,livesEl4,livesEl5]
 
 /*--------------------------------------------------------------- event listeners ---------------------------------------------------------------*/
 
@@ -363,11 +367,11 @@ init()
 function init(){
 
 
-     bullet.style.visibility = 'hidden'
+    bullet.style.visibility = 'hidden'
 
     playerPoints = 0
 
-    playerName = startScreen()
+    //playerName = startScreen()
 
     player.setName('MORTY')
    
