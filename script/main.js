@@ -97,7 +97,7 @@ class Player{
 //                 bullet.style.left = xR+'px'
 //                 console.log([xL,xR,yT,yB])
 //             }, 10);
-//             return [timer,xL,xR,yT,yB]
+//             return [xL,xR,yT,yB]
    
 
  }
@@ -283,22 +283,36 @@ class Bullet{
         this.element.style.width = '50px'
         this.element.style.height = '50px'
         this.element.style.visibility = 'visible'
-        this.element.style.left = '900px'
         this.element.style.position = 'absolute'
+       
         document.querySelector('main').appendChild(this.element)
     }
     setPosition(){
         this.element.style.visibility = 'visible'
         let playerPos = player.getPosition()
-        let xL = playerPos[0] 
+        let xL = playerPos[0] +105
         let xR = playerPos[1]
-         let yT = playerPos[2]
+         let yT = playerPos[2] +50
          let yB = playerPos[3]
-        console.log(playerPos)
-        this.element.style.left = xL +105+ 'px'
-        this.element.style.top = yT+50 + 'px'
+
+
+
+        this.element.style.left = xL+'px'
+        this.element.style.top = yT+'px'
+        
+        let timer = setInterval(function(){
+            
+            if(xL < 1500){
+                xL = 1500
+                clearInterval(timer)
+            }
+            
+            xL= xL +20
+            this.element.style.left = xL+ 'px'
+        },10)
      
     }
+  
     getEl(){
         return this.element
     }
