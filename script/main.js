@@ -71,8 +71,10 @@ class Player{
     }
      shoot(){
             let xL = parseInt(this.element.style.left)
+            let xR = parseInt(this.element.style.left+135)
             let yT = parseInt(this.element.style.top)
-            console.log(xL,yT)
+            let yB = parseInt(this.element.style.top+470)
+            
             const bullet = document.getElementById('bullet')
             bullet.style.height = '50px'
             bullet.style.width = '50px'
@@ -80,18 +82,18 @@ class Player{
             bullet.style.visibility = 'visible'
 
 
-            bullet.style.left = xL+ 'px'
+            bullet.style.right = xR+ 'px'
    
-            bullet.style.top = yT+ 'px'
+            bullet.style.top = yB+ 'px'
             
             let timer = setInterval(() => {
-                if(xL>1500){
+                if(xR>1500){
                     clearInterval(timer)
                 }
-                xL =xL+20
-                bullet.style.left = xL+'px'
+                xR =xR+20
+                bullet.style.left = xR+'px'
             }, 10);
-            return timer
+            return [xL,xR,yT,yB]
    
            
     
@@ -353,7 +355,8 @@ window.addEventListener('keydown',function(e){
 window.addEventListener('keydown',function(e){
    // console.log(e)
     if(e.key === 'f'){
-        let timer = player.shoot()
+       let bulletPos =  player.shoot()
+       
     } 
     
 })
@@ -371,37 +374,25 @@ function init(){
 
     playerPoints = 0
 
-    //playerName = startScreen()
+    playerName = startScreen()
 
-    player.setName('MORTY')
+    //player.setName('MORTY')
    
    
     runGame()
            
- 
     
     }
 
  
 function  runGame(){
     
-
         let enemyList  = createEnemies()
         let movingEnemy =  moveRandomEnemy(enemyList)
-        checkBulletCollsion()
-    
-    
-    
+            
     
 }
 
-function countdown(){
-    const cowntdown = document.createElement('div')
-    countdown.style.width = '1000px'
-    countdown.style.height = '1000px'
-    cowntdown.style.backgroundColor = 'pink'
-    document.querySelector('main').appendChild(countdown)
-}
 
 function startScreen(){
     const x = document.createElement('div')
@@ -471,7 +462,7 @@ function createEnemies(){
             newEnemyDiv.src = "https://png2.cleanpng.com/sh/37411d6f92da59eaee915db2132e2933/L0KzQYm3V8IxN6d4f5H0aYP2gLBuTf1weqVAReV2aYTrPbTvggJia6Vqip9sYYL3f7F1TfZidl5miuY2dnnyfLr1TgJqa5wyedDtLX3ygsXCTcVjPWI8UaY9ZUO3SYW3TsI0PGM3T6g5MUW2QoG9VsEyPmo4SZD5bne=/kisspng-morty-smith-character-cartoon-fan-art-violin-rick-and-morty-5b517944e34940.234227601532066116931.png"
         } 
         document.querySelector('main').appendChild(newEnemyDiv)
-        //newEnemyDiv.style.visibility = 'hidden'
+        newEnemyDiv.style.visibility = 'hidden'
         let newEnemy = new Enemy(newEnemyDiv,randoEnemy,`${randomTopPos}px`,`${leftPos}px`)
         enemyList.push(newEnemy)
        // console.log(Enemy.numOfEnemies, enemyList)
@@ -490,8 +481,8 @@ function moveRandomEnemy(enemyArr){
         let moveRandoEnemy = getRandomInt(20)
         movingEnemy = enemyArr[moveRandoEnemy]
         movingEnemy.moveLeft()
-        
         checkEnemyCollsion(player,movingEnemy)
+
         console.log(player.lives)
         //console.log(movingEnemy)
         return movingEnemy
@@ -502,7 +493,8 @@ function moveRandomEnemy(enemyArr){
 
 
 
-function checkBulletCollsion(){
+function checkBulletCollsion(bulletEl,enemyEl){
+
     
 }
 
