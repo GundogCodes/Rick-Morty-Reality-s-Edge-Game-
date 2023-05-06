@@ -15,17 +15,17 @@ class Player{
     setName(name){
         this.name = name
         if (this.name  === 'RICK'){this.element.src = "https://png2.cleanpng.com/sh/d0bbf86ed47622a56b45e1d5c32af94f/L0KzQYm3VMA3N5p8iZH0aYP2gLBuTgBweqVmhJ87LYLsc7y0kBFva5lqkp9vdX7uf373jCJ1aZ14Rdt3LXbsc8XwjB4ueppog59qbnSwfbF5lQkuPZJoT6YAMkWzdbfqg8cvPmg1TKU8OEm0RYO6UMA5QGE6SKg6ND7zfri=/kisspng-portal-2-rick-sanchez-funko-portals-in-fiction-rick-and-morty-5ac745250efcc7.6704338915230088050614.png"
-            this.element.style.top = '0px'
-            this.element.style.left = '0px'
-            this.element.style.height = '200px'
-            this.element.style.width = '130px'
+        this.element.style.height = '160px'
+        this.element.style.width = '135px'
+            this.element.style.top = '456px'
+            this.element.style.left = '700px'
             document.querySelector('main').appendChild(this.element)
         }
         
         else if(this.name === 'MORTY') {this.element.src = "https://png2.cleanpng.com/sh/bff19f53056bc21c93f0ba64fa91e93e/L0KzQYm3VsE3N5tqjpH0aYP2gLBuTf1weqVAReV2aYTrPbTvggJia6Vqip9sYYL3f7F1TfZidl5miuY2cnBlf8W0kvlkc15mhtY2bXB1iX68gsI1bmQ9e6NqOUK7SHA7WMg3PGE1S6MAMkm0RIm6UMAyOGkARuJ3Zx==/kisspng-morty-smith-character-cartoon-fan-art-robot-rick-and-mory-5b24f38c1a9288.4886400315291483001089.png"
         this.element.style.height = '160px'
         this.element.style.width = '135px'
-        this.element.style.top = '430px'
+        this.element.style.top = '456px'
         this.element.style.left = '700px'
         document.querySelector('main').appendChild(this.element)
     } 
@@ -37,28 +37,28 @@ class Player{
             
             let timer = setInterval(() => {
                 //console.log(y)
-                if(y <-405){
+                if(y <20){
                     let t2 = setInterval(()=>{
-                        y=y+20
-                        if(y>-5){
+                        y=y+15
+                        if(y>490){
                             clearInterval(timer)
                             clearInterval(t2)
                         }
-                    },10)
+                    },15)
                 }
                 y = y-20
                 this.element.style.top = y + 'px'
-            }, 10);
+            }, 10); 
             
         } else if(this.name === 'MORTY'){
             let y =  parseInt(this.element.style.top)
             
             let timer = setInterval(() => {
                 //console.log(y)
-                if(y <0 ){
+                if(y <20 ){
                     let t2 = setInterval(()=>{
-                        y= y+20
-                        if(y>500){
+                        y= y+15
+                        if(y>490){
                             clearInterval(timer)
                             clearInterval(t2)
                         }
@@ -75,8 +75,6 @@ class Player{
             const bullet = document.getElementById('bullet')
             let x = parseInt(this.element.style.left)
             let y =  parseInt(this.element.style.top)
-            x =x+180
-            y = y + 250
             bullet.style.visibility = 'visible'
             bullet.style.left = x+ 'px'
             bullet.style.top = y+ 'px'
@@ -85,9 +83,9 @@ class Player{
                 if(x>1300){
                     clearInterval(timer)
                 }
-                x =x+15
+                x =x+20
                 bullet.style.left = x+'px'
-            }, 5);
+            }, 10);
             return timer
         } else if (this.name === 'MORTY'){
             const bullet = document.getElementById('bullet')
@@ -101,9 +99,9 @@ class Player{
                 if(x>1300){
                     clearInterval(timer)
                 }
-                x =x+15
+                x =x+20
                 bullet.style.left = x+'px'
-            }, 5);
+            }, 10);
             return timer
         }
     
@@ -145,8 +143,8 @@ class Player{
             let x = parseInt(this.element.style.left)
             
             let timer = setInterval(() =>{
-                if(x>1700){
-                    x = 1700
+                if(x>1450){
+                    x = 1450
                     clearInterval(timer)
                 }
                 x = x+20
@@ -174,12 +172,19 @@ class Player{
     
     getPosition(){
         let xL = parseInt(this.element.style.left)
-        
-        let xR = parseInt(this.element.style.left) + 139
         let yT = parseInt(this.element.style.top)
-        let yB = parseInt(this.element.style.top) + 216
+        if(this.name === 'RICK'){
+            let yB = parseInt(this.element.style.top) + 200
+            let xR = parseInt(this.element.style.left) + 130
+            
+            return [xL,xR,yT,yB]
+        } else if(this.name === 'MORTY'){
+            let yB = parseInt(this.element.style.top) + 160
+            let xR = parseInt(this.element.style.left) + 135
+            return [xL,xR,yT,yB]
+
+        }
        // console.log('left of Player: ',xL,'right of Player',xR,'top of player',yT,'bottom of player',yB)
-        return [xL,xR,yT,yB]
     }
 
 
@@ -455,6 +460,7 @@ function createEnemies(){
         newEnemyDiv.left = '1000px'
         if(randoEnemy === ('smwygHead')){
            newEnemyDiv.src = "https://png2.cleanpng.com/sh/af0cc0734be612f642d690288074f98a/L0KzQYm3VcExN5dwj5H0aYP2gLBuTgJqa5wyi9N3Y3join77TgNpcaN5Rd94coT8PcT0igRpNaF0e91udD3wf8P7mgMudZZqRadqZkTpSYa4UvJmP5Y6RqI5NEG0QYi9UcUzPmE1TKI9OUG6SYm1kP5o/kisspng-rick-sanchez-t-shirt-morty-smith-pocket-mortys-mee-5af4f9512be7e5.0041117615260040491798.png"
+           newEnemyDiv.style.transform = 'rotateY(180deg)'
         } else if (randoEnemy === 'gazorpazorp'){
             newEnemyDiv.src = "https://png2.cleanpng.com/sh/b0aa5ceeaec8c5c9667ff07228bce0a4/L0KzQYm3VMA1N6N8iZH0aYP2gLBuTfNpaaNmeAZucj32cbB7gb1kdJJ6i59vYX6wccP7TgJqa5wyedDtLX3ygsXCTcVia2U7TadrOUfocYWBTsYxQGE1SKQBMUW1Qom5UMQ1O2c3SqU3cH7q/kisspng-character-santa-claus-fan-art-rick-and-morty-5ac4655b97ea48.6080002615228204436223.png"
         } else if (randoEnemy === 'gromflomite'){
@@ -476,16 +482,20 @@ function createEnemies(){
  
 function moveRandomEnemy(enemyArr){
     let movingEnemy;
+    setInterval(function(){
+
+
 
         let moveRandoEnemy = getRandomInt(20)
-        movingEnemy = enemyArr[1]
+        movingEnemy = enemyArr[moveRandoEnemy]
         movingEnemy.moveLeft()
         
         checkEnemyCollsion(player,movingEnemy)
         console.log(player.lives)
         //console.log(movingEnemy)
         return movingEnemy
-    
+        
+    },1000)
 }
 
 
@@ -500,11 +510,11 @@ function checkEnemyCollsion(playerEl,enemyEl){
         let playerPos =  playerEl.getPosition()
 
         let enemyPos =  enemyEl.getPosition()
-        console.log('playerPos [xL,xR,yT,yB]',playerPos,'EnemyPs [xL,xR,yT,yB]',enemyPos)
-        if(((enemyPos[0]< playerPos[1]) && (enemyPos[1]> playerPos[0]))&&(enemyPos[3])>playerPos[2] || playerPos[2]<enemyPos[3]){
+       //  console.log('playerPos [xL,xR,yT,yB]',playerPos,'EnemyPs [xL,xR,yT,yB]',enemyPos)
+        if(((enemyPos[0]< playerPos[1]) && (enemyPos[1]> playerPos[0]))&&(enemyPos[3])>playerPos[2] && playerPos[2]<enemyPos[3]){
             //if the left of the enemy 
             console.log('Hit')
-            //loseLife(heartsList)
+            loseLife(heartsList)
 
         } else{console.log()}
     },100)
