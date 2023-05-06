@@ -1,7 +1,7 @@
 
 *{
     
-    border: solid red;
+    !border: solid red;
     
 }
 html{
@@ -408,9 +408,10 @@ h4{
 /*----------------------------- @MEDIA QUERIES -----------------------------*/
 
 
-@media only screen and (min-width:1024){
-    *{
-        transform: scale(0.1);
+@media only screen and (min-width:720){
+    main{
+        width: 600px;
+        height: 800px;
     }
     
   }

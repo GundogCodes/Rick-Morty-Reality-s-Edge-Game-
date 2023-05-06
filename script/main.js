@@ -17,7 +17,7 @@ class Player{
         if (this.name  === 'RICK'){this.element.src = "https://png2.cleanpng.com/sh/d0bbf86ed47622a56b45e1d5c32af94f/L0KzQYm3VMA3N5p8iZH0aYP2gLBuTgBweqVmhJ87LYLsc7y0kBFva5lqkp9vdX7uf373jCJ1aZ14Rdt3LXbsc8XwjB4ueppog59qbnSwfbF5lQkuPZJoT6YAMkWzdbfqg8cvPmg1TKU8OEm0RYO6UMA5QGE6SKg6ND7zfri=/kisspng-portal-2-rick-sanchez-funko-portals-in-fiction-rick-and-morty-5ac745250efcc7.6704338915230088050614.png"
         this.element.style.height = '160px'
         this.element.style.width = '135px'
-            this.element.style.top = '456px'
+            this.element.style.top = '470px'
             this.element.style.left = '700px'
             document.querySelector('main').appendChild(this.element)
         }
@@ -25,7 +25,7 @@ class Player{
         else if(this.name === 'MORTY') {this.element.src = "https://png2.cleanpng.com/sh/bff19f53056bc21c93f0ba64fa91e93e/L0KzQYm3VsE3N5tqjpH0aYP2gLBuTf1weqVAReV2aYTrPbTvggJia6Vqip9sYYL3f7F1TfZidl5miuY2cnBlf8W0kvlkc15mhtY2bXB1iX68gsI1bmQ9e6NqOUK7SHA7WMg3PGE1S6MAMkm0RIm6UMAyOGkARuJ3Zx==/kisspng-morty-smith-character-cartoon-fan-art-robot-rick-and-mory-5b24f38c1a9288.4886400315291483001089.png"
         this.element.style.height = '160px'
         this.element.style.width = '135px'
-        this.element.style.top = '456px'
+        this.element.style.top = '475px'
         this.element.style.left = '700px'
         document.querySelector('main').appendChild(this.element)
     } 
@@ -40,7 +40,7 @@ class Player{
                 if(y <20){
                     let t2 = setInterval(()=>{
                         y=y+15
-                        if(y>490){
+                        if(y>500){
                             clearInterval(timer)
                             clearInterval(t2)
                         }
@@ -58,7 +58,7 @@ class Player{
                 if(y <20 ){
                     let t2 = setInterval(()=>{
                         y= y+15
-                        if(y>490){
+                        if(y>500){
                             clearInterval(timer)
                             clearInterval(t2)
                         }
@@ -367,16 +367,13 @@ function init(){
 
     playerPoints = 0
 
-    //playerName = startScreen()
+    playerName = startScreen()
 
     player.setName('MORTY')
    
    
     runGame()
            
-
-    
-    
  
     
     }
@@ -546,3 +543,4 @@ function checkDead(){
         console.log('GAMEOVER')
     }
 }
+ 
