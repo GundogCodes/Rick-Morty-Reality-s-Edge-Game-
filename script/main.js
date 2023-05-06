@@ -69,37 +69,38 @@ class Player{
             }, 10);
         }
     }
-     shoot(){
-        bullet.fire()
-    //         let xL = parseInt(this.element.style.left)
-    //         let xR = parseInt(this.element.style.left+135)
-    //         let yT = parseInt(this.element.style.top)
-    //         let yB = parseInt(this.element.style.top+470)
+      shoot(){
+        bullet.setPosition()
+//             let xL = parseInt(this.element.style.left)
+//             let xR = parseInt(this.element.style.left+135)
+//             let yT = parseInt(this.element.style.top)
+//             let yB = parseInt(this.element.style.top+470)
             
-    //         const bullet = document.getElementById('bullet')
-    //         bullet.style.height = '50px'
-    //         bullet.style.width = '50px'
-    //         document.querySelector('main').appendChild(bullet)
-    //         bullet.style.visibility = 'visible'
+//             const bullet = document.getElementById('bullet')
+//             bullet.style.height = '50px'
+//             bullet.style.width = '50px'
+//             document.querySelector('main').appendChild(bullet)
+//             bullet.style.visibility = 'visible'
 
 
-    //         bullet.style.right = xR+ 'px'
+//             bullet.style.right = xR+ 'px'
    
-    //         bullet.style.top = yB+ 'px'
+//             bullet.style.top = yB+ 'px'
             
-    //         let timer = setInterval(() => {
-    //             if(xR>1500){
-    //                 clearInterval(timer)
-    //             }
-    //             xR =xR+20
-    //             bullet.style.left = xR+'px'
-    //         }, 10);
-    //         return [xL,xR,yT,yB]
+//             let timer = setInterval(() => {
+//                 if(xR>1500){
+//                     clearInterval(timer)
+//                 }
+//                 xR =xR+20
+//                 xL =xL+20
+                
+//                 bullet.style.left = xR+'px'
+//                 console.log([xL,xR,yT,yB])
+//             }, 10);
+//             return [timer,xL,xR,yT,yB]
    
-           
-    
-    //  
-}
+
+ }
     
     moveLeft(){
         if(this.name === 'RICK'){
@@ -279,34 +280,70 @@ class Bullet{
     constructor(){  
         this.element = document.getElementById('bullet')
         //this.element.src = "https://png2.cleanpng.com/sh/6a09d6e41c4cf8e80e2bf8b9cf1810da/L0KzQYm3VsEzN6tBhJH0aYP2gLBuTgJqa5wyi9N3Y3join70jCJ1gV54hdt9aD3pcbA0ggJ1NaVqhNdBaYPsf7A0kBhwf146eqNvN0C8c7LrUPRjOF87SqI9MUa8RYK8Usg4QGg2SKICMEi7PsH1h5==/kisspng-rick-sanchez-morty-smith-fan-art-television-show-5b1f709cad0db0.6204169515287871007088.png"
-        this.element.height = '100px'
-        this.element.width = '100px'
+        this.element.style.width = '50px'
+        this.element.style.height = '50px'
         this.element.style.visibility = 'visible'
-    document.querySelector('main').appendChild(this.element)  
+        this.element.style.left = '900px'
+        this.element.style.position = 'absolute'
+        document.querySelector('main').appendChild(this.element)
     }
-    fire(){
+    setPosition(){
         this.element.style.visibility = 'visible'
         let playerPos = player.getPosition()
-        // let xL = playerPos[0]
-        //let xR = playerPos[1]
-        // let yT = playerPos[2]
-        // let yB = playerPos[3]
-        console.log(typeof(playerPos))
-        // this.element.style.left = xL
-        // this.element.style.top = yT
+        let xL = playerPos[0] 
+        let xR = playerPos[1]
+         let yT = playerPos[2]
+         let yB = playerPos[3]
+        console.log(playerPos)
+        this.element.style.left = xL +105+ 'px'
+        this.element.style.top = yT+50 + 'px'
+     
     }
-
     getEl(){
         return this.element
     }
+    
 
 }
+
+//             let xL = parseInt(this.element.style.left)
+//             let xR = parseInt(this.element.style.left+135)
+//             let yT = parseInt(this.element.style.top)
+//             let yB = parseInt(this.element.style.top+470)
+            
+//             const bullet = document.getElementById('bullet')
+//             bullet.style.height = '50px'
+//             bullet.style.width = '50px'
+//             document.querySelector('main').appendChild(bullet)
+//             bullet.style.visibility = 'visible'
+
+
+//             bullet.style.right = xR+ 'px'
+   
+//             bullet.style.top = yB+ 'px'
+            
+//             let timer = setInterval(() => {
+//                 if(xR>1500){
+//                     clearInterval(timer)
+//                 }
+//                 xR =xR+20
+//                 xL =xL+20
+                
+//                 bullet.style.left = xR+'px'
+//                 console.log([xL,xR,yT,yB])
+//             }, 10);
+//             return [timer,xL,xR,yT,yB]
+   
+
+// }
+
+
 /*--------------------------------------------------------------- constants ---------------------------------------------------------------*/
 
 //PLAYER
 const player = new Player()
 const bullet = new Bullet()
-bullet.fire()
+
 /*--------------------------------------------------------------- state variables---------------------------------------------------------------*/
 
 let playerPoints;
@@ -370,7 +407,7 @@ window.addEventListener('keydown',function(e){
    // console.log(e)
     if(e.key === 'f'){
        let bulletPos =  player.shoot()
-    
+
        
     } 
     
@@ -385,10 +422,10 @@ init()
 function init(){
 
     playerPoints = 0
+   // bullet.style.visibility ='hidden'
+    //playerName = startScreen()
 
-    playerName = startScreen()
-
-    //player.setName('MORTY')
+    player.setName('MORTY')
    
    
     runGame()
@@ -485,13 +522,14 @@ function createEnemies(){
 
  
 function moveRandomEnemy(enemyArr){
+
     let movingEnemy;
     setInterval(function(){
 
 
 
         let moveRandoEnemy = getRandomInt(20)
-        movingEnemy = enemyArr[moveRandoEnemy]
+        movingEnemy = enemyArr[1]
         movingEnemy.moveLeft()
         checkEnemyCollsion(player,movingEnemy)
 
@@ -518,8 +556,8 @@ function checkEnemyCollsion(playerEl,enemyEl){
        //  console.log('playerPos [xL,xR,yT,yB]',playerPos,'EnemyPs [xL,xR,yT,yB]',enemyPos)
         if(((enemyPos[0]< playerPos[1]) && (enemyPos[1]> playerPos[0]))&&(enemyPos[3])>playerPos[2] && playerPos[2]<enemyPos[3]){
             //if the left of the enemy 
-            console.log('Hit')
-            loseLife(heartsList)
+           // console.log('Hit')
+           // loseLife(heartsList)
 
         } else{console.log()}
     },100)
@@ -548,7 +586,7 @@ function loseLife(lifeArray){
 
 function checkDead(){
     if(player.lives === 0){
-        console.log('GAMEOVER')
+        console.log(player.lives,'GAMEOVER')
     }
 }
  
