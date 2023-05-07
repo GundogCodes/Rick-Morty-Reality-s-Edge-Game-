@@ -418,7 +418,7 @@ function  runGame(){
     
         let enemyList  = createEnemies()
         let movingEnemy =  moveRandomEnemy(enemyList)
-            
+        
     
 }
 
@@ -511,12 +511,11 @@ function moveRandomEnemy(enemyArr){
         let moveRandoEnemy = getRandomInt(20)
         movingEnemy = enemyArr[1]
         movingEnemy.moveLeft()
+
         checkEnemyCollsion(player,movingEnemy)
+        
         checkBulletCollsion(bullet,movingEnemy)
 
-
-        //console.log(player.lives)
-        //console.log(movingEnemy)
         return movingEnemy
         
     },1000)
