@@ -71,34 +71,6 @@ class Player{
     }
       shoot(){
                 bullet.moveRight()
-//             let xL = parseInt(this.element.style.left)
-//             let xR = parseInt(this.element.style.left+135)
-//             let yT = parseInt(this.element.style.top)
-//             let yB = parseInt(this.element.style.top+470)
-            
-//             const bullet = document.getElementById('bullet')
-//             bullet.style.height = '50px'
-//             bullet.style.width = '50px'
-//             document.querySelector('main').appendChild(bullet)
-//             bullet.style.visibility = 'visible'
-
-
-//             bullet.style.right = xR+ 'px'
-   
-//             bullet.style.top = yB+ 'px'
-            
-//             let timer = setInterval(() => {
-//                 if(xR>1500){
-//                     clearInterval(timer)
-//                 }
-//                 xR =xR+20
-//                 xL =xL+20
-                
-//                 bullet.style.left = xR+'px'
-//                 console.log([xL,xR,yT,yB])
-//             }, 10);
-//             return [xL,xR,yT,yB]
-   
 
  }
     
@@ -221,7 +193,7 @@ class Enemy{
                 }
                 x = x-20
                 this.element.style.left = x +'px'
-            },10)
+            },50)
             
         
 
@@ -233,12 +205,13 @@ class Enemy{
         let timer = setInterval(() =>{
             
             if(x>1187){
+               
                 x = 1187
                clearInterval(timer)
             }
             x = x+20
             this.element.style.left = x +'px'
-        },10)
+        },20)
         return timer
 
     }
@@ -290,40 +263,49 @@ class Bullet{
     moveRight(){
         this.element.style.visibility = 'visible'
         let playerPos = player.getPosition()
+        //console.log('playerPos',playerPos)
         let xL = playerPos[0] +105
         let xR = playerPos[1]
         let yT = playerPos[2] +50
         let yB = playerPos[3]
-         console.log(xL,xR,yT,yB)
-
-
-        this.element.style.left = xL+'px'
-        this.element.style.top = yT+'px'
+        // console.log(xL,xR,yT,yB)
+         
+         
+         this.element.style.left = xL+'px'
+         this.element.style.top = yT+'px'
+         this.element.style.right = xR +'px'
+         this.element.style.right = xR +'px'
+         
+        xL = parseInt(this.element.style.left)
+         // console.log(x)
+         let timer = setInterval(() =>{
+             // console.log('ENEMY x',x)
+             if(xL>1550){
+                this.element.style.visibility = 'hidden'
+                 xL = 1550
+                 clearInterval(timer)
+                }
+                xL = xL+20
+                xR = xR+20
+                this.element.style.left = xL +'px'
+            },10)
+            
+        }
         
-        let timer = setInterval(function(){
-            
-            if(xL < 1500){
-                xL = 1500
-                clearInterval(timer)
-            }
-            
-            xL= xL +10
-            xR= xR +10
-            this.element.style.left = xL+'px'
-            this.element.style.right = xR+'px'
-            
         
-        },10)
-     
-    }
-
-    getPosition(){
-        let playerPos = player.getPosition()
-        let xL = playerPos[0] +105
-        let xR = playerPos[1]
-        let yT = playerPos[2] +50
-        let yB = playerPos[3]
-        return [xL,xR,yT,yB]
+        
+        
+        getPosition(){
+            let playerPos = player.getPosition()
+           // console.log(playerPos)
+            let xL = playerPos[0] +105
+            let xR = playerPos[1]
+            let yT = playerPos[2] +50
+            let yB = playerPos[3]
+            
+            //console.log('BulletPos',xL,xR,yT,yB)
+        
+            return [xL,xR,yT,yB]
     }
     
     getEl(){
@@ -332,37 +314,6 @@ class Bullet{
     
 
 }
-
-//             let xL = parseInt(this.element.style.left)
-//             let xR = parseInt(this.element.style.left+135)
-//             let yT = parseInt(this.element.style.top)
-//             let yB = parseInt(this.element.style.top+470)
-            
-//             const bullet = document.getElementById('bullet')
-//             bullet.style.height = '50px'
-//             bullet.style.width = '50px'
-//             document.querySelector('main').appendChild(bullet)
-//             bullet.style.visibility = 'visible'
-
-
-//             bullet.style.right = xR+ 'px'
-   
-//             bullet.style.top = yB+ 'px'
-            
-//             let timer = setInterval(() => {
-//                 if(xR>1500){
-//                     clearInterval(timer)
-//                 }
-//                 xR =xR+20
-//                 xL =xL+20
-                
-//                 bullet.style.left = xR+'px'
-//                 console.log([xL,xR,yT,yB])
-//             }, 10);
-//             return [timer,xL,xR,yT,yB]
-   
-
-// }
 
 
 /*--------------------------------------------------------------- constants ---------------------------------------------------------------*/
@@ -450,7 +401,7 @@ function init(){
 
     playerPoints = 0
 
-    playerName = startScreen()
+    //playerName = startScreen()
 
     player.setName('MORTY')
    
@@ -556,11 +507,13 @@ function moveRandomEnemy(enemyArr){
 
 
         let moveRandoEnemy = getRandomInt(20)
-        movingEnemy = enemyArr[1]
+        movingEnemy = enemyArr[moveRandoEnemy]
         movingEnemy.moveLeft()
         checkEnemyCollsion(player,movingEnemy)
+        checkBulletCollsion(bullet,movingEnemy)
 
-        console.log(player.lives)
+
+        //console.log(player.lives)
         //console.log(movingEnemy)
         return movingEnemy
         
@@ -571,9 +524,24 @@ function moveRandomEnemy(enemyArr){
 
 
 function checkBulletCollsion(bulletEl,enemyEl){
+   let enemyHit = false
+    setInterval(function(){
+        
+        let bulletPos =  bullet.getPosition()
 
+        let enemyPos =  enemyEl.getPosition()
+       //  console.log('playerPos [xL,xR,yT,yB]',playerPos,'EnemyPs [xL,xR,yT,yB]',enemyPos)
+        if(((enemyPos[0]< bulletPos[1]) && (enemyPos[1]> bulletPos[0]))&&(enemyPos[3])>bulletPos[2] && bulletPos[2]<enemyPos[3]){
+            //if the left of the enemy 
+            console.log('BULLET Hit')
+           // loseLife(heartsList)
+           enemyHit = true
+        } else{console.log()}
+    },100)
+    return enemyHit
+    }
     
-}
+
 
 function checkEnemyCollsion(playerEl,enemyEl){
     setInterval(function(){
