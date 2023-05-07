@@ -51,6 +51,9 @@ https://static.wikia.nocookie.net/rickandmorty/images/4/47/Micheal.png
 rickAndMortyStartitngScreen:
 https://png2.cleanpng.com/sh/595196fd7059950d60ff2e70bd56235d/L0KzQYq3VME3N6h1e5H0aYP2gLBuTgNqbJZnhNHwLXPkgsX2jB4ucZ1xjeV9cnH3ebF1Tfh2dZJzRdRuaHH5ebF5TfNpaaNmReRyY3uwcbBrTf1weqVARdh4cj3kPbn8jvRzbZUykddqcoOwebW0kvVidJ1ARd42NXPlRbXshvUzOmJreag3MEG2R4eAUMkyPWY6TKQ7OUe3QYSCWL5xdpg=/kisspng-sideblog-cartoon-illustration-human-behavior-chara-rick-and-morty-for-a-hundred-years-id-really-l-5cb5defe221fa6.0137670915554229741398.png
 
+livesHeartPNG:
+https://png2.cleanpng.com/sh/5ef61abf8552e6bc551174871b6871aa/L0KzQYm3WME3N6l5i5H0aYP2gLBuTgBqgJZxRdN7dD35dbT7jCIub6NmiNpyY4OwdMPolBlvb15uhdNwZT3qgrLrifVvfF51gepubD3rdbL5lL1xcalqhNpuYYL3Pbj5gfRqbZ95gNdqcoSwd8PohL02amg6faJvMnXpRYq9Vr40P2g2UKY7MUG4Q4W7VcE6PWUAUKI9LoDxd1==/kisspng-pixel-art-vector-graphics-drawing-image-gradient-pixel-heart-pixelheart-gradientheart-grad-5b75e0f2ef5966.3771842115344519549804.png
+
 -----------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------Psuedocode-------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------

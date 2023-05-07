@@ -552,7 +552,7 @@ function checkEnemyCollsion(playerEl,enemyEl){
         if(((enemyPos[0]< playerPos[1]) && (enemyPos[1]> playerPos[0]))&&(enemyPos[3])>playerPos[2] && playerPos[2]<enemyPos[3]){
             //if the left of the enemy 
            // console.log('Hit')
-           // loseLife(heartsList)
+            loseLife(heartsList)
 
         } else{console.log()}
     },100)
