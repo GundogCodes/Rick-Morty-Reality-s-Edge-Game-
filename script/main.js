@@ -191,9 +191,9 @@ class Enemy{
                     x = 10
                     clearInterval(timer)
                 }
-                x = x-20
+                x = x-10
                 this.element.style.left = x +'px'
-            },50)
+            },10)
             
         
 
@@ -528,8 +528,12 @@ function moveRandomEnemy(enemyArr){
 function checkBulletCollsion(bulletEl,enemyEl){
    let enemyHit = false
     setInterval(function(){
+        const left =0
+        const right = 1
+        const top = 2
+        const bottom =3
         
-        let bulletPos =  bullet.getPosition()
+        let bulletPos =  bulletEl.getPosition()
         let enemyPos =  enemyEl.getPosition()
         console.log(`bullet xL ${bulletPos[0]} bullet xR ${bulletPos[1]},
 bullet yT ${bulletPos[2]} bullet yB ${bulletPos[3]}
@@ -537,8 +541,8 @@ bullet yT ${bulletPos[2]} bullet yB ${bulletPos[3]}
 enemy xL ${enemyPos[0]} enemy xR ${enemyPos[1]}
 enemy yT ${enemyPos[2]} enemy yB ${enemyPos[3]}`)
         
-       //  console.log('playerPos [xL,xR,yT,yB]',playerPos,'EnemyPs [xL,xR,yT,yB]',enemyPos)
-        if(((enemyPos[0]< bulletPos[1]) && (enemyPos[1]> bulletPos[0]))&&(enemyPos[3])>bulletPos[2] && bulletPos[2]<enemyPos[3]){
+       //  console.log('playerPos [xL,xR,yT,yB]',playerPos,'EnemyPs [xL,xR,yT,yB]',enemyPos)      LOOK AT THE Y PART
+        if(((enemyPos[left]< bulletPos[right]) && (enemyPos[right]> bulletPos[left]))&&((enemyPos[bottom])>bulletPos[top]) && (bulletPos[top]<enemyPos[bottom]&&(bulletPos[bottom]> enemyPos[top]))){
             //if the left of the enemy 
             console.log('BULLLLLLEEEEEETTTTTT HIIIIIIIIIITTTTTT')
            // loseLife(heartsList)
