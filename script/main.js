@@ -265,7 +265,7 @@ class Bullet{
         let playerPos = player.getPosition()
         //console.log('playerPos',playerPos)
         let xL = playerPos[0] +105
-        let xR = playerPos[1]
+        let xR = playerPos[1] +240
         let yT = playerPos[2] +50
         let yB = playerPos[3]
         // console.log(xL,xR,yT,yB)
@@ -274,9 +274,10 @@ class Bullet{
          this.element.style.left = xL+'px'
          this.element.style.top = yT+'px'
          this.element.style.right = xR +'px'
-         this.element.style.right = xR +'px'
+         this.element.style.bottom = yB +'px'
          
         xL = parseInt(this.element.style.left)
+        xR = parseInt(this.element.style.right)
          // console.log(x)
          let timer = setInterval(() =>{
              // console.log('ENEMY x',x)
@@ -288,6 +289,7 @@ class Bullet{
                 xL = xL+20
                 xR = xR+20
                 this.element.style.left = xL +'px'
+                this.element.style.right = xR +'px'
             },10)
             
         }
@@ -296,12 +298,12 @@ class Bullet{
         
         
         getPosition(){
-            let playerPos = player.getPosition()
+           // let playerPos = player.getPosition()
            // console.log(playerPos)
-            let xL = playerPos[0] +105
-            let xR = playerPos[1]
-            let yT = playerPos[2] +50
-            let yB = playerPos[3]
+            let xL = parseInt(this.element.style.left)
+            let xR = parseInt(this.element.style.right)
+            let yT = parseInt(this.element.style.top)
+            let yB = parseInt(this.element.style.bottom)
             
             //console.log('BulletPos',xL,xR,yT,yB)
         
@@ -507,7 +509,7 @@ function moveRandomEnemy(enemyArr){
 
 
         let moveRandoEnemy = getRandomInt(20)
-        movingEnemy = enemyArr[moveRandoEnemy]
+        movingEnemy = enemyArr[1]
         movingEnemy.moveLeft()
         checkEnemyCollsion(player,movingEnemy)
         checkBulletCollsion(bullet,movingEnemy)
@@ -528,12 +530,17 @@ function checkBulletCollsion(bulletEl,enemyEl){
     setInterval(function(){
         
         let bulletPos =  bullet.getPosition()
-
         let enemyPos =  enemyEl.getPosition()
+        console.log(`bullet xL ${bulletPos[0]} bullet xR ${bulletPos[1]},
+bullet yT ${bulletPos[2]} bullet yB ${bulletPos[3]}
+
+enemy xL ${enemyPos[0]} enemy xR ${enemyPos[1]}
+enemy yT ${enemyPos[2]} enemy yB ${enemyPos[3]}`)
+        
        //  console.log('playerPos [xL,xR,yT,yB]',playerPos,'EnemyPs [xL,xR,yT,yB]',enemyPos)
         if(((enemyPos[0]< bulletPos[1]) && (enemyPos[1]> bulletPos[0]))&&(enemyPos[3])>bulletPos[2] && bulletPos[2]<enemyPos[3]){
             //if the left of the enemy 
-            console.log('BULLET Hit')
+            console.log('BULLLLLLEEEEEETTTTTT HIIIIIIIIIITTTTTT')
            // loseLife(heartsList)
            enemyHit = true
         } else{console.log()}
@@ -551,11 +558,11 @@ function checkEnemyCollsion(playerEl,enemyEl){
        //  console.log('playerPos [xL,xR,yT,yB]',playerPos,'EnemyPs [xL,xR,yT,yB]',enemyPos)
         if(((enemyPos[0]< playerPos[1]) && (enemyPos[1]> playerPos[0]))&&(enemyPos[3])>playerPos[2] && playerPos[2]<enemyPos[3]){
             //if the left of the enemy 
-           // console.log('Hit')
+            console.log('Hit')
             loseLife(heartsList)
 
         } else{console.log()}
-    },100)
+    },10)
 }
 
 
