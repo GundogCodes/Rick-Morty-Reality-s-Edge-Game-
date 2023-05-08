@@ -187,8 +187,9 @@ class Enemy{
             // console.log(x)
             let timer = setInterval(() =>{
                 // console.log('ENEMY x',x)
-                if(x<10){
-                    x = 10
+                if(x<-200){
+                    x = -200
+                    this.element.style.visibility = 'hidden'
                     clearInterval(timer)
                 }
                 x = x-10
@@ -286,11 +287,11 @@ class Bullet{
                  xL = 1550
                  clearInterval(timer)
                 }
-                xL = xL+20
-                xR = xR+20
+                xL = xL+15
+                xR = xR+15
                 this.element.style.left = xL +'px'
                 this.element.style.right = xR +'px'
-            },10)
+            },15)
             
         }
         
@@ -417,8 +418,8 @@ function init(){
 function  runGame(){
     
         let enemyList  = createEnemies()
-        let movingEnemy =  moveRandomEnemy(enemyList)
-        
+     moveRandomEnemy(enemyList)
+
     
 }
 
@@ -473,7 +474,7 @@ function createEnemies(){
         let randoEnemy = enemyNames[getRandomInt(4)]
         let randomTopPos =getRandomInt(500)
         let leftPos = 1600
-        //console.log('rando top pos ',randomTopPos,'left pos ',leftPos,'rando enemy ',randoEnemy)
+
         let newEnemyDiv = document.createElement('img')
         newEnemyDiv.style.height = '100px'
         newEnemyDiv.style.width = '100px'
@@ -494,7 +495,7 @@ function createEnemies(){
         newEnemyDiv.style.visibility = 'hidden'
         let newEnemy = new Enemy(newEnemyDiv,randoEnemy,`${randomTopPos}px`,`${leftPos}px`)
         enemyList.push(newEnemy)
-       // console.log(Enemy.numOfEnemies, enemyList)
+
     }
     return enemyList
 
@@ -503,19 +504,22 @@ function createEnemies(){
  
 function moveRandomEnemy(enemyArr){
 
-    let movingEnemy;
+    
     setInterval(function(){
 
 
 
         let moveRandoEnemy = getRandomInt(20)
-        movingEnemy = enemyArr[1]
+       let  movingEnemy = enemyArr[moveRandoEnemy]
         movingEnemy.moveLeft()
 
         checkEnemyCollsion(player,movingEnemy)
         
-        checkBulletCollsion(bullet,movingEnemy)
-
+        checkBulletCollsion(bullet,movingEnemy,enemyArr)
+      
+            
+  
+        console.log(movingEnemy)
         return movingEnemy
         
     },1000)
@@ -525,7 +529,7 @@ function moveRandomEnemy(enemyArr){
 
 
 function checkBulletCollsion(bulletEl,enemyEl){
-   let enemyHit = false
+   
     setInterval(function(){
         const left =0
         const right = 1
@@ -534,22 +538,17 @@ function checkBulletCollsion(bulletEl,enemyEl){
         
         let bulletPos =  bulletEl.getPosition()
         let enemyPos =  enemyEl.getPosition()
-        console.log(`bullet xL ${bulletPos[0]} bullet xR ${bulletPos[1]},
-bullet yT ${bulletPos[2]} bullet yB ${bulletPos[3]}
 
-enemy xL ${enemyPos[0]} enemy xR ${enemyPos[1]}
-enemy yT ${enemyPos[2]} enemy yB ${enemyPos[3]}`)
-        
-       //  console.log('playerPos [xL,xR,yT,yB]',playerPos,'EnemyPs [xL,xR,yT,yB]',enemyPos)      LOOK AT THE Y PART
         if(((enemyPos[left]< bulletPos[right]) && (enemyPos[right]> bulletPos[left]))&&((enemyPos[bottom])>bulletPos[top]) && (bulletPos[top]<enemyPos[bottom]&&(bulletPos[bottom]> enemyPos[top]))){
-            //if the left of the enemy 
+
             console.log('BULLLLLLEEEEEETTTTTT HIIIIIIIIIITTTTTT')
            // loseLife(heartsList)
-           enemyHit = true
+           updatePoints(100)
+    
         } else{console.log()}
-    },100)
-    return enemyHit
-    }
+    },10)
+   
+}
     
 
 
@@ -561,8 +560,8 @@ function checkEnemyCollsion(playerEl,enemyEl){
        //  console.log('playerPos [xL,xR,yT,yB]',playerPos,'EnemyPs [xL,xR,yT,yB]',enemyPos)
         if(((enemyPos[0]< playerPos[1]) && (enemyPos[1]> playerPos[0]))&&(enemyPos[3])>playerPos[2] && playerPos[2]<enemyPos[3]){
             //if the left of the enemy 
-            console.log('Hit')
-            loseLife(heartsList)
+            console.log('Player Hit')
+           // loseLife(heartsList)
 
         } else{console.log()}
     },10)
