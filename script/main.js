@@ -9,12 +9,12 @@ class Player{
         this.element.style.position = 'absolute'
         this.element.style.transform = 'rotateY(180deg)'
         
-        this.lives = 3 
+        this.lives = 5 
         
     }
     setName(name){
         this.name = name
-        if (this.name  === 'RICK'){this.element.src = "https://png2.cleanpng.com/sh/d0bbf86ed47622a56b45e1d5c32af94f/L0KzQYm3VMA3N5p8iZH0aYP2gLBuTgBweqVmhJ87LYLsc7y0kBFva5lqkp9vdX7uf373jCJ1aZ14Rdt3LXbsc8XwjB4ueppog59qbnSwfbF5lQkuPZJoT6YAMkWzdbfqg8cvPmg1TKU8OEm0RYO6UMA5QGE6SKg6ND7zfri=/kisspng-portal-2-rick-sanchez-funko-portals-in-fiction-rick-and-morty-5ac745250efcc7.6704338915230088050614.png"
+        if (this.name  === 'RICK'){this.element.src = "https://png2.cleanpng.com/sh/2558c44d627579baf4043caa78d6efea/L0KzQYm3VMA3N5p8iZH0aYP2gLBuTgBweqVmhJ87LYLsc7y0kBFva5lqkp9vdX7uf373jCJ1aZ14Rdt3LXbsc8XwjB4ueppog59qbnSwfbF5lQkuPZJoT6YAMkWzdbfqg8cvPmg1TKU8OEm0RYO6UMA5QGE6SKg6ND7zfri=/kisspng-portal-2-rick-sanchez-funko-portals-in-fiction-rick-and-morty-5ac745250efcc7.6704338915230088050614.png"
         this.element.style.height = '160px'
         this.element.style.width = '135px'
             this.element.style.top = '470px'
@@ -404,9 +404,9 @@ function init(){
 
     playerPoints = 0
 
-    //playerName = startScreen()
+    playerName = startScreen()
 
-    player.setName('MORTY')
+   // player.setName('MORTY')
    
    
     runGame()
@@ -439,7 +439,7 @@ function startScreen(){
     x.innerHTML = `<h1 id ='startingHeader'>RICK AND MORTY: REALITY'S EDGE</h1>
     <h2 id = 'choosePlayer'>Choose Your Player</h2>
     <h4>Use Arrow Keys to Move and 'F' Key to Shoot, Goodluck!</h4>
-    <img id='startingImg'style = "scale:0.8;"src ="https://png2.cleanpng.com/sh/595196fd7059950d60ff2e70bd56235d/L0KzQYq3VME3N6h1e5H0aYP2gLBuTgNqbJZnhNHwLXPkgsX2jB4ucZ1xjeV9cnH3ebF1Tfh2dZJzRdRuaHH5ebF5TfNpaaNmReRyY3uwcbBrTf1weqVARdh4cj3kPbn8jvRzbZUykddqcoOwebW0kvVidJ1ARd42NXPlRbXshvUzOmJreag3MEG2R4eAUMkyPWY6TKQ7OUe3QYSCWL5xdpg=/kisspng-sideblog-cartoon-illustration-human-behavior-chara-rick-and-morty-for-a-hundred-years-id-really-l-5cb5defe221fa6.0137670915554229741398.png">
+    <img id='startingImg'style = "scale:0.8;"src ="https://png2.cleanpng.com/sh/697e54f06cdac5f9584e1d6b5a0a9bf1/L0KzQYq3VME3N6h1e5H0aYP2gLBuTgNqbJZnhNHwLXPkgsX2jB4ucZ1xjeV9cnH3ebF1Tfh2dZJzRdRuaHH5ebF5TfNpaaNmReRyY3uwcbBrTf1weqVARdh4cj3kPbn8jvRzbZUykddqcoOwebW0kvVidJ1ARd42NXPlRbXshvUzOmJreag3MEG2R4eAUMkyPWY6TKQ7OUe3QYSCWL5xdpg=/kisspng-sideblog-cartoon-illustration-human-behavior-chara-rick-and-morty-for-a-hundred-years-id-really-l-5cb5defe221fa6.0137670915554229741398.png">
     <div id ='buttonBox'>
     <button id ='Rick' >RICK</button>
     <button id = 'Morty' >MORTY</button>
@@ -546,7 +546,7 @@ function checkBulletCollsion(bulletEl,enemyEl){
            updatePoints(100)
     
         } else{console.log()}
-    },10)
+    },200)
    
 }
     
@@ -561,10 +561,10 @@ function checkEnemyCollsion(playerEl,enemyEl){
         if(((enemyPos[0]< playerPos[1]) && (enemyPos[1]> playerPos[0]))&&(enemyPos[3])>playerPos[2] && playerPos[2]<enemyPos[3]){
             //if the left of the enemy 
             console.log('Player Hit')
-           // loseLife(heartsList)
+            loseLife(heartsList)
 
         } else{console.log()}
-    },10)
+    },200)
 }
 
 
@@ -576,12 +576,14 @@ function getRandomInt(range){
 function updatePoints(incrementVal){
     let  points = parseInt(pointsCounter.innerHTML)
      points = points + 100
+     playerPoints = playerPoints +100
      pointsCounter.innerHTML = points
 }
 
 function loseLife(lifeArray){
     let lastEl = lifeArray.length -1
-    lifeArray[lastEl].style.visibility = 'hidden'
+  //  lifeArray[lastEl].style.visibility = 'hidden'
+  lifeArray[lastEl].style.visibility = 'hidden'
     lifeArray.pop()
     player.lives = player.lives - 1
     console.log(lifeArray[lastEl])
@@ -589,8 +591,39 @@ function loseLife(lifeArray){
 }
 
 function checkDead(){
+    
     if(player.lives === 0){
         console.log(player.lives,'GAMEOVER')
+        runEndScreen()
+        
     }
-}
+    }
  
+
+function runEndScreen(){
+    let endingScreen = document.createElement('div')
+        endingScreen.setAttribute('id','endingScreen')
+        endingScreen.style.position = 'absolute'
+        endingScreen.style.width = '1800px'
+        endingScreen.style.height = '1000px'
+        endingScreen.style.backgroundColor = 'blue'
+        endingScreen.style.color = 'white'
+        endingScreen.style.left = '0px'
+        endingScreen.style.borderRadius = '15px'
+        endingScreen.style.display = 'flex'
+        endingScreen.style.flexDirection = 'column'
+        endingScreen.style.justifyContent = 'center'
+        endingScreen.style.alignItems= 'center'
+        endingScreen.innerHTML = `<h1 id ="endingHeader">GAMEOVER</h1>
+        <h1 id = "endingPoints">Your Score: ${parseInt(playerPoints)}</h1>
+        <img id="endingImg" src="https://png2.cleanpng.com/sh/c4187d48c513cec1a9c625cbb17228ae/L0KzQYm3VsI2N5t5iZH0aYP2gLBuTgJqa5wyi9N3Y3join70jCJ1gV54hdt9aD3meLL5gfN1baMykdHALXvxf8i0lBhifF54RadrM0G2dIm3VcE4bZI1RqM7M0K5Q4mAUcUzQWo6S6gBNEO2Q4m1kP5o/kisspng-rick-sanchez-morty-smith-character-you-know-what-s-5b313d80517ea0.1232638715299536643338.png"> 
+        <button id= "playAgain">Play Again?</button>`
+        document.querySelector('body').appendChild(endingScreen)
+
+        document.getElementById('playAgain').addEventListener('click',function(){
+            document.querySelector('body').removeChild(endingScreen)
+            document.getElementById('pointsCounter').innerText ="0"
+            init()
+
+        })
+}

@@ -7,9 +7,9 @@
 ------------------------------------------------------------LINKS------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------
 
-mainRickPNG:
+mainRickPNG: https://www.cleanpng.com/png-portal-2-rick-sanchez-funko-portals-in-fiction-ric-953279/
 
-https://png2.cleanpng.com/sh/d0bbf86ed47622a56b45e1d5c32af94f/L0KzQYm3VMA3N5p8iZH0aYP2gLBuTgBweqVmhJ87LYLsc7y0kBFva5lqkp9vdX7uf373jCJ1aZ14Rdt3LXbsc8XwjB4ueppog59qbnSwfbF5lQkuPZJoT6YAMkWzdbfqg8cvPmg1TKU8OEm0RYO6UMA5QGE6SKg6ND7zfri=/kisspng-portal-2-rick-sanchez-funko-portals-in-fiction-rick-and-morty-5ac745250efcc7.6704338915230088050614.png <==notWorkingForSomeReason==>
+https://png2.cleanpng.com/sh/2558c44d627579baf4043caa78d6efea/L0KzQYm3VMA3N5p8iZH0aYP2gLBuTgBweqVmhJ87LYLsc7y0kBFva5lqkp9vdX7uf373jCJ1aZ14Rdt3LXbsc8XwjB4ueppog59qbnSwfbF5lQkuPZJoT6YAMkWzdbfqg8cvPmg1TKU8OEm0RYO6UMA5QGE6SKg6ND7zfri=/kisspng-portal-2-rick-sanchez-funko-portals-in-fiction-rick-and-morty-5ac745250efcc7.6704338915230088050614.png
 
 rickPNG:
 
@@ -25,7 +25,7 @@ https://png2.cleanpng.com/sh/6a09d6e41c4cf8e80e2bf8b9cf1810da/L0KzQYm3VsEzN6tBhJ
 
 deadRickAndMortyPNG:
 
-https://png2.cleanpng.com/sh/3906e08af687b408710d6093771b8e23/L0KzQYm3VsI2N5t5iZH0aYP2gLBuTgJqa5wyi9N3Y3join70jCJ1gV54hdt9aD3meLL5gfN1baMykdHALXvxf8i0lBhifF54RadrM0G2dIm3VcE4bZI1RqM7M0K5Q4mAUcUzQWo6S6gBNEO2Q4m1kP5o/kisspng-rick-sanchez-morty-smith-character-you-know-what-s-5b313d80517ea0.1232638715299536643338.png
+https://png2.cleanpng.com/sh/c4187d48c513cec1a9c625cbb17228ae/L0KzQYm3VsI2N5t5iZH0aYP2gLBuTgJqa5wyi9N3Y3join70jCJ1gV54hdt9aD3meLL5gfN1baMykdHALXvxf8i0lBhifF54RadrM0G2dIm3VcE4bZI1RqM7M0K5Q4mAUcUzQWo6S6gBNEO2Q4m1kP5o/kisspng-rick-sanchez-morty-smith-character-you-know-what-s-5b313d80517ea0.1232638715299536643338.png
 
 gazorpazorpPNG:
 https://png2.cleanpng.com/sh/b0aa5ceeaec8c5c9667ff07228bce0a4/L0KzQYm3VMA1N6N8iZH0aYP2gLBuTfNpaaNmeAZucj32cbB7gb1kdJJ6i59vYX6wccP7TgJqa5wyedDtLX3ygsXCTcVia2U7TadrOUfocYWBTsYxQGE1SKQBMUW1Qom5UMQ1O2c3SqU3cH7q/kisspng-character-santa-claus-fan-art-rick-and-morty-5ac4655b97ea48.6080002615228204436223.png
@@ -48,8 +48,9 @@ https://wallup.net/wp-content/uploads/2017/11/17/271175-Rick_and_Morty.jpg
 gromflomitePNG:
 https://static.wikia.nocookie.net/rickandmorty/images/4/47/Micheal.png
 
-rickAndMortyStartitngScreen:
-https://png2.cleanpng.com/sh/595196fd7059950d60ff2e70bd56235d/L0KzQYq3VME3N6h1e5H0aYP2gLBuTgNqbJZnhNHwLXPkgsX2jB4ucZ1xjeV9cnH3ebF1Tfh2dZJzRdRuaHH5ebF5TfNpaaNmReRyY3uwcbBrTf1weqVARdh4cj3kPbn8jvRzbZUykddqcoOwebW0kvVidJ1ARd42NXPlRbXshvUzOmJreag3MEG2R4eAUMkyPWY6TKQ7OUe3QYSCWL5xdpg=/kisspng-sideblog-cartoon-illustration-human-behavior-chara-rick-and-morty-for-a-hundred-years-id-really-l-5cb5defe221fa6.0137670915554229741398.png
+rickAndMortyStartitngScreen: https://www.cleanpng.com/png-sideblog-cartoon-illustration-human-behavior-chara-7151307/\
+
+https://png2.cleanpng.com/sh/697e54f06cdac5f9584e1d6b5a0a9bf1/L0KzQYq3VME3N6h1e5H0aYP2gLBuTgNqbJZnhNHwLXPkgsX2jB4ucZ1xjeV9cnH3ebF1Tfh2dZJzRdRuaHH5ebF5TfNpaaNmReRyY3uwcbBrTf1weqVARdh4cj3kPbn8jvRzbZUykddqcoOwebW0kvVidJ1ARd42NXPlRbXshvUzOmJreag3MEG2R4eAUMkyPWY6TKQ7OUe3QYSCWL5xdpg=/kisspng-sideblog-cartoon-illustration-human-behavior-chara-rick-and-morty-for-a-hundred-years-id-really-l-5cb5defe221fa6.0137670915554229741398.png
 
 livesHeartPNG:
 https://png2.cleanpng.com/sh/5ef61abf8552e6bc551174871b6871aa/L0KzQYm3WME3N6l5i5H0aYP2gLBuTgBqgJZxRdN7dD35dbT7jCIub6NmiNpyY4OwdMPolBlvb15uhdNwZT3qgrLrifVvfF51gepubD3rdbL5lL1xcalqhNpuYYL3Pbj5gfRqbZ95gNdqcoSwd8PohL02amg6faJvMnXpRYq9Vr40P2g2UKY7MUG4Q4W7VcE6PWUAUKI9LoDxd1==/kisspng-pixel-art-vector-graphics-drawing-image-gradient-pixel-heart-pixelheart-gradientheart-grad-5b75e0f2ef5966.3771842115344519549804.png

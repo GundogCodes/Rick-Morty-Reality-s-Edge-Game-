@@ -322,6 +322,36 @@ h4{
     position: absolute;
     bottom: 50px;
 }
+
+/*----------------------------- ENDING PAGE -----------------------------*/
+
+#endingHeader{
+    font-family: 'Bruno Ace', cursive;
+    font-size: 55px;
+}
+#endingPoints{
+    font-family: 'Bruno Ace', cursive;
+}
+#endingImg{
+    height: 515px;
+    width: 545px;   
+}
+
+
+#playAgain{
+    font-family: 'Bruno Ace', cursive;
+    font-size: 55px;
+    border-radius: 15px;
+    background-color:orangered;
+    color:white;
+    padding:15px;
+}
+#playAgain:hover{
+    background-color: rgba(168,204,205);
+    padding: 20px;
+    transition: 1s;
+}
+
 /*----------------------------- MOVE ANIMATIONS -----------------------------*/
 
 /*----------------------------- KEYFRAMES -----------------------------*/
