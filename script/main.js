@@ -248,6 +248,11 @@ class Enemy{
         //console.log('left of Enemy: ',xL,'right of Enemy',xR,'top of Enemy',yT,'bottom of Enemy',yB)
     }
 
+    hideVisibility(){
+        this.element.style.visibility = 'hidden'
+        delete window.this.element
+    }
+
     getName(){
         return this.name
     } 
@@ -348,7 +353,7 @@ const portalGun = new Audio("./music/portalSoundEffect.mp3")
 
 let playerPoints;
 let playerName;
-
+let enemyList =[]
 /*---------------------------------------------------------------cached elements  ---------------------------------------------------------------*/
 
 const characterChangeBtn = document.getElementById('characterChange')
@@ -414,6 +419,8 @@ window.addEventListener('keydown',function(e){
 })
 
 
+    
+
 /*--------------------------------------------------------------- functions ---------------------------------------------------------------*/
 
 init()
@@ -422,22 +429,26 @@ init()
 function init(){
 
     playerPoints = 0
+    player.lives = 5
 
+    const heartsList = [livesEl1,livesEl2,livesEl3,livesEl4,livesEl5]
+   
+    
     playerName = startScreen()
-
-   // player.setName('MORTY')
-   
-   
-    runGame()
-           
     
+
+     // player.setName('MORTY')
+     
+     runGame()
+     
     }
-
- 
-function  runGame(){
     
-        let enemyList  = createEnemies()
-     moveRandomEnemy(enemyList)
+    
+    function  runGame(){
+        
+        
+    let enemyList  = createEnemies()
+    document.getElementById('buttonBox').addEventListener('click',moveRandomEnemy(enemyList))
 
     
 }
@@ -487,8 +498,8 @@ function startScreen(){
 
 function createEnemies(){
     const enemyNames = ['jerry','gromflomite','gazorpazorp','smwygHead']
-    const enemyList =[]
-    for (let i =0; i<20; i++){
+
+    for (let i =0; i<200; i++){
 
         let randoEnemy = enemyNames[getRandomInt(4)]
         let randomTopPos =getRandomInt(500)
@@ -528,17 +539,17 @@ function moveRandomEnemy(enemyArr){
 
 
 
-        let moveRandoEnemy = getRandomInt(20)
-       let  movingEnemy = enemyArr[moveRandoEnemy]
+        let movingEnemyIndex = getRandomInt(200) //index of movingEnemy in Enemy Array
+       let  movingEnemy = enemyArr[movingEnemyIndex] // the instance of the Enemy Class that is moving
         movingEnemy.moveLeft()
 
         checkEnemyCollsion(player,movingEnemy)
         
-        checkBulletCollsion(bullet,movingEnemy,enemyArr)
+        checkBulletCollsion(bullet,movingEnemy,movingEnemyIndex,enemyArr)
       
             
   
-        console.log(movingEnemy)
+        //console.log(movingEnemy)
         return movingEnemy
         
     },1000)
@@ -547,8 +558,9 @@ function moveRandomEnemy(enemyArr){
 
 
 
-function checkBulletCollsion(bulletEl,enemyEl){
-   
+function checkBulletCollsion(bulletEl,enemyEl,movingEnemyIndex,enemyArr){
+    console.log(movingEnemyIndex)
+    console.log(enemyArr[movingEnemyIndex])
     setInterval(function(){
         const left =0
         const right = 1
@@ -559,14 +571,16 @@ function checkBulletCollsion(bulletEl,enemyEl){
         let enemyPos =  enemyEl.getPosition()
 
         if(((enemyPos[left]< bulletPos[right]) && (enemyPos[right]> bulletPos[left]))&&((enemyPos[bottom])>bulletPos[top]) && (bulletPos[top]<enemyPos[bottom]&&(bulletPos[bottom]> enemyPos[top]))){
-
+            updatePoints(100)
+            enemyArr[movingEnemyIndex].hideVisibility()
+            delete enemyArr[movingEnemyIndex]
             console.log('BULLLLLLEEEEEETTTTTT HIIIIIIIIIITTTTTT')
-           // loseLife(heartsList)
-           updatePoints(100)
-    
+       
+            
         } else{console.log()}
+        console.log(enemyArr.length)
     },200)
-   
+    
 }
     
 
