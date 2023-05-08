@@ -19,6 +19,7 @@ class Player{
         this.element.style.width = '135px'
             this.element.style.top = '470px'
             this.element.style.left = '700px'
+            rickCatchphrase.play()
             document.querySelector('main').appendChild(this.element)
         }
         
@@ -27,6 +28,7 @@ class Player{
         this.element.style.width = '135px'
         this.element.style.top = '475px'
         this.element.style.left = '700px'
+        mortyOhGeez.play()
         document.querySelector('main').appendChild(this.element)
     } 
     }
@@ -324,6 +326,20 @@ class Bullet{
 //PLAYER
 const player = new Player()
 const bullet = new Bullet()
+
+const introSong = new Audio("./music/intro.mp3")
+const getShwifty = new Audio("./music/getShwifty.mp3")
+const goodbyeMoonmen = new Audio("./music/goodByeMoonmen.mp3")
+const outroSadSong = new Audio("./music/introSadSong.mp3")
+const mortyFreakingOut= new Audio("./music/mortyFreakingOut.mp3")
+
+const mortyHeckYa = new Audio("./music/mortyHeckYa.mp3")
+const mortyOhGeez = new Audio("./music/mortyOhGeez.mp3")
+const rickCatchphrase = new Audio("./music/rickCatchphrase.mp3")
+const rickTotesMalotesDawg = new Audio("./music/rickTotesMalotesDawg.mp3")
+
+const rickYouBunchOfIdiots = new Audio("./music/rickYouBunchOfidiots.mp3")
+const rickWhatAreYouNuts = new Audio("./music/rickWhatAreYouNuts.mp3")
 
 /*--------------------------------------------------------------- state variables---------------------------------------------------------------*/
 
