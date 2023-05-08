@@ -299,11 +299,11 @@ class Bullet{
                  xL = 1550
                  clearInterval(timer)
                 }
-                xL = xL+15
-                xR = xR+15
+                xL = xL+20
+                xR = xR+20
                 this.element.style.left = xL +'px'
                 this.element.style.right = xR +'px'
-            },15)
+            },10)
             
         }
         
@@ -433,9 +433,15 @@ function init(){
 
     playerPoints = 0
     player.lives = 5
-
-    const heartsList = [livesEl1,livesEl2,livesEl3,livesEl4,livesEl5]
-   
+    heartsList.push(livesEl1)
+    heartsList.push(livesEl2)
+    heartsList.push(livesEl3)
+    heartsList.push(livesEl4)
+    heartsList.push(livesEl5)
+    //const heartsList = [livesEl1,livesEl2,livesEl3,livesEl4,livesEl5]
+   for(let heart of heartsList){
+    heart.style.visibility ='visible'
+   }
     
     playerName = startScreen()
     
@@ -562,7 +568,7 @@ function moveRandomEnemy(enemyArr){
 
 
 function checkBulletCollsion(bulletEl,enemyEl,movingEnemyIndex,enemyArr){
-    console.log(movingEnemyIndex)
+    //console.log(movingEnemyIndex)
     setInterval(function(){
         
         const left =0
@@ -581,7 +587,7 @@ function checkBulletCollsion(bulletEl,enemyEl,movingEnemyIndex,enemyArr){
        
             
         } else{console.log()}
-        console.log(enemyArr.length)
+        //console.log(enemyArr.length)
     },200)
     
 }
@@ -593,11 +599,11 @@ function checkEnemyCollsion(playerEl,enemyEl,movingEnemyIndex,enemyArr){
         let enemyVisiblity = enemyArr[movingEnemyIndex].getVisibility()
         let playerPos =  playerEl.getPosition()
         let enemyPos =  enemyEl.getPosition()
-        console.log((enemyArr[movingEnemyIndex]))
+        //console.log((enemyArr[movingEnemyIndex]))
        //  console.log('playerPos [xL,xR,yT,yB]',playerPos,'EnemyPs [xL,xR,yT,yB]',enemyPos)
         if((enemyVisiblity === 'visible')&&((enemyPos[0]< playerPos[1]) && (enemyPos[1]> playerPos[0]))&&(enemyPos[3])>playerPos[2] && playerPos[2]<enemyPos[3]){
             //if the left of the enemy 
-            console.log('Player Hit')
+            //console.log('Player Hit')
             loseLife(heartsList)
 
         } else{console.log()}
