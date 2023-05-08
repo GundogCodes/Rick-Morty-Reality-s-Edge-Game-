@@ -72,6 +72,7 @@ class Player{
         }
     }
       shoot(){
+        portalGun.play()
                 bullet.moveRight()
 
  }
@@ -197,6 +198,7 @@ class Enemy{
                 x = x-10
                 this.element.style.left = x +'px'
             },10)
+            
             
         
 
@@ -340,6 +342,7 @@ const rickTotesMalotesDawg = new Audio("./music/rickTotesMalotesDawg.mp3")
 
 const rickYouBunchOfIdiots = new Audio("./music/rickYouBunchOfidiots.mp3")
 const rickWhatAreYouNuts = new Audio("./music/rickWhatAreYouNuts.mp3")
+const portalGun = new Audio("./music/portalSoundEffect.mp3")
 
 /*--------------------------------------------------------------- state variables---------------------------------------------------------------*/
 
