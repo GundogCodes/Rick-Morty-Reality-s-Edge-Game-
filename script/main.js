@@ -334,11 +334,11 @@ const bullet = new Bullet()
 //BACKGROUND IMGs
 const b1 = "https://wallup.net/wp-content/uploads/2017/11/17/271175-Rick_and_Morty.jpg"
 const b2 = "https://sm.ign.com/ign_ap/screenshot/default/she-store_z42d.gif"
-const b3= "https://www.pixelstalk.net/wp-content/uploads/images6/Backgrounds-Steven-Universe.gif"
-const b4="https://cutewallpaper.org/25/anime-raining-wallpaper-gif/serendipity-%E2%80%94-anime-rain.gif"
-const b5= "https://art.ngfiles.com/images/2516000/2516242_vulpsvulps_amphibia.gif?f1652396191"
-const b6 ="https://cdna.artstation.com/p/assets/images/images/020/624/916/original/maze-of-pines-portalgif-final.gif?1568543958"
-const b7="https://i.pinimg.com/originals/71/7a/d9/717ad9268a58b0f92a24f39afb817d98.gif"
+const b3 = "https://www.pixelstalk.net/wp-content/uploads/images6/Backgrounds-Steven-Universe.gif"
+const b4 = "https://cutewallpaper.org/25/anime-raining-wallpaper-gif/serendipity-%E2%80%94-anime-rain.gif"
+const b5 = "https://art.ngfiles.com/images/2516000/2516242_vulpsvulps_amphibia.gif?f1652396191"
+const b6 = "https://cdna.artstation.com/p/assets/images/images/020/624/916/original/maze-of-pines-portalgif-final.gif?1568543958"
+const b7 = "https://i.pinimg.com/originals/71/7a/d9/717ad9268a58b0f92a24f39afb817d98.gif"
 
 const backgroundList = [b1,b2,b3,b4,b5,b6,b7]
 
@@ -353,24 +353,67 @@ const introSong = new Audio("./music/intro.mp3")
 const getShwifty = new Audio("./music/getShwifty.mp3")
 const goodbyeMoonmen = new Audio("./music/goodByeMoonmen.mp3")
 const backgroundSongs = [introSong,getShwifty,goodbyeMoonmen]
+const portalGun = new Audio("./music/portalSoundEffect.mp3")
 
 const outroSadSong = new Audio("./music/introSadSong.mp3")
-const mortyFreakingOut= new Audio("./music/mortyFreakingOut.mp3")
 
+//morty
+const mortyFreakingOut= new Audio("./music/mortyFreakingOut.mp3")
 const mortyHeckYa = new Audio("./music/mortyHeckYa.mp3")
 const mortyOhGeez = new Audio("./music/mortyOhGeez.mp3")
-const rickCatchphrase = new Audio("./music/rickCatchphrase.mp3")
-const rickTotesMalotesDawg = new Audio("./music/rickTotesMalotesDawg.mp3")
+const mortySounds = [mortyFreakingOut,mortyHeckYa,mortyOhGeez]
 
+//rick
 const rickYouBunchOfIdiots = new Audio("./music/rickYouBunchOfidiots.mp3")
 const rickWhatAreYouNuts = new Audio("./music/rickWhatAreYouNuts.mp3")
-const portalGun = new Audio("./music/portalSoundEffect.mp3")
+const rickCatchphrase = new Audio("./music/rickCatchphrase.mp3")
+const rickTotesMalotesDawg = new Audio("./music/rickTotesMalotesDawg.mp3")
+const rickHow = new Audio ("./music/rickHow.mp3")
+const rickBye = new Audio("./music/rickBye.mp3")
+const rickAreYouHuman = new Audio("./music/rickAreYouPeopleHuman.mp3")
+const rickCalmDownJerry = new Audio("./music/rickCalmDownJerry.mp3")
+const rickImGonnaKillYou = new Audio("./music/rickImGonnaKillYou.mp3")
+const rickSaysGazorp = new Audio("./music/rickSaysGazorpazorp.mp3")
+const rickSounds = [rickYouBunchOfIdiots,rickWhatAreYouNuts,rickCatchphrase,rickTotesMalotesDawg,
+                    rickHow,rickBye,rickAreYouHuman,
+                    rickCalmDownJerry,rickImGonnaKillYou,rickSaysGazorp]
+
+//glomflomite
+
+const glomHAHAHA = new Audio("./music/glomHAHAHA.mp3")
+const glomHereIGoKilling = new Audio("./music/glomHereIGoKillingAgain.mp3")
+const glomHeyRick = new Audio("./music/glomHeyRick.mp3")
+const glomLooksDeadly = new Audio("./music/glomThisLooksDeadly.mp3")
+const glomSounds =[glomHAHAHA,glomHereIGoKilling,glomHeyRick,glomLooksDeadly]
+
+//gazorpazorp
+const gazorpazorpIHateVideogames = new Audio("./music/gazorpazorpIHateVideoGames.mp3")
+const gazorpazorpIThinkItsTime= new Audio("./music/gazorpazorpIThinkItsTime.mp3")
+const gazorpazorpSounds =[gazorpazorpIHateVideogames,gazorpazorpIThinkItsTime]
+
+//jerry
+
+const jerryName = new Audio("./music/jerryJERRYSMITH.mp3")
+const jerryOooh = new Audio("./music/jerryOooh.mp3")
+const jerryScrewYou = new Audio("./music/jerryScrewYou.mp3")
+const jerryWhatTheHell = new Audio("./music/jerryWhatTheHell.mp3")
+const jerryYouGuysSuck = new Audio("./music/jerryYouGuysSuck.mp3")
+const jerrySounds =[jerryName,jerryOooh,jerryScrewYou,jerryWhatTheHell,jerryYouGuysSuck]
+
+
+//head
+
+const headBoo = new Audio("./music/headBoo.mp3")
+const headShowMeWhatYouGot = new Audio("./music/headShowMeWhatYouGot.mp3")
+const headShowUsWhatYouGot = new Audio("./music/headShowUsWhatYouGot.mp3")
+const headSeason = new Audio("./music/headTheresOneEverySeason.mp3")
+const headSounds = [headBoo,headShowMeWhatYouGot,headShowMeWhatYouGot,headShowUsWhatYouGot,headSeason]
 
 /*--------------------------------------------------------------- state variables---------------------------------------------------------------*/
 
 let playerPoints;
 let playerName;
-let enemyList =[]
+let enemyList;
 
 /*--------------------------------------------------------------- cached elements ---------------------------------------------------------------*/
 //MAIN
@@ -462,6 +505,7 @@ init()
 
 function init(){
    // introSong.play()
+    enemyList = []
     playerPoints = 0
     player.lives = 5
     heartsList.push(livesEl1)
@@ -483,7 +527,7 @@ function init(){
 function runGame(){
 
     let enemyList  = createEnemies()
-    moveRandomEnemy(enemyList)
+    let movingEnemyOb = moveRandomEnemy(enemyList)
 
 }
 
@@ -567,6 +611,22 @@ function moveRandomEnemy(enemyArr){
         let movingEnemyIndex = getRandomInt(1000) //index of movingEnemy in Enemy Array
         let movingEnemy = enemyArr[movingEnemyIndex] // the instance of the Enemy Class that is moving
         movingEnemy.moveLeft()
+
+        if(movingEnemy.name ==='glomflomite'){
+            let randoNum = getRandomInt(10)
+            glomSounds[randoNum].play()
+        }else if(movingEnemy.name === 'jerry'){
+            let randoNum = getRandomInt(12)
+            jerrySounds[randoNum].play()
+            
+        } else if(movingEnemy.name === 'gazorpazorp'){
+            let randoNum = getRandomInt(18)
+            gazorpazorpSounds[randoNum].play()
+        } else if(movingEnemy.name === 'smwygHead'){
+            let randoNum = getRandomInt(10)
+            headSounds[randoNum].play()
+
+        }
         
         
         checkEnemyCollsion(player,movingEnemy,movingEnemyIndex,enemyArr)
@@ -574,12 +634,12 @@ function moveRandomEnemy(enemyArr){
         checkBulletCollsion(bullet,movingEnemy,movingEnemyIndex,enemyArr)
     
         checkEnemyOffScreen(movingEnemy,movingEnemyIndex,enemyArr)
-        return movingEnemy
+        return [movingEnemy,movingEnemyIndex]
         
     },1000)
 }
 
-function checkEnemyOffScreen(movingEnemy,movingEnemyIndex,enemyArr){
+function checkEnemyOffScreen(movingEnemy){
     setInterval(function(){
 
         let enemyPos = movingEnemy.getPosition()
@@ -643,6 +703,9 @@ function updatePoints(incrementVal){
      points = points + 100
      playerPoints = playerPoints +100
      pointsCounter.innerHTML = points
+
+
+
 }
 
 function loseLife(lifeArray){
