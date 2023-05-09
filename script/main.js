@@ -539,7 +539,7 @@ function init(){
 function runGame(){
 
     let enemyList  = createEnemies()
-     moveRandomEnemy(enemyList)
+    moveRandomEnemy(enemyList)
 
 
 }
@@ -623,7 +623,9 @@ function createEnemies(){
 function moveRandomEnemy(enemyArr){
   
         let enemyTimer = setInterval(function(){
-            
+            if (player.lives < 0){
+                clearInterval(enemyTimer)
+            }
             let movingEnemyIndex = getRandomInt(1000) //index of movingEnemy in Enemy Array
             let movingEnemy = enemyArr[movingEnemyIndex] // the instance of the Enemy Class that is moving
             movingEnemy.moveLeft()
@@ -645,9 +647,7 @@ function moveRandomEnemy(enemyArr){
                 headSounds[randoNum].play()
                 
             }
-            if (player.lives < 0){
-                clearInterval(enemyTimer)
-            }
+            
             checkEnemyCollsion(player,movingEnemy,movingEnemyIndex,enemyArr)
             
             checkBulletCollsion(bullet,movingEnemy,movingEnemyIndex,enemyArr)
@@ -660,6 +660,7 @@ function moveRandomEnemy(enemyArr){
     
     
 }
+
 
 function checkEnemyOffScreen(movingEnemy){
     setInterval(function(){
@@ -749,7 +750,7 @@ function loseLife(lifeArray){
 
 function checkDead(){
     
-    if(player.lives < 0){
+    if(player.lives === 0){
 
       //  console.log('Player Lives: ',player.lives,' : GAMEOVER')
         
