@@ -461,7 +461,7 @@ changeBackground.addEventListener('click',function(){
 let j =-1
 changeWeaponBtn.addEventListener('click',function(){
    j++
-    console.log('J: ',j)
+   
     if(j > 1){
         j=0
     }
@@ -735,7 +735,7 @@ function loseLife(lifeArray){
     lifeArray.pop()
     
     player.lives = player.lives - 1
-    console.log(lifeArray[lastEl])
+   // console.log(lifeArray[lastEl])
     
     checkDead()
 
@@ -745,7 +745,7 @@ function checkDead(){
     
     if(player.lives === 0){
 
-        console.log('Player Lives: ',player.lives,' : GAMEOVER')
+      //  console.log('Player Lives: ',player.lives,' : GAMEOVER')
         
         runEndScreen()
         
