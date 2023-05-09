@@ -164,19 +164,6 @@ footer > button:hover{
     
 }
 
-/* #enemyDiv2{
-    position:relative;
-    left: 1705px;
-    top: 250px;
-    
-   
- 
-    height: 580px;
-    width: 220px;
-
-} */
-
-
 /*----------------------------- PLAYER -----------------------------*/
 #player {  
     transform: rotateY(180deg);
@@ -231,7 +218,6 @@ footer > button:hover{
     position: absolute;
     transform:rotateY(180deg) ;
 }
-
 
 /*----------------------------- STARTING PAGE -----------------------------*/
 

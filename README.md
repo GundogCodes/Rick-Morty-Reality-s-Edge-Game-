@@ -34,7 +34,6 @@ https://png2.cleanpng.com/sh/b0aa5ceeaec8c5c9667ff07228bce0a4/L0KzQYm3VMA1N6N8iZ
 mainCharacterMortyPNG:
 https://png2.cleanpng.com/sh/d18ce60eaf131022cbf5e353ed3b653d/L0KzQYm3VsE3N5tqjpH0aYP2gLBuTf1weqVAReV2aYTrPbTvggJia6Vqip9sYYL3f7F1TfZidl5miuY2cnBlf8W0kvlkc15mhtY2bXB1iX68gsI1bmQ9e6NqOUK7SHA7WMg3PGE1S6MAMkm0RIm6UMAyOGkARuJ3Zx==/kisspng-morty-smith-character-cartoon-fan-art-robot-rick-and-mory-5b24f38c1a9288.4886400315291483001089.png
 
-
 showMeWhatYouGotPNG:
 https://png2.cleanpng.com/sh/02003aea150469d7cc6bbea8448a7096/L0KzQYm3V8E3N5D7i5H0aYP2gLBuTf5we5Yye9puZXuwc73wkL1ieqUyhdduc3Xoe8S0VfI1a2lnSdgBNEO1R4e1UsA4P2k2Uao6NUO0R4W6UMA4PGI1TJD5bne=/kisspng-nose-cheek-clip-art-meeseeks-5b4c8b1f643276.2077819815317430074104.png
 
@@ -65,9 +64,6 @@ https://i.pinimg.com/originals/71/7a/d9/717ad9268a58b0f92a24f39afb817d98.gif
 
 gromflomitePNG:
 https://static.wikia.nocookie.net/rickandmorty/images/4/47/Micheal.png
-
-
-
 
 rickAndMortyStartingScreen: https://www.cleanpng.com/png-sideblog-cartoon-illustration-human-behavior-chara-7151307/\
 

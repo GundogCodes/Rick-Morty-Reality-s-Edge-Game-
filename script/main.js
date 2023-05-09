@@ -38,7 +38,7 @@ class Player{
             let y =  parseInt(this.element.style.top)
             
             let timer = setInterval(() => {
-                //console.log(y)
+
                 if(y <20){
                     let t2 = setInterval(()=>{
                         y=y+15
@@ -56,7 +56,7 @@ class Player{
             let y =  parseInt(this.element.style.top)
             
             let timer = setInterval(() => {
-                //console.log(y)
+         
                 if(y <20 ){
                     let t2 = setInterval(()=>{
                         y= y+15
@@ -72,8 +72,9 @@ class Player{
         }
     }
       shoot(){
+
         portalGun.play()
-                bullet.moveRight()
+        bullet.moveRight()
 
  }
     
@@ -141,6 +142,7 @@ class Player{
     }
     
     getPosition(){
+
         let xL = parseInt(this.element.style.left)
         let yT = parseInt(this.element.style.top)
         if(this.name === 'RICK'){
@@ -154,9 +156,7 @@ class Player{
             return [xL,xR,yT,yB]
 
         }
-       // console.log('left of Player: ',xL,'right of Player',xR,'top of player',yT,'bottom of player',yB)
     }
-
 
     getEl(){
         return this.element
@@ -179,6 +179,7 @@ class Enemy{
         Enemy.numOfEnemies++
 
     }
+
     getEl(){
         return this.element   
     } 
@@ -187,9 +188,9 @@ class Enemy{
         
             this.element.style.visibility = 'visible'
             let x = parseInt(this.element.style.left)
-            // console.log(x)
+            
             let timer = setInterval(() =>{
-                // console.log('ENEMY x',x)
+               
                 if(x<-200){
                     x = -200
                     this.element.style.visibility = 'hidden'
@@ -198,9 +199,6 @@ class Enemy{
                 x = x-10
                 this.element.style.left = x +'px'
             },10)
-            
-            
-        
 
     }
 
@@ -222,8 +220,10 @@ class Enemy{
     }
 
     getPosition(){
+
         let xL = parseInt(this.element.style.left)
         let yT = parseInt(this.element.style.top)
+
         if(this.name ==='smwygHead'){
             let xR = parseInt(this.element.style.left) + 99
             let yB = parseInt(this.element.style.top) + 138
@@ -245,7 +245,7 @@ class Enemy{
             
             return [xL,xR,yT,yB]
         }
-        //console.log('left of Enemy: ',xL,'right of Enemy',xR,'top of Enemy',yT,'bottom of Enemy',yB)
+
     }
 
     hideVisibility(){
@@ -276,12 +276,12 @@ class Bullet{
     moveRight(){
         this.element.style.visibility = 'visible'
         let playerPos = player.getPosition()
-        //console.log('playerPos',playerPos)
+       
         let xL = playerPos[0] +105
         let xR = playerPos[1] +240
         let yT = playerPos[2] +50
         let yB = playerPos[3]
-        // console.log(xL,xR,yT,yB)
+        
          
          
          this.element.style.left = xL+'px'
@@ -291,9 +291,9 @@ class Bullet{
          
         xL = parseInt(this.element.style.left)
         xR = parseInt(this.element.style.right)
-         // console.log(x)
+         
          let timer = setInterval(() =>{
-             // console.log('ENEMY x',x)
+   
              if(xL>1550){
                 this.element.style.visibility = 'hidden'
                  xL = 1550
@@ -306,10 +306,7 @@ class Bullet{
             },10)
             
         }
-        
-        
-        
-        
+           
         getPosition(){
            // let playerPos = player.getPosition()
            // console.log(playerPos)
@@ -327,9 +324,7 @@ class Bullet{
         return this.element
     }
     
-
 }
-
 
 /*--------------------------------------------------------------- constants ---------------------------------------------------------------*/
 
@@ -347,10 +342,11 @@ const b7="https://i.pinimg.com/originals/71/7a/d9/717ad9268a58b0f92a24f39afb817d
 
 const backgroundList = [b1,b2,b3,b4,b5,b6,b7]
 
-//BULLET IMGS
-const fart="https://png2.cleanpng.com/sh/6a09d6e41c4cf8e80e2bf8b9cf1810da/L0KzQYm3VsEzN6tBhJH0aYP2gLBuTgJqa5wyi9N3Y3join70jCJ1gV54hdt9aD3pcbA0ggJ1NaVqhNdBaYPsf7A0kBhwf146eqNvN0C8c7LrUPRjOF87SqI9MUa8RYK8Usg4QGg2SKICMEi7PsH1h5==/kisspng-rick-sanchez-morty-smith-fan-art-television-show-5b1f709cad0db0.6204169515287871007088.png"
-const portal = "https://png2.cleanpng.com/sh/65766dc12337e46f52129ccc6c179058/L0KzQYq3UcAyN5dqkpH0aYP2gLBuTgJqa5wyi9N3Y3join70jCJ1gV54hdt9aD3sfbLuhb1xd6N5ed58LXnxPbfwgCRqd58yiNH7dHHvPcPwgBsuaZ9pRd94coT8Pbj5hfVvNWZoStQEYke3R7WBVsExNmI9SqQDOUe4QYa7VsM3OWg2Tqc6NEKxgLBu/kisspng-rick-sanchez-morty-smith-image-portals-in-fiction-portal-rick-and-morty-green-5c2b9b747d8610.1822897515463617165142.png"
-const gunList = [fart,portal]
+//GUNIMGS
+
+const portal ="https://png2.cleanpng.com/sh/65766dc12337e46f52129ccc6c179058/L0KzQYq3UcAyN5dqkpH0aYP2gLBuTgJqa5wyi9N3Y3join70jCJ1gV54hdt9aD3sfbLuhb1xd6N5ed58LXnxPbfwgCRqd58yiNH7dHHvPcPwgBsuaZ9pRd94coT8Pbj5hfVvNWZoStQEYke3R7WBVsExNmI9SqQDOUe4QYa7VsM3OWg2Tqc6NEKxgLBu/kisspng-rick-sanchez-morty-smith-image-portals-in-fiction-portal-rick-and-morty-green-5c2b9b747d8610.1822897515463617165142.png"
+const fart ="https://png2.cleanpng.com/sh/e19c8c9a264f5c59d30a6113d7d37843/L0KzQYm3VMA1N6ttj5H0aYP2gLBuTgJqa5wyi9N3Y3join7tgf4uaaN5RdVxYX7xdb20UcAyNZJpjd59LYP6eb60kvlkc15mhtY2bXB1hMq0VfFkPWE6fdMCMkbpdYK1UsIxOGI7TKg6NUK1SIe4VcQ3PGc9T5D5bne=/kisspng-rick-sanchez-fan-art-channel-101-adult-swim-rick-and-morty-5ac505ea726fe1.2200164615228615464687.png"
+const gunList = [portal,fart]
 
 //MUSIC
 const introSong = new Audio("./music/intro.mp3")
@@ -375,21 +371,25 @@ const portalGun = new Audio("./music/portalSoundEffect.mp3")
 let playerPoints;
 let playerName;
 let enemyList =[]
-/*---------------------------------------------------------------cached elements  ---------------------------------------------------------------*/
 
+/*--------------------------------------------------------------- cached elements ---------------------------------------------------------------*/
+//MAIN
+const main = document.querySelector('main')
+//BUTTONS
 const changeBackground = document.getElementById('changeBackground')
 const changeWeaponBtn = document.getElementById('changeWeapon')
 const musicToggleBtn = document.getElementById('musicToggle')
 const pointsCounter = document.getElementById('pointsCounter')
+//LIVES
 const livesEl1 = document.getElementById('heart1')
 const livesEl2 = document.getElementById('heart2')
 const livesEl3 = document.getElementById('heart3')
 const livesEl4 = document.getElementById('heart4')
 const livesEl5 = document.getElementById('heart5')
 const heartsList = [livesEl1,livesEl2,livesEl3,livesEl4,livesEl5]
-const main = document.querySelector('main')
 
 /*--------------------------------------------------------------- event listeners ---------------------------------------------------------------*/
+//BACKGROUND
 let i = 0 
 changeBackground.addEventListener('click',function(){
     i++
@@ -400,22 +400,25 @@ changeBackground.addEventListener('click',function(){
     
 
 })
-let j =0
+//WEAPON
+let j =-1
 changeWeaponBtn.addEventListener('click',function(){
-    j++
-    if(j ===2){
+   j++
+    console.log('J: ',j)
+    if(j > 1){
         j=0
     }
-    bullet.src = `${"gunList[j]"}`
+    bullet.src = `url(${gunList[j]})`
 })
-//MOVE PLAYER
 
+//MOVE PLAYER
 window.addEventListener('keydown',function(e){
-   // console.log(e)
+
     if(e.key === 'ArrowLeft'){
         let timer = player.moveLeft()
+
         window.addEventListener('keyup',function(e){
-            //console.log(e)
+           
             if(e.key === 'ArrowLeft'){
                 player.setPosition(timer)
             }    
@@ -424,11 +427,12 @@ window.addEventListener('keydown',function(e){
     
 })
 window.addEventListener('keydown',function(e){
-   // console.log(e)
+
     if(e.key === 'ArrowRight'){
         let timer = player.moveRight()
+
         window.addEventListener('keyup',function(e){
-          //  console.log(e)
+
             if(e.key === 'ArrowRight'){
                 player.setPosition(timer)
             }    
@@ -437,8 +441,6 @@ window.addEventListener('keydown',function(e){
     }    
 })
 
-
-
 window.addEventListener('keydown',function(e){
    // console.log(e)
     if(e.key === ' ' || e.key === 'ArrowUp'){
@@ -446,24 +448,17 @@ window.addEventListener('keydown',function(e){
     }
 })
 
-
 window.addEventListener('keydown',function(e){
-   // console.log(e)
+
     if(e.key === 'f'){
         player.shoot()
-
-       
     } 
     
 })
 
-
-    
-
 /*--------------------------------------------------------------- functions ---------------------------------------------------------------*/
 
 init()
-
 
 function init(){
    // introSong.play()
@@ -480,24 +475,20 @@ function init(){
    }
     
     playerName = startScreen()
-    
-     
      
      runGame()
      
-    }
+}
     
-    
-    function  runGame(){
+function runGame(){
 
     let enemyList  = createEnemies()
     moveRandomEnemy(enemyList)
 
-    
 }
 
-
 function startScreen(){
+
     const x = document.createElement('div')
     x.setAttribute('class','startingPage')
     x.style.width = '1800px'
@@ -522,24 +513,19 @@ function startScreen(){
     x.style.color = 'white'
     x.style.backgroundColor = 'blue'
     document.querySelector('body').appendChild(x)
-    document.getElementById('buttonBox').addEventListener('click',function(e){
-    playerName = e.target.innerText
-    console.log('User chooses: ',playerName)
-    player.setName(playerName)
-    document.querySelector('body').removeChild(x)
-    
-    
 
+    document.getElementById('buttonBox').addEventListener('click',function(e){
+        playerName = e.target.innerText
+        console.log('User chooses: ',playerName)
+        player.setName(playerName)
+        document.querySelector('body').removeChild(x)
 
 })
     
-      
 }
 
-//element,name,top,left
-
-
 function createEnemies(){
+    
     const enemyNames = ['jerry','gromflomite','gazorpazorp','smwygHead']
 
     for (let i =0; i<1000; i++){
@@ -573,32 +559,25 @@ function createEnemies(){
     return enemyList
 
 }
-
  
 function moveRandomEnemy(enemyArr){
 
-    
     setInterval(function(){
 
-
-
         let movingEnemyIndex = getRandomInt(1000) //index of movingEnemy in Enemy Array
-       let  movingEnemy = enemyArr[movingEnemyIndex] // the instance of the Enemy Class that is moving
+        let movingEnemy = enemyArr[movingEnemyIndex] // the instance of the Enemy Class that is moving
         movingEnemy.moveLeft()
-
+        
+        
         checkEnemyCollsion(player,movingEnemy,movingEnemyIndex,enemyArr)
         
         checkBulletCollsion(bullet,movingEnemy,movingEnemyIndex,enemyArr)
     
         checkEnemyOffScreen(movingEnemy,movingEnemyIndex,enemyArr)
-            
-  
-        //console.log(movingEnemy)
         return movingEnemy
         
     },1000)
 }
-
 
 function checkEnemyOffScreen(movingEnemy,movingEnemyIndex,enemyArr){
     setInterval(function(){
@@ -613,9 +592,8 @@ function checkEnemyOffScreen(movingEnemy,movingEnemyIndex,enemyArr){
     },500)
 }
 
-
 function checkBulletCollsion(bulletEl,enemyEl,movingEnemyIndex,enemyArr){
-    //console.log(movingEnemyIndex)
+    
     setInterval(function(){
         
         const left =0
@@ -631,36 +609,33 @@ function checkBulletCollsion(bulletEl,enemyEl,movingEnemyIndex,enemyArr){
             enemyArr[movingEnemyIndex].hideVisibility()
             enemyArr.splice(movingEnemyIndex, 2)
             console.log('BULLLLLLEEEEEETTTTTT HIIIIIIIIIITTTTTT')
-       
             
         } else{console.log()}
         console.log(enemyArr.length)
+
     },200)
     
 }
-    
-
 
 function checkEnemyCollsion(playerEl,enemyEl,movingEnemyIndex,enemyArr){
+
     setInterval(function(){
+
         let enemyVisiblity = enemyArr[movingEnemyIndex].getVisibility()
+
         let playerPos =  playerEl.getPosition()
         let enemyPos =  enemyEl.getPosition()
-        //console.log((enemyArr[movingEnemyIndex]))
-       //  console.log('playerPos [xL,xR,yT,yB]',playerPos,'EnemyPs [xL,xR,yT,yB]',enemyPos)
+
+
+        
+        //[xL,xR,yT,yB]
         if((enemyVisiblity === 'visible')&&((enemyPos[0]< playerPos[1]) && (enemyPos[1]> playerPos[0]))&&(enemyPos[3])>playerPos[2] && playerPos[2]<enemyPos[3]){
-            //if the left of the enemy 
-            //console.log('Player Hit')
+
             loseLife(heartsList)
 
         } else{console.log()}
+    
     },200)
-}
-
-
-function getRandomInt(range){
-    const randoInt = Math.floor(Math.random(0)*range)
-    return randoInt
 }
 
 function updatePoints(incrementVal){
@@ -671,27 +646,34 @@ function updatePoints(incrementVal){
 }
 
 function loseLife(lifeArray){
+    
     let lastEl = lifeArray.length -1
-  //  lifeArray[lastEl].style.visibility = 'hidden'
-  lifeArray[lastEl].style.visibility = 'hidden'
+  
+    lifeArray[lastEl].style.visibility = 'hidden'
     lifeArray.pop()
+    
     player.lives = player.lives - 1
     console.log(lifeArray[lastEl])
+    
     checkDead()
+
 }
 
 function checkDead(){
     
     if(player.lives === 0){
-        console.log(player.lives,'GAMEOVER')
+
+        console.log('Player Lives: ',player.lives,' : GAMEOVER')
+        
         runEndScreen()
         
     }
-    }
- 
+}
 
 function runEndScreen(){
+
     outroSadSong.play()
+    
     let endingScreen = document.createElement('div')
         endingScreen.setAttribute('id','endingScreen')
         endingScreen.style.position = 'absolute'
@@ -720,3 +702,7 @@ function runEndScreen(){
         })
 }
 
+function getRandomInt(range){
+    const randoInt = Math.floor(Math.random(0)*range)
+    return randoInt
+}
