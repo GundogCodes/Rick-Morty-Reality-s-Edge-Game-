@@ -326,7 +326,7 @@ class Bullet{
     
 }
 
-/*--------------------------------------------------------------- constants ---------------------------------------------------------------*/
+/*--------------------------------------------------------------- CONSTANTS ---------------------------------------------------------------*/
 
 //GAME-OBJECTS
 const player = new Player()
@@ -348,7 +348,7 @@ const portal ="https://png2.cleanpng.com/sh/65766dc12337e46f52129ccc6c179058/L0K
 const fart ="https://png2.cleanpng.com/sh/e19c8c9a264f5c59d30a6113d7d37843/L0KzQYm3VMA1N6ttj5H0aYP2gLBuTgJqa5wyi9N3Y3join7tgf4uaaN5RdVxYX7xdb20UcAyNZJpjd59LYP6eb60kvlkc15mhtY2bXB1hMq0VfFkPWE6fdMCMkbpdYK1UsIxOGI7TKg6NUK1SIe4VcQ3PGc9T5D5bne=/kisspng-rick-sanchez-fan-art-channel-101-adult-swim-rick-and-morty-5ac505ea726fe1.2200164615228615464687.png"
 const gunList = [portal,fart]
 
-//MUSIC
+/*--------------------------------------------------------------- MUSIC ---------------------------------------------------------------*/
 const introSong = new Audio("./music/intro.mp3")
 const getShwifty = new Audio("./music/getShwifty.mp3")
 const goodbyeMoonmen = new Audio("./music/goodByeMoonmen.mp3")
@@ -409,13 +409,13 @@ const headShowUsWhatYouGot = new Audio("./music/headShowUsWhatYouGot.mp3")
 const headSeason = new Audio("./music/headTheresOneEverySeason.mp3")
 const headSounds = [headBoo,headShowMeWhatYouGot,headShowMeWhatYouGot,headShowUsWhatYouGot,headSeason]
 
-/*--------------------------------------------------------------- state variables---------------------------------------------------------------*/
+/*--------------------------------------------------------------- STATE VARIABLES ---------------------------------------------------------------*/
 
 let playerPoints;
 let playerName;
 let enemyList;
 
-/*--------------------------------------------------------------- cached elements ---------------------------------------------------------------*/
+/*--------------------------------------------------------------- CACHED ElEMENTS ---------------------------------------------------------------*/
 //MAIN
 const main = document.querySelector('main')
 //BUTTONS
@@ -431,7 +431,7 @@ const livesEl4 = document.getElementById('heart4')
 const livesEl5 = document.getElementById('heart5')
 const heartsList = [livesEl1,livesEl2,livesEl3,livesEl4,livesEl5]
 
-/*--------------------------------------------------------------- event listeners ---------------------------------------------------------------*/
+/*--------------------------------------------------------------- EVENT LISTENERS ---------------------------------------------------------------*/
 //BACKGROUND
 let i = 0 
 changeBackground.addEventListener('click',function(){
@@ -499,12 +499,12 @@ window.addEventListener('keydown',function(e){
     
 })
 
-/*--------------------------------------------------------------- functions ---------------------------------------------------------------*/
+/*--------------------------------------------------------------- FUNCTIONS ---------------------------------------------------------------*/
 
-init()
+startScreen()
 
 function init(){
-   // introSong.play()
+    introSong.play()
     enemyList = []
     playerPoints = 0
     player.lives = 5
@@ -518,7 +518,7 @@ function init(){
     heart.style.visibility ='visible'
    }
     
-    playerName = startScreen()
+    
      
      runGame()
      
@@ -527,7 +527,8 @@ function init(){
 function runGame(){
 
     let enemyList  = createEnemies()
-    let movingEnemyOb = moveRandomEnemy(enemyList)
+     moveRandomEnemy(enemyList)
+
 
 }
 
@@ -563,7 +564,7 @@ function startScreen(){
         console.log('User chooses: ',playerName)
         player.setName(playerName)
         document.querySelector('body').removeChild(x)
-
+        init()
 })
     
 }
@@ -606,14 +607,14 @@ function createEnemies(){
  
 function moveRandomEnemy(enemyArr){
 
-    setInterval(function(){
+   let EnemyTimer = setInterval(function(){
 
         let movingEnemyIndex = getRandomInt(1000) //index of movingEnemy in Enemy Array
         let movingEnemy = enemyArr[movingEnemyIndex] // the instance of the Enemy Class that is moving
         movingEnemy.moveLeft()
 
         if(movingEnemy.name ==='glomflomite'){
-            let randoNum = getRandomInt(10)
+            let randoNum = getRandomInt(12)
             glomSounds[randoNum].play()
         }else if(movingEnemy.name === 'jerry'){
             let randoNum = getRandomInt(12)
@@ -627,16 +628,16 @@ function moveRandomEnemy(enemyArr){
             headSounds[randoNum].play()
 
         }
-        
-        
-        checkEnemyCollsion(player,movingEnemy,movingEnemyIndex,enemyArr)
-        
-        checkBulletCollsion(bullet,movingEnemy,movingEnemyIndex,enemyArr)
+    checkEnemyCollsion(player,movingEnemy,movingEnemyIndex,enemyArr)
     
-        checkEnemyOffScreen(movingEnemy,movingEnemyIndex,enemyArr)
-        return [movingEnemy,movingEnemyIndex]
+    checkBulletCollsion(bullet,movingEnemy,movingEnemyIndex,enemyArr)
+
+    checkEnemyOffScreen(movingEnemy,movingEnemyIndex,enemyArr)
+        
+        return movingEnemy
         
     },1000)
+    
 }
 
 function checkEnemyOffScreen(movingEnemy){
@@ -734,7 +735,8 @@ function checkDead(){
 }
 
 function runEndScreen(){
-
+    enemyList = []
+    introSong.pause()
     outroSadSong.play()
     
     let endingScreen = document.createElement('div')
@@ -760,7 +762,7 @@ function runEndScreen(){
             document.querySelector('body').removeChild(endingScreen)
             document.getElementById('pointsCounter').innerText ="0"
             outroSadSong.pause()
-            init()
+            startScreen()
 
         })
 }
