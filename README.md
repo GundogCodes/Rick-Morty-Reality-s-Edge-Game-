@@ -41,14 +41,35 @@ https://png2.cleanpng.com/sh/02003aea150469d7cc6bbea8448a7096/L0KzQYm3V8E3N5D7i5
 hitRickPNG:
 https://png2.cleanpng.com/sh/af0cc0734be612f642d690288074f98a/L0KzQYm3VcExN5dwj5H0aYP2gLBuTgJqa5wyi9N3Y3join77TgNpcaN5Rd94coT8PcT0igRpNaF0e91udD3wf8P7mgMudZZqRadqZkTpSYa4UvJmP5Y6RqI5NEG0QYi9UcUzPmE1TKI9OUG6SYm1kP5o/kisspng-rick-sanchez-t-shirt-morty-smith-pocket-mortys-mee-5af4f9512be7e5.0041117615260040491798.png
 
-backgroundJPEG:
+1backgroundJPEG:
 
 https://wallup.net/wp-content/uploads/2017/11/17/271175-Rick_and_Morty.jpg
+
+2backgroundGIF:
+https://sm.ign.com/ign_ap/screenshot/default/she-store_z42d.gif
+
+3BackgroundGIF:
+https://www.pixelstalk.net/wp-content/uploads/images6/Backgrounds-Steven-Universe.gif
+
+4BackgroundGIF:
+https://cutewallpaper.org/25/anime-raining-wallpaper-gif/serendipity-%E2%80%94-anime-rain.gif
+
+5BackgroungGIF:
+https://art.ngfiles.com/images/2516000/2516242_vulpsvulps_amphibia.gif?f1652396191
+
+6BackgroungGIF:
+https://cdna.artstation.com/p/assets/images/images/020/624/916/original/maze-of-pines-portalgif-final.gif?1568543958
+
+7BackgroundGIF:
+https://i.pinimg.com/originals/71/7a/d9/717ad9268a58b0f92a24f39afb817d98.gif
 
 gromflomitePNG:
 https://static.wikia.nocookie.net/rickandmorty/images/4/47/Micheal.png
 
-rickAndMortyStartitngScreen: https://www.cleanpng.com/png-sideblog-cartoon-illustration-human-behavior-chara-7151307/\
+
+
+
+rickAndMortyStartingScreen: https://www.cleanpng.com/png-sideblog-cartoon-illustration-human-behavior-chara-7151307/\
 
 https://png2.cleanpng.com/sh/697e54f06cdac5f9584e1d6b5a0a9bf1/L0KzQYq3VME3N6h1e5H0aYP2gLBuTgNqbJZnhNHwLXPkgsX2jB4ucZ1xjeV9cnH3ebF1Tfh2dZJzRdRuaHH5ebF5TfNpaaNmReRyY3uwcbBrTf1weqVARdh4cj3kPbn8jvRzbZUykddqcoOwebW0kvVidJ1ARd42NXPlRbXshvUzOmJreag3MEG2R4eAUMkyPWY6TKQ7OUe3QYSCWL5xdpg=/kisspng-sideblog-cartoon-illustration-human-behavior-chara-rick-and-morty-for-a-hundred-years-id-really-l-5cb5defe221fa6.0137670915554229741398.png
 

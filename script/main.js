@@ -265,7 +265,7 @@ class Enemy{
 class Bullet{
     constructor(){  
         this.element = document.createElement('img')
-        this.element.src = "https://png2.cleanpng.com/sh/6a09d6e41c4cf8e80e2bf8b9cf1810da/L0KzQYm3VsEzN6tBhJH0aYP2gLBuTgJqa5wyi9N3Y3join70jCJ1gV54hdt9aD3pcbA0ggJ1NaVqhNdBaYPsf7A0kBhwf146eqNvN0C8c7LrUPRjOF87SqI9MUa8RYK8Usg4QGg2SKICMEi7PsH1h5==/kisspng-rick-sanchez-morty-smith-fan-art-television-show-5b1f709cad0db0.6204169515287871007088.png"
+        this.element.src = "https://png2.cleanpng.com/sh/65766dc12337e46f52129ccc6c179058/L0KzQYq3UcAyN5dqkpH0aYP2gLBuTgJqa5wyi9N3Y3join70jCJ1gV54hdt9aD3sfbLuhb1xd6N5ed58LXnxPbfwgCRqd58yiNH7dHHvPcPwgBsuaZ9pRd94coT8Pbj5hfVvNWZoStQEYke3R7WBVsExNmI9SqQDOUe4QYa7VsM3OWg2Tqc6NEKxgLBu/kisspng-rick-sanchez-morty-smith-image-portals-in-fiction-portal-rick-and-morty-green-5c2b9b747d8610.1822897515463617165142.png"
         this.element.style.width = '50px'
         this.element.style.height = '50px'
         this.element.style.visibility = 'hidden'
@@ -333,13 +333,31 @@ class Bullet{
 
 /*--------------------------------------------------------------- constants ---------------------------------------------------------------*/
 
-//PLAYER
+//GAME-OBJECTS
 const player = new Player()
 const bullet = new Bullet()
+//BACKGROUND IMGs
+const b1 = "https://wallup.net/wp-content/uploads/2017/11/17/271175-Rick_and_Morty.jpg"
+const b2 = "https://sm.ign.com/ign_ap/screenshot/default/she-store_z42d.gif"
+const b3= "https://www.pixelstalk.net/wp-content/uploads/images6/Backgrounds-Steven-Universe.gif"
+const b4="https://cutewallpaper.org/25/anime-raining-wallpaper-gif/serendipity-%E2%80%94-anime-rain.gif"
+const b5= "https://art.ngfiles.com/images/2516000/2516242_vulpsvulps_amphibia.gif?f1652396191"
+const b6 ="https://cdna.artstation.com/p/assets/images/images/020/624/916/original/maze-of-pines-portalgif-final.gif?1568543958"
+const b7="https://i.pinimg.com/originals/71/7a/d9/717ad9268a58b0f92a24f39afb817d98.gif"
 
+const backgroundList = [b1,b2,b3,b4,b5,b6,b7]
+
+//BULLET IMGS
+const fart="https://png2.cleanpng.com/sh/6a09d6e41c4cf8e80e2bf8b9cf1810da/L0KzQYm3VsEzN6tBhJH0aYP2gLBuTgJqa5wyi9N3Y3join70jCJ1gV54hdt9aD3pcbA0ggJ1NaVqhNdBaYPsf7A0kBhwf146eqNvN0C8c7LrUPRjOF87SqI9MUa8RYK8Usg4QGg2SKICMEi7PsH1h5==/kisspng-rick-sanchez-morty-smith-fan-art-television-show-5b1f709cad0db0.6204169515287871007088.png"
+const portal = "https://png2.cleanpng.com/sh/65766dc12337e46f52129ccc6c179058/L0KzQYq3UcAyN5dqkpH0aYP2gLBuTgJqa5wyi9N3Y3join70jCJ1gV54hdt9aD3sfbLuhb1xd6N5ed58LXnxPbfwgCRqd58yiNH7dHHvPcPwgBsuaZ9pRd94coT8Pbj5hfVvNWZoStQEYke3R7WBVsExNmI9SqQDOUe4QYa7VsM3OWg2Tqc6NEKxgLBu/kisspng-rick-sanchez-morty-smith-image-portals-in-fiction-portal-rick-and-morty-green-5c2b9b747d8610.1822897515463617165142.png"
+const gunList = [fart,portal]
+
+//MUSIC
 const introSong = new Audio("./music/intro.mp3")
 const getShwifty = new Audio("./music/getShwifty.mp3")
 const goodbyeMoonmen = new Audio("./music/goodByeMoonmen.mp3")
+const backgroundSongs = [introSong,getShwifty,goodbyeMoonmen]
+
 const outroSadSong = new Audio("./music/introSadSong.mp3")
 const mortyFreakingOut= new Audio("./music/mortyFreakingOut.mp3")
 
@@ -359,7 +377,7 @@ let playerName;
 let enemyList =[]
 /*---------------------------------------------------------------cached elements  ---------------------------------------------------------------*/
 
-const characterChangeBtn = document.getElementById('characterChange')
+const changeBackground = document.getElementById('changeBackground')
 const changeWeaponBtn = document.getElementById('changeWeapon')
 const musicToggleBtn = document.getElementById('musicToggle')
 const pointsCounter = document.getElementById('pointsCounter')
@@ -369,9 +387,27 @@ const livesEl3 = document.getElementById('heart3')
 const livesEl4 = document.getElementById('heart4')
 const livesEl5 = document.getElementById('heart5')
 const heartsList = [livesEl1,livesEl2,livesEl3,livesEl4,livesEl5]
+const main = document.querySelector('main')
 
 /*--------------------------------------------------------------- event listeners ---------------------------------------------------------------*/
+let i = 0 
+changeBackground.addEventListener('click',function(){
+    i++
+    if(i===6){
+        i=0
+    }
+    main.style.backgroundImage = `url(${backgroundList[i]})`
+    
 
+})
+let j =0
+changeWeaponBtn.addEventListener('click',function(){
+    j++
+    if(j ===2){
+        j=0
+    }
+    bullet.src = `${"gunList[j]"}`
+})
 //MOVE PLAYER
 
 window.addEventListener('keydown',function(e){
@@ -430,7 +466,7 @@ init()
 
 
 function init(){
-
+   // introSong.play()
     playerPoints = 0
     player.lives = 5
     heartsList.push(livesEl1)
@@ -438,15 +474,14 @@ function init(){
     heartsList.push(livesEl3)
     heartsList.push(livesEl4)
     heartsList.push(livesEl5)
-    //const heartsList = [livesEl1,livesEl2,livesEl3,livesEl4,livesEl5]
+    
    for(let heart of heartsList){
     heart.style.visibility ='visible'
    }
     
     playerName = startScreen()
     
-
-     // player.setName('MORTY')
+     
      
      runGame()
      
@@ -454,10 +489,9 @@ function init(){
     
     
     function  runGame(){
-        
-        
+
     let enemyList  = createEnemies()
-    document.getElementById('buttonBox').addEventListener('click',moveRandomEnemy(enemyList))
+    moveRandomEnemy(enemyList)
 
     
 }
@@ -508,7 +542,7 @@ function startScreen(){
 function createEnemies(){
     const enemyNames = ['jerry','gromflomite','gazorpazorp','smwygHead']
 
-    for (let i =0; i<200; i++){
+    for (let i =0; i<1000; i++){
 
         let randoEnemy = enemyNames[getRandomInt(4)]
         let randomTopPos =getRandomInt(500)
@@ -548,14 +582,15 @@ function moveRandomEnemy(enemyArr){
 
 
 
-        let movingEnemyIndex = getRandomInt(200) //index of movingEnemy in Enemy Array
+        let movingEnemyIndex = getRandomInt(1000) //index of movingEnemy in Enemy Array
        let  movingEnemy = enemyArr[movingEnemyIndex] // the instance of the Enemy Class that is moving
         movingEnemy.moveLeft()
 
         checkEnemyCollsion(player,movingEnemy,movingEnemyIndex,enemyArr)
         
         checkBulletCollsion(bullet,movingEnemy,movingEnemyIndex,enemyArr)
-      
+    
+        checkEnemyOffScreen(movingEnemy,movingEnemyIndex,enemyArr)
             
   
         //console.log(movingEnemy)
@@ -565,6 +600,18 @@ function moveRandomEnemy(enemyArr){
 }
 
 
+function checkEnemyOffScreen(movingEnemy,movingEnemyIndex,enemyArr){
+    setInterval(function(){
+
+        let enemyPos = movingEnemy.getPosition()
+       //console.log(enemyPos)
+        if(enemyPos[0] < -100){
+
+            enemyPos[0] =1800
+        }
+
+    },500)
+}
 
 
 function checkBulletCollsion(bulletEl,enemyEl,movingEnemyIndex,enemyArr){
@@ -587,7 +634,7 @@ function checkBulletCollsion(bulletEl,enemyEl,movingEnemyIndex,enemyArr){
        
             
         } else{console.log()}
-        //console.log(enemyArr.length)
+        console.log(enemyArr.length)
     },200)
     
 }
@@ -644,6 +691,7 @@ function checkDead(){
  
 
 function runEndScreen(){
+    outroSadSong.play()
     let endingScreen = document.createElement('div')
         endingScreen.setAttribute('id','endingScreen')
         endingScreen.style.position = 'absolute'
@@ -666,7 +714,9 @@ function runEndScreen(){
         document.getElementById('playAgain').addEventListener('click',function(){
             document.querySelector('body').removeChild(endingScreen)
             document.getElementById('pointsCounter').innerText ="0"
+            outroSadSong.pause()
             init()
 
         })
 }
+
