@@ -327,7 +327,9 @@ class Bullet{
 }
 
 /*---------------------------------------------------------------------- CONSTANTS ----------------------------------------------------------------------*/
+enemyOb ={
 
+}
 //GAME-OBJECTS
 const player = new Player()
 const bullet = new Bullet()
@@ -540,6 +542,7 @@ function runGame(){
 
     let enemyList  = createEnemies()
     moveRandomEnemy(enemyList)
+    checkCollisons()
 
 
 }
@@ -628,23 +631,37 @@ function moveRandomEnemy(enemyArr){
             }
             let movingEnemyIndex = getRandomInt(1000) //index of movingEnemy in Enemy Array
             let movingEnemy = enemyArr[movingEnemyIndex] // the instance of the Enemy Class that is moving
+            enemyOb[movingEnemyIndex] = movingEnemy
+           // console.log(enemyOb)
             movingEnemy.moveLeft()
             
             //Play sound:
             if(movingEnemy.name ==='glomflomite'){
                 let randoNum = getRandomInt(18)
-                glomSounds[randoNum].play()
+                if(randoNum > glomSounds.length){}else{
+
+                    glomSounds[randoNum].play()
+                }
             }else if(movingEnemy.name === 'jerry'){
                 let randoNum = getRandomInt(18)
-                jerrySounds[randoNum].play()
+                if(randoNum>jerrySounds.length){} else{
+
+                    jerrySounds[randoNum].play()
+                }
                 
             } else if(movingEnemy.name === 'gazorpazorp'){
                 let randoNum = getRandomInt(18)
-                gazorpazorpSounds[randoNum].play()
+                if(randoNum>gazorpazorpSounds.length){}else{
+
+                    gazorpazorpSounds[randoNum].play()
+                }
 
             } else if(movingEnemy.name === 'smwygHead'){
                 let randoNum = getRandomInt(15)
-                headSounds[randoNum].play()
+                if(randoNum>headSounds){} else{
+
+                    headSounds[randoNum].play()
+                }
                 
             }
             
@@ -659,6 +676,12 @@ function moveRandomEnemy(enemyArr){
         },1000)
     
     
+}
+
+function checkCollisons(){
+    for(let movingEnemies in enemyOb){
+        console.log(movingEnemies)
+    }
 }
 
 
@@ -697,7 +720,7 @@ function checkBulletCollsion(bulletEl,enemyEl,movingEnemyIndex,enemyArr){
             points.volume = 0.5
             
         } else{console.log()}
-        console.log(enemyArr.length)
+        //console.log(enemyArr.length)
 
     },200)
     
