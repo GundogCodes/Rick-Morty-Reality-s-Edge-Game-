@@ -385,11 +385,17 @@ const glomHereIGoKilling = new Audio("./music/glomHereIGoKillingAgain.mp3")
 const glomHeyRick = new Audio("./music/glomHeyRick.mp3")
 const glomLooksDeadly = new Audio("./music/glomThisLooksDeadly.mp3")
 const glomSounds =[glomHAHAHA,glomHereIGoKilling,glomHeyRick,glomLooksDeadly]
+for(let glomSound of glomSounds ){
+    glomSound.volume =0.5
+}
 
 //gazorpazorp
 const gazorpazorpIHateVideogames = new Audio("./music/gazorpazorpIHateVideoGames.mp3")
 const gazorpazorpIThinkItsTime= new Audio("./music/gazorpazorpIThinkItsTime.mp3")
 const gazorpazorpSounds =[gazorpazorpIHateVideogames,gazorpazorpIThinkItsTime]
+for(let gSound of gazorpazorpSounds ){
+    gSound.volume =0.5
+}
 
 //jerry
 
@@ -399,6 +405,10 @@ const jerryScrewYou = new Audio("./music/jerryScrewYou.mp3")
 const jerryWhatTheHell = new Audio("./music/jerryWhatTheHell.mp3")
 const jerryYouGuysSuck = new Audio("./music/jerryYouGuysSuck.mp3")
 const jerrySounds =[jerryName,jerryOooh,jerryScrewYou,jerryWhatTheHell,jerryYouGuysSuck]
+for(let jerrySound of jerrySounds ){
+    jerrySound.volume =0.5
+}
+
 
 
 //head
@@ -408,12 +418,16 @@ const headShowMeWhatYouGot = new Audio("./music/headShowMeWhatYouGot.mp3")
 const headShowUsWhatYouGot = new Audio("./music/headShowUsWhatYouGot.mp3")
 const headSeason = new Audio("./music/headTheresOneEverySeason.mp3")
 const headSounds = [headBoo,headShowMeWhatYouGot,headShowMeWhatYouGot,headShowUsWhatYouGot,headSeason]
+for(let hSounds of headSounds ){
+    hSounds.volume =0.5
+}
 
 /*--------------------------------------------------------------- STATE VARIABLES ---------------------------------------------------------------*/
 
 let playerPoints;
 let playerName;
 let enemyList;
+
 
 /*--------------------------------------------------------------- CACHED ElEMENTS ---------------------------------------------------------------*/
 //MAIN
@@ -504,7 +518,8 @@ window.addEventListener('keydown',function(e){
 startScreen()
 
 function init(){
-    introSong.play()
+    introSong.pause()
+    getShwifty.play ()
     enemyList = []
     playerPoints = 0
     player.lives = 5
@@ -533,7 +548,7 @@ function runGame(){
 }
 
 function startScreen(){
-
+    introSong.play()
     const x = document.createElement('div')
     x.setAttribute('class','startingPage')
     x.style.width = '1800px'
@@ -606,37 +621,40 @@ function createEnemies(){
 }
  
 function moveRandomEnemy(enemyArr){
-
-   let EnemyTimer = setInterval(function(){
-
-        let movingEnemyIndex = getRandomInt(1000) //index of movingEnemy in Enemy Array
-        let movingEnemy = enemyArr[movingEnemyIndex] // the instance of the Enemy Class that is moving
-        movingEnemy.moveLeft()
-
-        if(movingEnemy.name ==='glomflomite'){
-            let randoNum = getRandomInt(12)
-            glomSounds[randoNum].play()
-        }else if(movingEnemy.name === 'jerry'){
-            let randoNum = getRandomInt(12)
-            jerrySounds[randoNum].play()
+  
+        let EnemyTimer = setInterval(function(){
             
-        } else if(movingEnemy.name === 'gazorpazorp'){
-            let randoNum = getRandomInt(18)
-            gazorpazorpSounds[randoNum].play()
-        } else if(movingEnemy.name === 'smwygHead'){
-            let randoNum = getRandomInt(10)
-            headSounds[randoNum].play()
-
-        }
-    checkEnemyCollsion(player,movingEnemy,movingEnemyIndex,enemyArr)
+            let movingEnemyIndex = getRandomInt(1000) //index of movingEnemy in Enemy Array
+            let movingEnemy = enemyArr[movingEnemyIndex] // the instance of the Enemy Class that is moving
+            movingEnemy.moveLeft()
+            
+            if(movingEnemy.name ==='glomflomite'){
+                let randoNum = getRandomInt(18)
+                glomSounds[randoNum].play()
+            }else if(movingEnemy.name === 'jerry'){
+                let randoNum = getRandomInt(18)
+                jerrySounds[randoNum].play()
+                
+            } else if(movingEnemy.name === 'gazorpazorp'){
+                let randoNum = getRandomInt(18)
+                gazorpazorpSounds[randoNum].play()
+            } else if(movingEnemy.name === 'smwygHead'){
+                let randoNum = getRandomInt(15)
+                headSounds[randoNum].play()
+                
+            }
+            checkEnemyCollsion(player,movingEnemy,movingEnemyIndex,enemyArr)
+            
+            checkBulletCollsion(bullet,movingEnemy,movingEnemyIndex,enemyArr)
+            
+            checkEnemyOffScreen(movingEnemy,movingEnemyIndex,enemyArr)
+            if (player.lives === 0){
+                clearInterval(EnemyTimer)
+            }
+            return movingEnemy
+            
+        },1000)
     
-    checkBulletCollsion(bullet,movingEnemy,movingEnemyIndex,enemyArr)
-
-    checkEnemyOffScreen(movingEnemy,movingEnemyIndex,enemyArr)
-        
-        return movingEnemy
-        
-    },1000)
     
 }
 
@@ -736,7 +754,9 @@ function checkDead(){
 
 function runEndScreen(){
     enemyList = []
+   
     introSong.pause()
+    getShwifty.pause()
     outroSadSong.play()
     
     let endingScreen = document.createElement('div')
