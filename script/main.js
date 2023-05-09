@@ -1,5 +1,5 @@
 console.log('works!!!')
-/*---------------------------------------------------------- CLASSES ----------------------------------------------------------*/ 
+/*---------------------------------------------------------------------- CLASSES ----------------------------------------------------------------------*/ 
 class Player{
 
     constructor(){
@@ -326,7 +326,7 @@ class Bullet{
     
 }
 
-/*--------------------------------------------------------------- CONSTANTS ---------------------------------------------------------------*/
+/*---------------------------------------------------------------------- CONSTANTS ----------------------------------------------------------------------*/
 
 //GAME-OBJECTS
 const player = new Player()
@@ -348,13 +348,15 @@ const portal ="https://png2.cleanpng.com/sh/65766dc12337e46f52129ccc6c179058/L0K
 const fart ="https://png2.cleanpng.com/sh/e19c8c9a264f5c59d30a6113d7d37843/L0KzQYm3VMA1N6ttj5H0aYP2gLBuTgJqa5wyi9N3Y3join7tgf4uaaN5RdVxYX7xdb20UcAyNZJpjd59LYP6eb60kvlkc15mhtY2bXB1hMq0VfFkPWE6fdMCMkbpdYK1UsIxOGI7TKg6NUK1SIe4VcQ3PGc9T5D5bne=/kisspng-rick-sanchez-fan-art-channel-101-adult-swim-rick-and-morty-5ac505ea726fe1.2200164615228615464687.png"
 const gunList = [portal,fart]
 
-/*--------------------------------------------------------------- MUSIC ---------------------------------------------------------------*/
+/*------------------------------------------------------------------------ MUSIC ------------------------------------------------------------------------*/
 const introSong = new Audio("./music/intro.mp3")
 const getShwifty = new Audio("./music/getShwifty.mp3")
 const goodbyeMoonmen = new Audio("./music/goodByeMoonmen.mp3")
 const backgroundSongs = [introSong,getShwifty,goodbyeMoonmen]
-const portalGun = new Audio("./music/portalSoundEffect.mp3")
 
+const portalGun = new Audio("./music/portalSoundEffect.mp3")
+const points = new Audio("./music/increasePoints.mp3")
+const hurt = new Audio("./music/hurt.mp3")
 const outroSadSong = new Audio("./music/introSadSong.mp3")
 
 //morty
@@ -409,8 +411,6 @@ for(let jerrySound of jerrySounds ){
     jerrySound.volume =0.5
 }
 
-
-
 //head
 
 const headBoo = new Audio("./music/headBoo.mp3")
@@ -422,14 +422,13 @@ for(let hSounds of headSounds ){
     hSounds.volume =0.5
 }
 
-/*--------------------------------------------------------------- STATE VARIABLES ---------------------------------------------------------------*/
+/*------------------------------------------------------------------- STATE VARIABLES -------------------------------------------------------------------*/
 
 let playerPoints;
 let playerName;
 let enemyList;
 
-
-/*--------------------------------------------------------------- CACHED ElEMENTS ---------------------------------------------------------------*/
+/*------------------------------------------------------------------- CACHED ElEMENTS -------------------------------------------------------------------*/
 //MAIN
 const main = document.querySelector('main')
 //BUTTONS
@@ -445,7 +444,7 @@ const livesEl4 = document.getElementById('heart4')
 const livesEl5 = document.getElementById('heart5')
 const heartsList = [livesEl1,livesEl2,livesEl3,livesEl4,livesEl5]
 
-/*--------------------------------------------------------------- EVENT LISTENERS ---------------------------------------------------------------*/
+/*------------------------------------------------------------------- EVENT LISTENERS -------------------------------------------------------------------*/
 //BACKGROUND
 let i = 0 
 changeBackground.addEventListener('click',function(){
@@ -518,8 +517,8 @@ window.addEventListener('keydown',function(e){
 startScreen()
 
 function init(){
-    introSong.pause()
-    getShwifty.play ()
+   // introSong.pause()
+   // getShwifty.play()
     enemyList = []
     playerPoints = 0
     player.lives = 5
@@ -532,10 +531,8 @@ function init(){
    for(let heart of heartsList){
     heart.style.visibility ='visible'
    }
-    
-    
-     
-     runGame()
+
+    runGame()
      
 }
     
@@ -548,19 +545,20 @@ function runGame(){
 }
 
 function startScreen(){
-    introSong.play()
-    const x = document.createElement('div')
-    x.setAttribute('class','startingPage')
-    x.style.width = '1800px'
-    x.style.height = '1000px'
-    x.style.display = 'flex'
-    x.style.flexDirection = 'column'
-    x.style.justifyContent = 'center'
-    x.style.alignItems = 'center'
-    x.style.position = 'absolute'
-    x.style.left = '0'
-    x.style.borderRadius = '15px'
-    x.innerHTML = `<h1 id ='startingHeader'>RICK AND MORTY: REALITY'S EDGE</h1>
+   // introSong.play()
+    const startScreen = document.createElement('div')
+    startScreen.setAttribute('class','startingPage')
+    startScreen.style.width = '1800px'
+    startScreen.style.height = '1000px'
+    startScreen.style.display = 'flex'
+    startScreen.style.flexDirection = 'column'
+    startScreen.style.justifyContent = 'center'
+    startScreen.style.alignItems = 'center'
+    startScreen.style.position = 'absolute'
+    startScreen.style.left = '0'
+    startScreen.style.borderRadius = '15px'
+
+    startScreen.innerHTML = `<h1 id ='startingHeader'>RICK AND MORTY: REALITY'S EDGE</h1>
     <h2 id = 'choosePlayer'>Choose Your Player</h2>
     <h4>Use Arrow Keys to Move and 'F' Key to Shoot, Goodluck!</h4>
     <img id='startingImg'style = "scale:0.8;"src ="https://png2.cleanpng.com/sh/697e54f06cdac5f9584e1d6b5a0a9bf1/L0KzQYq3VME3N6h1e5H0aYP2gLBuTgNqbJZnhNHwLXPkgsX2jB4ucZ1xjeV9cnH3ebF1Tfh2dZJzRdRuaHH5ebF5TfNpaaNmReRyY3uwcbBrTf1weqVARdh4cj3kPbn8jvRzbZUykddqcoOwebW0kvVidJ1ARd42NXPlRbXshvUzOmJreag3MEG2R4eAUMkyPWY6TKQ7OUe3QYSCWL5xdpg=/kisspng-sideblog-cartoon-illustration-human-behavior-chara-rick-and-morty-for-a-hundred-years-id-really-l-5cb5defe221fa6.0137670915554229741398.png">
@@ -570,15 +568,15 @@ function startScreen(){
     </div>
     <p id = 'Gunish'>Gunish<p>`
 
-    x.style.color = 'white'
-    x.style.backgroundColor = 'blue'
-    document.querySelector('body').appendChild(x)
+    startScreen.style.color = 'white'
+    startScreen.style.backgroundColor = 'blue'
+    document.querySelector('body').appendChild(startScreen)
 
     document.getElementById('buttonBox').addEventListener('click',function(e){
         playerName = e.target.innerText
         console.log('User chooses: ',playerName)
         player.setName(playerName)
-        document.querySelector('body').removeChild(x)
+        document.querySelector('body').removeChild(startScreen)
         init()
 })
     
@@ -591,14 +589,16 @@ function createEnemies(){
     for (let i =0; i<1000; i++){
 
         let randoEnemy = enemyNames[getRandomInt(4)]
-        let randomTopPos =getRandomInt(500)
         let leftPos = 1600
+        let randomTopPos = getRandomInt(500)
 
         let newEnemyDiv = document.createElement('img')
+
         newEnemyDiv.style.height = '100px'
         newEnemyDiv.style.width = '100px'
         newEnemyDiv.style.position = 'absolute'
         newEnemyDiv.left = '1000px'
+
         if(randoEnemy === ('smwygHead')){
            newEnemyDiv.src = "https://png2.cleanpng.com/sh/af0cc0734be612f642d690288074f98a/L0KzQYm3VcExN5dwj5H0aYP2gLBuTgJqa5wyi9N3Y3join77TgNpcaN5Rd94coT8PcT0igRpNaF0e91udD3wf8P7mgMudZZqRadqZkTpSYa4UvJmP5Y6RqI5NEG0QYi9UcUzPmE1TKI9OUG6SYm1kP5o/kisspng-rick-sanchez-t-shirt-morty-smith-pocket-mortys-mee-5af4f9512be7e5.0041117615260040491798.png"
            newEnemyDiv.style.transform = 'rotateY(180deg)'
@@ -622,12 +622,13 @@ function createEnemies(){
  
 function moveRandomEnemy(enemyArr){
   
-        let EnemyTimer = setInterval(function(){
+        let enemyTimer = setInterval(function(){
             
             let movingEnemyIndex = getRandomInt(1000) //index of movingEnemy in Enemy Array
             let movingEnemy = enemyArr[movingEnemyIndex] // the instance of the Enemy Class that is moving
             movingEnemy.moveLeft()
             
+            //Play sound:
             if(movingEnemy.name ==='glomflomite'){
                 let randoNum = getRandomInt(18)
                 glomSounds[randoNum].play()
@@ -638,19 +639,21 @@ function moveRandomEnemy(enemyArr){
             } else if(movingEnemy.name === 'gazorpazorp'){
                 let randoNum = getRandomInt(18)
                 gazorpazorpSounds[randoNum].play()
+
             } else if(movingEnemy.name === 'smwygHead'){
                 let randoNum = getRandomInt(15)
                 headSounds[randoNum].play()
                 
+            }
+            if (player.lives < 0){
+                clearInterval(enemyTimer)
             }
             checkEnemyCollsion(player,movingEnemy,movingEnemyIndex,enemyArr)
             
             checkBulletCollsion(bullet,movingEnemy,movingEnemyIndex,enemyArr)
             
             checkEnemyOffScreen(movingEnemy,movingEnemyIndex,enemyArr)
-            if (player.lives === 0){
-                clearInterval(EnemyTimer)
-            }
+            
             return movingEnemy
             
         },1000)
@@ -685,9 +688,12 @@ function checkBulletCollsion(bulletEl,enemyEl,movingEnemyIndex,enemyArr){
 
         if(((enemyPos[left]< bulletPos[right]) && (enemyPos[right]> bulletPos[left]))&&((enemyPos[bottom])>bulletPos[top]) && (bulletPos[top]<enemyPos[bottom]&&(bulletPos[bottom]> enemyPos[top]))){
             updatePoints(100)
+            
             enemyArr[movingEnemyIndex].hideVisibility()
             enemyArr.splice(movingEnemyIndex, 2)
             console.log('BULLLLLLEEEEEETTTTTT HIIIIIIIIIITTTTTT')
+            points.play()
+            points.volume = 0.5
             
         } else{console.log()}
         console.log(enemyArr.length)
@@ -711,7 +717,7 @@ function checkEnemyCollsion(playerEl,enemyEl,movingEnemyIndex,enemyArr){
         if((enemyVisiblity === 'visible')&&((enemyPos[0]< playerPos[1]) && (enemyPos[1]> playerPos[0]))&&(enemyPos[3])>playerPos[2] && playerPos[2]<enemyPos[3]){
 
             loseLife(heartsList)
-
+            hurt.play()
         } else{console.log()}
     
     },200)
@@ -743,7 +749,7 @@ function loseLife(lifeArray){
 
 function checkDead(){
     
-    if(player.lives === 0){
+    if(player.lives < 0){
 
       //  console.log('Player Lives: ',player.lives,' : GAMEOVER')
         
@@ -755,9 +761,9 @@ function checkDead(){
 function runEndScreen(){
     enemyList = []
    
-    introSong.pause()
-    getShwifty.pause()
-    outroSadSong.play()
+   // introSong.pause()
+    //getShwifty.pause()
+   // outroSadSong.play()
     
     let endingScreen = document.createElement('div')
         endingScreen.setAttribute('id','endingScreen')
