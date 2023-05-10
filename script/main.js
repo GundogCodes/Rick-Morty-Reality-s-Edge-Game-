@@ -295,7 +295,7 @@ class Bullet{
          let timer = setInterval(() =>{
    
              if(xL>1550){
-                this.element.style.visibility = 'hidden'
+                //this.element.style.visibility = 'hidden'
                  xL = 1550
                  clearInterval(timer)
                 }
@@ -429,6 +429,8 @@ for(let hSounds of headSounds ){
 let playerPoints;
 let playerName;
 let enemyList;
+let movingEnemyIndex 
+let movingEnemy 
 
 /*------------------------------------------------------------------- CACHED ElEMENTS -------------------------------------------------------------------*/
 //MAIN
@@ -541,9 +543,12 @@ function init(){
 function runGame(){
 
     let enemyList  = createEnemies()
+    
     moveRandomEnemy(enemyList)
-    checkCollisons()
-
+   
+    checkBulletCollsion(bullet,movingEnemy,movingEnemyIndex,enemyList)
+    
+    checkEnemyCollsion(player,movingEnemy,movingEnemyIndex,enemyList)
 
 }
 
@@ -624,14 +629,15 @@ function createEnemies(){
 }
  
 function moveRandomEnemy(enemyArr){
-  
-        let enemyTimer = setInterval(function(){
-            if (player.lives < 0){
-                clearInterval(enemyTimer)
-            }
-            let movingEnemyIndex = getRandomInt(1000) //index of movingEnemy in Enemy Array
-            let movingEnemy = enemyArr[movingEnemyIndex] // the instance of the Enemy Class that is moving
-            enemyOb[movingEnemyIndex] = movingEnemy
+    
+    let enemyTimer = setInterval(function(){
+        if (player.lives < 0){
+            clearInterval(enemyTimer)
+        }
+
+            movingEnemyIndex = getRandomInt(1000) //index of movingEnemy in Enemy Array
+            movingEnemy = enemyArr[movingEnemyIndex] // the instance of the Enemy Class that is moving
+
            // console.log(enemyOb)
             movingEnemy.moveLeft()
             
@@ -658,32 +664,20 @@ function moveRandomEnemy(enemyArr){
 
             } else if(movingEnemy.name === 'smwygHead'){
                 let randoNum = getRandomInt(15)
-                if(randoNum>headSounds){} else{
+                if(randoNum>headSounds.length){} else{
 
                     headSounds[randoNum].play()
                 }
                 
             }
-            
-            checkEnemyCollsion(player,movingEnemy,movingEnemyIndex,enemyArr)
-            
-            checkBulletCollsion(bullet,movingEnemy,movingEnemyIndex,enemyArr)
-            
-            checkEnemyOffScreen(movingEnemy,movingEnemyIndex,enemyArr)
-            
-            return movingEnemy
-            
+                         
         },1000)
+        
     
     
 }
 
-function checkCollisons(){
-    for(let movingEnemies in enemyOb){
-        console.log(movingEnemies)
-    }
-}
-
+  //checkEnemyOffScreen(movingEnemy,movingEnemyIndex,enemyArr)
 
 function checkEnemyOffScreen(movingEnemy){
     setInterval(function(){
@@ -699,58 +693,65 @@ function checkEnemyOffScreen(movingEnemy){
 }
 
 function checkBulletCollsion(bulletEl,enemyEl,movingEnemyIndex,enemyArr){
-    
-    setInterval(function(){
-        
-        const left =0
-        const right = 1
-        const top = 2
-        const bottom =3
-        
-        let bulletPos =  bulletEl.getPosition()
-        let enemyPos =  enemyEl.getPosition()
 
-        if(((enemyPos[left]< bulletPos[right]) && (enemyPos[right]> bulletPos[left]))&&((enemyPos[bottom])>bulletPos[top]) && (bulletPos[top]<enemyPos[bottom]&&(bulletPos[bottom]> enemyPos[top]))){
-            updatePoints(100)
-            
-            enemyArr[movingEnemyIndex].hideVisibility()
-            enemyArr.splice(movingEnemyIndex, 2)
-            console.log('BULLLLLLEEEEEETTTTTT HIIIIIIIIIITTTTTT')
-            points.play()
-            points.volume = 0.5
-            
-        } else{console.log()}
-        //console.log(enemyArr.length)
 
-    },200)
-    
+       setInterval(() => {
+        
+           const left =0
+           const right = 1
+           const top = 2
+           const bottom =3
+           
+           let bulletPos =  bulletEl.getPosition()
+           let enemyPos =  enemyEl.getPosition()
+           
+           if(bulletPos === undefined || enemyPos === undefined){} else{
+               
+               
+               if(((enemyPos[left]< bulletPos[right]) && (enemyPos[right]> bulletPos[left]))&&((enemyPos[bottom])>bulletPos[top]) && (bulletPos[top]<enemyPos[bottom]&&(bulletPos[bottom]> enemyPos[top]))){
+                   updatePoints(100)
+                   
+                   enemyArr[movingEnemyIndex].hideVisibility()
+                   enemyArr.splice(movingEnemyIndex, 2)
+                   console.log('BULLLLLLEEEEEETTTTTT HIIIIIIIIIITTTTTT')
+                   points.play()
+                   points.volume = 0.5
+                   
+                } else{console.log()}
+                //console.log(enemyArr.length)
+            }
+            
+        }, 200) 
 }
 
 function checkEnemyCollsion(playerEl,enemyEl,movingEnemyIndex,enemyArr){
 
-    setInterval(function(){
+        setInterval(function(){
 
-        let enemyVisiblity = enemyArr[movingEnemyIndex].getVisibility()
-
-        let playerPos =  playerEl.getPosition()
-        let enemyPos =  enemyEl.getPosition()
-
-
-        
-        //[xL,xR,yT,yB]
-        if((enemyVisiblity === 'visible')&&((enemyPos[0]< playerPos[1]) && (enemyPos[1]> playerPos[0]))&&(enemyPos[3])>playerPos[2] && playerPos[2]<enemyPos[3]){
-
-            loseLife(heartsList)
-            hurt.play()
-        } else{console.log()}
+            
+            let enemyVisiblity = enemyArr[movingEnemyIndex].getVisibility()
+            
+            let playerPos =  playerEl.getPosition()
+            let enemyPos =  enemyEl.getPosition()
+            
+            if(playerPos === undefined || enemyPos === undefined || enemyVisiblity === undefined){} else{
+                
+                //[xL,xR,yT,yB]
+                if((enemyVisiblity === 'visible')&&((enemyPos[0]< playerPos[1]) && (enemyPos[1]> playerPos[0]))&&(enemyPos[3])>playerPos[2] && playerPos[2]<enemyPos[3]){
+                    
+                    loseLife(heartsList)
+                    hurt.play()
+                } else{console.log()}
+            }
+            
+        },200)
     
-    },200)
 }
 
 function updatePoints(incrementVal){
     let  points = parseInt(pointsCounter.innerHTML)
-     points = points + 100
-     playerPoints = playerPoints +100
+     points = points + incrementVal
+     playerPoints = playerPoints + incrementVal
      pointsCounter.innerHTML = points
 
 
