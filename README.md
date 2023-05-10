@@ -80,6 +80,9 @@ portal2: https://www.cleanpng.com/png-art-film-director-t-shirt-rick-and-morty-1
 
 https://png2.cleanpng.com/sh/3a28fce4c619efd659dc37898a02a595/L0KzQYm3VME3N6pqj5H0aYP2gLBuTfFzfF5rgd52LXTsgrbqlP9zNaUyi9pycoSwgrrqi71idpUyhdH7dImwRbLrVPU3aWk1e9VtOUGxRYS5V8E6O2Y2TaQ8OUC1QYO3UMUzPV91htk=/kisspng-art-film-director-t-shirt-rick-and-morty-5ad4e6a80ccd91.5327193515239021200525.png
 
+pickleRickPNG: https://www.cleanpng.com/png-rick-sanchez-morty-smith-pickle-rick-youtube-rick-1040505/
+https://banner2.cleanpng.com/20180409/jzq/kisspng-rick-sanchez-morty-smith-pickle-rick-youtube-rick-rick-and-morty-5acb1188b3adf7.996685251523257736736.jpg
+
 -----------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------Psuedocode-------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------
