@@ -545,10 +545,11 @@ function runGame(){
     let enemyList  = createEnemies()
     
     moveRandomEnemy(enemyList)
-   
+    
     checkBulletCollsion(bullet,movingEnemy,movingEnemyIndex,enemyList)
     
     checkEnemyCollsion(player,movingEnemy,movingEnemyIndex,enemyList)
+   
 
 }
 
@@ -695,7 +696,7 @@ function checkEnemyOffScreen(movingEnemy){
 function checkBulletCollsion(bulletEl,enemyEl,movingEnemyIndex,enemyArr){
 
 
-       setInterval(() => {
+       setInterval(function() {
         
            const left =0
            const right = 1
@@ -705,7 +706,7 @@ function checkBulletCollsion(bulletEl,enemyEl,movingEnemyIndex,enemyArr){
            let bulletPos =  bulletEl.getPosition()
            let enemyPos =  enemyEl.getPosition()
            
-           if(bulletPos === undefined || enemyPos === undefined){} else{
+           if(bulletPos === undefined || enemyPos === undefined){return null} else{
                
                
                if(((enemyPos[left]< bulletPos[right]) && (enemyPos[right]> bulletPos[left]))&&((enemyPos[bottom])>bulletPos[top]) && (bulletPos[top]<enemyPos[bottom]&&(bulletPos[bottom]> enemyPos[top]))){
@@ -734,7 +735,7 @@ function checkEnemyCollsion(playerEl,enemyEl,movingEnemyIndex,enemyArr){
             let playerPos =  playerEl.getPosition()
             let enemyPos =  enemyEl.getPosition()
             
-            if(playerPos === undefined || enemyPos === undefined || enemyVisiblity === undefined){} else{
+            if(playerPos === undefined || enemyPos === undefined || enemyVisiblity === undefined){return null} else{
                 
                 //[xL,xR,yT,yB]
                 if((enemyVisiblity === 'visible')&&((enemyPos[0]< playerPos[1]) && (enemyPos[1]> playerPos[0]))&&(enemyPos[3])>playerPos[2] && playerPos[2]<enemyPos[3]){
