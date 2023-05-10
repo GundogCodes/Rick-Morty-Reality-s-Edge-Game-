@@ -72,6 +72,14 @@ https://png2.cleanpng.com/sh/697e54f06cdac5f9584e1d6b5a0a9bf1/L0KzQYq3VME3N6h1e5
 livesHeartPNG:
 https://png2.cleanpng.com/sh/5ef61abf8552e6bc551174871b6871aa/L0KzQYm3WME3N6l5i5H0aYP2gLBuTgBqgJZxRdN7dD35dbT7jCIub6NmiNpyY4OwdMPolBlvb15uhdNwZT3qgrLrifVvfF51gepubD3rdbL5lL1xcalqhNpuYYL3Pbj5gfRqbZ95gNdqcoSwd8PohL02amg6faJvMnXpRYq9Vr40P2g2UKY7MUG4Q4W7VcE6PWUAUKI9LoDxd1==/kisspng-pixel-art-vector-graphics-drawing-image-gradient-pixel-heart-pixelheart-gradientheart-grad-5b75e0f2ef5966.3771842115344519549804.png
 
+portalPNG: https://www.cleanpng.com/png-rick-sanchez-morty-smith-image-portals-in-fiction-7000609/
+
+https://png2.cleanpng.com/sh/65766dc12337e46f52129ccc6c179058/L0KzQYq3UcAyN5dqkpH0aYP2gLBuTgJqa5wyi9N3Y3join70jCJ1gV54hdt9aD3sfbLuhb1xd6N5ed58LXnxPbfwgCRqd58yiNH7dHHvPcPwgBsuaZ9pRd94coT8Pbj5hfVvNWZoStQEYke3R7WBVsExNmI9SqQDOUe4QYa7VsM3OWg2Tqc6NEKxgLBu/kisspng-rick-sanchez-morty-smith-image-portals-in-fiction-portal-rick-and-morty-green-5c2b9b747d8610.1822897515463617165142.png
+
+portal2: https://www.cleanpng.com/png-art-film-director-t-shirt-rick-and-morty-1209795/
+
+https://png2.cleanpng.com/sh/3a28fce4c619efd659dc37898a02a595/L0KzQYm3VME3N6pqj5H0aYP2gLBuTfFzfF5rgd52LXTsgrbqlP9zNaUyi9pycoSwgrrqi71idpUyhdH7dImwRbLrVPU3aWk1e9VtOUGxRYS5V8E6O2Y2TaQ8OUC1QYO3UMUzPV91htk=/kisspng-art-film-director-t-shirt-rick-and-morty-5ad4e6a80ccd91.5327193515239021200525.png
+
 -----------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------Psuedocode-------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------

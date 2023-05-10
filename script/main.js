@@ -223,28 +223,12 @@ class Enemy{
 
         let xL = parseInt(this.element.style.left)
         let yT = parseInt(this.element.style.top)
+        let xR = parseInt(this.element.style.left)
+        let yB = parseInt(this.element.style.top)
 
-        if(this.name ==='smwygHead'){
-            let xR = parseInt(this.element.style.left) + 99
-            let yB = parseInt(this.element.style.top) + 138
-            return [xL,xR,yT,yB]
             
-        } else if (this.name ='jerry'){
-            let xR = parseInt(this.element.style.left) + 102
-            let yB = parseInt(this.element.style.top) + 102
-            return [xL,xR,yT,yB]
-
-        } else if (this.name ='gazorpazorp'){
-            let xR = parseInt(this.element.style.left) + 102
-            let yB = parseInt(this.element.style.top) + 102
-            return [xL,xR,yT,yB]
-        }
-        else if (this.name ='gromflomite'){
-            let xR = parseInt(this.element.style.left) + 60
-            let yB = parseInt(this.element.style.top) + 109
-            
-            return [xL,xR,yT,yB]
-        }
+        return [xL,xR,yT,yB]
+        
 
     }
 
@@ -270,7 +254,8 @@ class Bullet{
         this.element.style.height = '50px'
         this.element.style.visibility = 'hidden'
         this.element.style.position = 'absolute'
-       
+
+
         document.querySelector('main').appendChild(this.element)
     }
     moveRight(){
@@ -346,9 +331,9 @@ const backgroundList = [b1,b2,b3,b4,b5,b6,b7]
 
 //GUNIMGS
 
-const portal ="https://png2.cleanpng.com/sh/65766dc12337e46f52129ccc6c179058/L0KzQYq3UcAyN5dqkpH0aYP2gLBuTgJqa5wyi9N3Y3join70jCJ1gV54hdt9aD3sfbLuhb1xd6N5ed58LXnxPbfwgCRqd58yiNH7dHHvPcPwgBsuaZ9pRd94coT8Pbj5hfVvNWZoStQEYke3R7WBVsExNmI9SqQDOUe4QYa7VsM3OWg2Tqc6NEKxgLBu/kisspng-rick-sanchez-morty-smith-image-portals-in-fiction-portal-rick-and-morty-green-5c2b9b747d8610.1822897515463617165142.png"
-const fart ="https://png2.cleanpng.com/sh/e19c8c9a264f5c59d30a6113d7d37843/L0KzQYm3VMA1N6ttj5H0aYP2gLBuTgJqa5wyi9N3Y3join7tgf4uaaN5RdVxYX7xdb20UcAyNZJpjd59LYP6eb60kvlkc15mhtY2bXB1hMq0VfFkPWE6fdMCMkbpdYK1UsIxOGI7TKg6NUK1SIe4VcQ3PGc9T5D5bne=/kisspng-rick-sanchez-fan-art-channel-101-adult-swim-rick-and-morty-5ac505ea726fe1.2200164615228615464687.png"
-const gunList = [portal,fart]
+
+
+
 
 /*------------------------------------------------------------------------ MUSIC ------------------------------------------------------------------------*/
 const introSong = new Audio("./music/intro.mp3")
@@ -450,7 +435,7 @@ const heartsList = [livesEl1,livesEl2,livesEl3,livesEl4,livesEl5]
 
 /*------------------------------------------------------------------- EVENT LISTENERS -------------------------------------------------------------------*/
 //BACKGROUND
-let i = 0 
+
 changeBackground.addEventListener('click',function(){
     i++
     if(i===6){
@@ -459,16 +444,6 @@ changeBackground.addEventListener('click',function(){
     main.style.backgroundImage = `url(${backgroundList[i]})`
     
 
-})
-//WEAPON
-let j =-1
-changeWeaponBtn.addEventListener('click',function(){
-   j++
-   
-    if(j > 1){
-        j=0
-    }
-    bullet.src = `url(${gunList[j]})`
 })
 
 //MOVE PLAYER
@@ -543,12 +518,15 @@ function init(){
 function runGame(){
 
     let enemyList  = createEnemies()
-    
+     
     moveRandomEnemy(enemyList)
-    
     checkBulletCollsion(bullet,movingEnemy,movingEnemyIndex,enemyList)
-    
     checkEnemyCollsion(player,movingEnemy,movingEnemyIndex,enemyList)
+   
+    
+
+    
+  
    
 
 }
@@ -630,15 +608,18 @@ function createEnemies(){
 }
  
 function moveRandomEnemy(enemyArr){
-    
-    let enemyTimer = setInterval(function(){
+
+        setInterval(function(){
+            
+      
         if (player.lives < 0){
             clearInterval(enemyTimer)
         }
 
+            
             movingEnemyIndex = getRandomInt(1000) //index of movingEnemy in Enemy Array
             movingEnemy = enemyArr[movingEnemyIndex] // the instance of the Enemy Class that is moving
-
+            
            // console.log(enemyOb)
             movingEnemy.moveLeft()
             
@@ -671,6 +652,7 @@ function moveRandomEnemy(enemyArr){
                 }
                 
             }
+            return movingEnemy
                          
         },1000)
         
@@ -694,10 +676,11 @@ function checkEnemyOffScreen(movingEnemy){
 }
 
 function checkBulletCollsion(bulletEl,enemyEl,movingEnemyIndex,enemyArr){
+    
+    setInterval(function(){
 
-
-       setInterval(function() {
-        
+    
+ 
            const left =0
            const right = 1
            const top = 2
@@ -720,15 +703,16 @@ function checkBulletCollsion(bulletEl,enemyEl,movingEnemyIndex,enemyArr){
                    
                 } else{console.log()}
                 //console.log(enemyArr.length)
-            }
-            
-        }, 200) 
+           }
+    },100)      
+    
 }
 
 function checkEnemyCollsion(playerEl,enemyEl,movingEnemyIndex,enemyArr){
 
-        setInterval(function(){
+    setInterval(function(){
 
+  
             
             let enemyVisiblity = enemyArr[movingEnemyIndex].getVisibility()
             
@@ -744,8 +728,9 @@ function checkEnemyCollsion(playerEl,enemyEl,movingEnemyIndex,enemyArr){
                     hurt.play()
                 } else{console.log()}
             }
-            
         },200)
+
+ 
     
 }
 
