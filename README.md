@@ -109,4 +109,4 @@ If playerHealth =0: gameOn = false
 -----------------------------------------------------------------------------------------------------------------------------------
 link(1)
   - learned how to move elements on page with setIntervals and clearIntervals using this video:
-        https://youtu.be/3rsKUTCh0LU
+        https://youtu.be/3rsKUTCh0LUc

@@ -435,8 +435,8 @@ for(let hSounds of headSounds ){
 let playerPoints;
 let playerName;
 let enemyList;
-let movingEnemyIndex 
-let movingEnemy 
+let movingEnemyIndex;
+let movingEnemy;
 
 /*------------------------------------------------------------------- CACHED ElEMENTS -------------------------------------------------------------------*/
 //MAIN
@@ -548,10 +548,10 @@ function runGame(){
     let enemyList  = createEnemies()
      
     moveRandomEnemy(enemyList)
+    console.log(enemyList)
+    console.log('moving Enemy and index os the function',movingEnemy,movingEnemyIndex)
 
-    checkBulletCollsion(bullet,movingEnemy,movingEnemyIndex,enemyList)
    
-    checkEnemyCollsion(player,movingEnemy,movingEnemyIndex,enemyList)
      
 }
 
@@ -635,6 +635,9 @@ function createEnemies(){
  
 function moveRandomEnemy(enemyArr){
 
+   // movingEnemyIndex = getRandomInt(1000) //index of movingEnemy in Enemy Array
+   // movingEnemy = enemyArr[movingEnemyIndex] // the instance of the Enemy Class that is moving
+    console.log('movingENEMY and Index os the MOVERANDOMENEMY INTERVAL',movingEnemy,' , ',movingEnemyIndex)
     let enemyTimer = setInterval(function(){
         
         
@@ -646,21 +649,25 @@ function moveRandomEnemy(enemyArr){
         
         movingEnemyIndex = getRandomInt(1000) //index of movingEnemy in Enemy Array
         movingEnemy = enemyArr[movingEnemyIndex] // the instance of the Enemy Class that is moving
-        
+        console.log('movingEnemy & index in the MOVE ENEMYFUNCTION function',movingEnemy,' , ',movingEnemyIndex)
         //console.log(movingEnemy)
         movingEnemy.moveLeft()
+
+        checkBulletCollsion(bullet,movingEnemy,movingEnemyIndex,enemyList)
+   
+        checkEnemyCollsion(player,movingEnemy,movingEnemyIndex,enemyList)
         
         //Play sound:
         if(movingEnemy.name ==='glomflomite'){
             let randoNum = getRandomInt(18)
-            if(randoNum > glomSounds.length){}else{
+            if(randoNum >= glomSounds.length){}else{
                 
                 let a = glomSounds[randoNum].play()
                 a.volume = 0.5
             }
         }else if(movingEnemy.name === 'jerry'){
             let randoNum = getRandomInt(18)
-            if(randoNum>jerrySounds.length){} else{
+            if(randoNum>=jerrySounds.length){} else{
                 
                let a = jerrySounds[randoNum].play()
                 a.volume = 0.5
@@ -668,7 +675,7 @@ function moveRandomEnemy(enemyArr){
             
         } else if(movingEnemy.name === 'gazorpazorp'){
             let randoNum = getRandomInt(18)
-            if(randoNum>gazorpazorpSounds.length){}else{
+            if(randoNum>=gazorpazorpSounds.length){}else{
                 
                let a = gazorpazorpSounds[randoNum].play()
                 a.volume = 0.5
@@ -676,7 +683,7 @@ function moveRandomEnemy(enemyArr){
             
         } else if(movingEnemy.name === 'smwygHead'){
             let randoNum = getRandomInt(15)
-            if(randoNum>headSounds.length){} else{
+            if(randoNum>=headSounds.length){} else{
                 
                 let a = headSounds[randoNum].play()
                 a.volume =0.5
@@ -720,7 +727,7 @@ function checkBulletCollsion(bulletEl,movingEnemy,movingEnemyIndex,enemyArr){
            
            let bulletPos =  bulletEl.getPosition()
            let enemyPos =  movingEnemy.getPosition()
-           
+           console.log('moving Enemy and Index in Bullet collison',movingEnemy,' , ',movingEnemyIndex)
            if(enemyPos === undefined){return null} else{
                
                
@@ -737,7 +744,7 @@ function checkBulletCollsion(bulletEl,movingEnemy,movingEnemyIndex,enemyArr){
                 //console.log(enemyArr.length)
            }
      
-        },100)
+        },0)
 
         return bulletTimer
 }
@@ -746,7 +753,7 @@ function checkEnemyCollsion(playerEl,movingEnemy,movingEnemyIndex,enemyArr){
 
     let playerTimer = setInterval(function(){
     
-            
+            console.log('moving Enemy and Index in player collison',movingEnemy,' , ',movingEnemyIndex)
             let enemyVisiblity = movingEnemy.getVisibility()
             
             let playerPos =  playerEl.getPosition()
@@ -756,12 +763,13 @@ function checkEnemyCollsion(playerEl,movingEnemy,movingEnemyIndex,enemyArr){
                 
                 //[xL,xR,yT,yB]
                 if((enemyVisiblity === 'visible')&&((enemyPos[0]< playerPos[1]) && (enemyPos[1]> playerPos[0]))&&(enemyPos[3])>playerPos[2] && playerPos[2]<enemyPos[3]){
-                    
-                    loseLife(heartsList)
+                    playerHurt = 'yes'
                     hurt.play()
+                    loseLife(heartsList)
                 } else{console.log()}
             }
-        },200)
+        },0)
+      
   
         return playerTimer
  
@@ -779,7 +787,8 @@ function updatePoints(incrementVal){
 }
 
 function loseLife(lifeArray){
-    
+
+   // console.log(lifeArray)
     let lastEl = lifeArray.length -1
   
     lifeArray[lastEl].style.visibility = 'hidden'
@@ -797,9 +806,9 @@ function checkDead(){
     if(player.lives === 0){
 
       //  console.log('Player Lives: ',player.lives,' : GAMEOVER')
-        clearInterval(enemyTimer)
-        clearInterval(bulletTimer)
-        clearInterval(playerTimer)
+        // clearInterval(enemyTimer)
+        // clearInterval(bulletTimer)
+        // clearInterval(playerTimer)
         runEndScreen()
         
     }
