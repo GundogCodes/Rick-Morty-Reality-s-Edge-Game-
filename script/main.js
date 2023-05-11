@@ -14,21 +14,23 @@ class Player{
     }
     setName(name){
         this.name = name
-        if (this.name  === 'RICK'){this.element.src = "https://png2.cleanpng.com/sh/2558c44d627579baf4043caa78d6efea/L0KzQYm3VMA3N5p8iZH0aYP2gLBuTgBweqVmhJ87LYLsc7y0kBFva5lqkp9vdX7uf373jCJ1aZ14Rdt3LXbsc8XwjB4ueppog59qbnSwfbF5lQkuPZJoT6YAMkWzdbfqg8cvPmg1TKU8OEm0RYO6UMA5QGE6SKg6ND7zfri=/kisspng-portal-2-rick-sanchez-funko-portals-in-fiction-rick-and-morty-5ac745250efcc7.6704338915230088050614.png"
+        if (this.name  === 'RICK'){this.element.src = "./images/rick.png"
         this.element.style.height = '160px'
         this.element.style.width = '135px'
             this.element.style.top = '470px'
             this.element.style.left = '700px'
             rickCatchphrase.play()
+            rickCatchphrase.volume = 0.5
             document.querySelector('main').appendChild(this.element)
         }
         
-        else if(this.name === 'MORTY') {this.element.src = "https://png2.cleanpng.com/sh/bff19f53056bc21c93f0ba64fa91e93e/L0KzQYm3VsE3N5tqjpH0aYP2gLBuTf1weqVAReV2aYTrPbTvggJia6Vqip9sYYL3f7F1TfZidl5miuY2cnBlf8W0kvlkc15mhtY2bXB1iX68gsI1bmQ9e6NqOUK7SHA7WMg3PGE1S6MAMkm0RIm6UMAyOGkARuJ3Zx==/kisspng-morty-smith-character-cartoon-fan-art-robot-rick-and-mory-5b24f38c1a9288.4886400315291483001089.png"
+        else if(this.name === 'MORTY') {this.element.src = "./images/morty.png"
         this.element.style.height = '160px'
         this.element.style.width = '135px'
         this.element.style.top = '475px'
         this.element.style.left = '700px'
         mortyOhGeez.play()
+        mortyOhGeez.volume = 0.5
         document.querySelector('main').appendChild(this.element)
     } 
     }
@@ -72,9 +74,14 @@ class Player{
         }
     }
       shoot(){
-
-        portalGun.play()
         bullet.moveRight()
+        if(bullet.name === 'portal'){
+            portalGun.play()
+        } else if (bullet.name === 'fart'){
+            fart.play()
+        } else if (bullet.name === 'pickleRick'){
+            pickleRick.play()
+        }
 
  }
     
@@ -258,8 +265,11 @@ class Bullet{
         this.element.style.visibility = 'hidden'
         this.element.style.position = 'absolute'
         this.weaponIndex = 0
+        this.nameIndex = 0
         this.ammo = [portal,fart,pickleRick]
+        this.names = ['portal','fart','pickleRick']
         this.element.src = this.ammo[this.weaponIndex]
+        this.name = this.names[this.nameIndex]
 
         document.querySelector('main').appendChild(this.element)
     }
@@ -267,10 +277,14 @@ class Bullet{
     changeWeapon(){
         
         this.weaponIndex = this.weaponIndex +1
-        if(this.weaponIndex > 2){
+        this.nameIndex = this.nameIndex +1
+        if(this.weaponIndex > 2|| this.nameIndex >2){
             this.weaponIndex = 0
+            this.nameIndex = 0
         }
         this.element.src = this.ammo[this.weaponIndex]
+        this.name= this.names[this.nameIndex]
+        
     }
 
     moveRight(){
@@ -344,9 +358,7 @@ const backgroundList = [b1,b2,b3,b4,b5,b6,b7]
 
 /*------------------------------------------------------------------------ MUSIC ------------------------------------------------------------------------*/
 const introSong = new Audio("./music/intro.mp3")
-const getShwifty = new Audio("./music/getShwifty.mp3")
-const goodbyeMoonmen = new Audio("./music/goodByeMoonmen.mp3")
-const backgroundSongs = [introSong,getShwifty,goodbyeMoonmen]
+const backgroundMusic = new Audio("./music/backgroundMusic.mp3")
 
 const portalGun = new Audio("./music/portalSoundEffect.mp3")
 const fart = new Audio("./music/fart.mp3")
@@ -361,6 +373,7 @@ const mortyOhGeez = new Audio("./music/mortyOhGeez.mp3")
 const mortySounds = [mortyFreakingOut,mortyHeckYa,mortyOhGeez]
 
 //rick
+const pickleRick = new Audio("./music/rickPickleRick.mp3")
 const rickYouBunchOfIdiots = new Audio("./music/rickYouBunchOfidiots.mp3")
 const rickWhatAreYouNuts = new Audio("./music/rickWhatAreYouNuts.mp3")
 const rickCatchphrase = new Audio("./music/rickCatchphrase.mp3")
@@ -499,7 +512,9 @@ window.addEventListener('keydown',function(e){
     
 })
 
-changeWeaponBtn.addEventListener('click', bullet.changeWeapon())
+changeWeaponBtn.addEventListener('click', function(){
+    bullet.changeWeapon()
+})
 
 /*--------------------------------------------------------------- FUNCTIONS ---------------------------------------------------------------*/
 
@@ -507,7 +522,8 @@ startScreen()
 
 function init(){
    introSong.pause()
-   getShwifty.play()
+   backgroundMusic.play()
+   backgroundMusic.volume = 0.4
     enemyList = []
     playerPoints = 0
     player.lives = 5
@@ -531,13 +547,15 @@ function runGame(){
      
     moveRandomEnemy(enemyList)
 
-    
-    
-    
+    checkBulletCollsion(bullet,movingEnemy,movingEnemyIndex,enemyList)
+   
+    checkEnemyCollsion(player,movingEnemy,movingEnemyIndex,enemyList)
+     
 }
 
 function startScreen(){
     introSong.play()
+    introSong.volume = 0.5
     const startScreen = document.createElement('div')
     startScreen.setAttribute('class','startingPage')
     startScreen.style.width = '1800px'
@@ -592,15 +610,16 @@ function createEnemies(){
         newEnemyDiv.left = '1000px'
 
         if(randoEnemy === ('smwygHead')){
-           newEnemyDiv.src = "https://png2.cleanpng.com/sh/af0cc0734be612f642d690288074f98a/L0KzQYm3VcExN5dwj5H0aYP2gLBuTgJqa5wyi9N3Y3join77TgNpcaN5Rd94coT8PcT0igRpNaF0e91udD3wf8P7mgMudZZqRadqZkTpSYa4UvJmP5Y6RqI5NEG0QYi9UcUzPmE1TKI9OUG6SYm1kP5o/kisspng-rick-sanchez-t-shirt-morty-smith-pocket-mortys-mee-5af4f9512be7e5.0041117615260040491798.png"
+           newEnemyDiv.src = "./images/head.png"
            newEnemyDiv.style.transform = 'rotateY(180deg)'
         } else if (randoEnemy === 'gazorpazorp'){
-            newEnemyDiv.src = "https://png2.cleanpng.com/sh/b0aa5ceeaec8c5c9667ff07228bce0a4/L0KzQYm3VMA1N6N8iZH0aYP2gLBuTfNpaaNmeAZucj32cbB7gb1kdJJ6i59vYX6wccP7TgJqa5wyedDtLX3ygsXCTcVia2U7TadrOUfocYWBTsYxQGE1SKQBMUW1Qom5UMQ1O2c3SqU3cH7q/kisspng-character-santa-claus-fan-art-rick-and-morty-5ac4655b97ea48.6080002615228204436223.png"
+            newEnemyDiv.src = "./images/gazorpazorp.png"
+            newEnemyDiv.style.transform = 'rotateY(180deg)'
         } else if (randoEnemy === 'gromflomite'){
            
-            newEnemyDiv.src = "https://static.wikia.nocookie.net/rickandmorty/images/4/47/Micheal.png"
+            newEnemyDiv.src = "./images/glomflomite.png"
         } else if (randoEnemy === 'jerry'){
-            newEnemyDiv.src = "https://png2.cleanpng.com/sh/37411d6f92da59eaee915db2132e2933/L0KzQYm3V8IxN6d4f5H0aYP2gLBuTf1weqVAReV2aYTrPbTvggJia6Vqip9sYYL3f7F1TfZidl5miuY2dnnyfLr1TgJqa5wyedDtLX3ygsXCTcVjPWI8UaY9ZUO3SYW3TsI0PGM3T6g5MUW2QoG9VsEyPmo4SZD5bne=/kisspng-morty-smith-character-cartoon-fan-art-violin-rick-and-morty-5b517944e34940.234227601532066116931.png"
+            newEnemyDiv.src = "./images/jerry.png"
         } 
         document.querySelector('main').appendChild(newEnemyDiv)
         newEnemyDiv.style.visibility = 'hidden'
@@ -634,37 +653,40 @@ function moveRandomEnemy(enemyArr){
             let randoNum = getRandomInt(18)
             if(randoNum > glomSounds.length){}else{
                 
-                glomSounds[randoNum].play()
+                let a = glomSounds[randoNum].play()
+                a.volume = 0.5
             }
         }else if(movingEnemy.name === 'jerry'){
             let randoNum = getRandomInt(18)
             if(randoNum>jerrySounds.length){} else{
                 
-                jerrySounds[randoNum].play()
+               let a = jerrySounds[randoNum].play()
+                a.volume = 0.5
             }
             
         } else if(movingEnemy.name === 'gazorpazorp'){
             let randoNum = getRandomInt(18)
             if(randoNum>gazorpazorpSounds.length){}else{
                 
-                gazorpazorpSounds[randoNum].play()
+               let a = gazorpazorpSounds[randoNum].play()
+                a.volume = 0.5
             }
             
         } else if(movingEnemy.name === 'smwygHead'){
             let randoNum = getRandomInt(15)
             if(randoNum>headSounds.length){} else{
                 
-                headSounds[randoNum].play()
+                let a = headSounds[randoNum].play()
+                a.volume =0.5
             }
             
         }
         
-        checkBulletCollsion(bullet,movingEnemy,movingEnemyIndex,enemyList)
-        checkEnemyCollsion(player,movingEnemy,movingEnemyIndex,enemyList)
+        
         
         
     },1000)
-        
+        return enemyTimer
         
         
 }
@@ -687,7 +709,7 @@ function checkEnemyOffScreen(movingEnemy){
 function checkBulletCollsion(bulletEl,movingEnemy,movingEnemyIndex,enemyArr){
     
     
-    setInterval(function(){
+    let bulletTimer = setInterval(function(){
         
            const left =0
            const right = 1
@@ -714,11 +736,13 @@ function checkBulletCollsion(bulletEl,movingEnemy,movingEnemyIndex,enemyArr){
            }
      
         },100)
+
+        return bulletTimer
 }
 
 function checkEnemyCollsion(playerEl,movingEnemy,movingEnemyIndex,enemyArr){
 
-    setInterval(function(){
+    let playerTimer = setInterval(function(){
     
             
             let enemyVisiblity = movingEnemy.getVisibility()
@@ -737,7 +761,7 @@ function checkEnemyCollsion(playerEl,movingEnemy,movingEnemyIndex,enemyArr){
             }
         },200)
   
-
+        return playerTimer
  
     
 }
@@ -771,7 +795,9 @@ function checkDead(){
     if(player.lives === 0){
 
       //  console.log('Player Lives: ',player.lives,' : GAMEOVER')
-        
+        clearInterval(enemyTimer)
+        clearInterval(bulletTimer)
+        clearInterval(playerTimer)
         runEndScreen()
         
     }
@@ -781,8 +807,9 @@ function runEndScreen(){
     enemyList = []
    
     introSong.pause()
-    getShwifty.pause()
+    backgroundMusic.pause()
     outroSadSong.play()
+    outroSadSong.volume =0.5
     
     let endingScreen = document.createElement('div')
         endingScreen.setAttribute('id','endingScreen')
