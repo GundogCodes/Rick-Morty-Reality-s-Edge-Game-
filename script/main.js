@@ -8,7 +8,6 @@ class Player{
         this.element.setAttribute('class','player')
         this.element.style.position = 'absolute'
         this.element.style.transform = 'rotateY(180deg)'
-        
         this.lives = 5 
         
     }
@@ -178,11 +177,12 @@ class Player{
 
 class Enemy{
     static numOfEnemies = 0;
-    constructor(element,name,top,left){  
+    constructor(element,name,top,left){ 
         this.element = element
         this.name = name
         this.element.style.top = top
         this.element.style.left = left
+        this.element.setAttribute('class','enemy') 
         Enemy.numOfEnemies++
 
     }
@@ -259,7 +259,7 @@ class Bullet{
         const fart = "./images/fart.png"  
         const pickleRick = "./images/pickleRick.png"  
         this.element = document.createElement('img')
-        
+        this.element.setAttribute('class','bullet') 
         this.element.style.width = '50px'
         this.element.style.height = '50px'
         this.element.style.visibility = 'hidden'
@@ -309,7 +309,7 @@ class Bullet{
          let timer = setInterval(() =>{
    
              if(xL>1550){
-                //this.element.style.visibility = 'hidden'
+                this.element.style.visibility = 'hidden'
                  xL = 1550
                  clearInterval(timer)
                 }
@@ -466,6 +466,10 @@ changeBackground.addEventListener('click',function(){
     
 
 })
+//WEAPON
+changeWeaponBtn.addEventListener('click', function(){
+    bullet.changeWeapon()
+})
 
 //MOVE PLAYER
 window.addEventListener('keydown',function(e){
@@ -512,9 +516,7 @@ window.addEventListener('keydown',function(e){
     
 })
 
-changeWeaponBtn.addEventListener('click', function(){
-    bullet.changeWeapon()
-})
+
 
 /*--------------------------------------------------------------- FUNCTIONS ---------------------------------------------------------------*/
 
@@ -691,7 +693,7 @@ function moveRandomEnemy(enemyArr){
         
 }
 
-  //checkEnemyOffScreen(movingEnemy,movingEnemyIndex,enemyArr)
+//checkEnemyOffScreen(movingEnemy,movingEnemyIndex,enemyArr)
 
 function checkEnemyOffScreen(movingEnemy){
     setInterval(function(){

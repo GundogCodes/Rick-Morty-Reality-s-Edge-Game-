@@ -1,11 +1,11 @@
 
 *{
     
-   ! border: solid red;
+   border: solid red;
     
 }
 html{
-
+    margin: 0;
     background-color: black;
     border: solid blue;
     position: relative;
@@ -434,11 +434,11 @@ h4{
         width: 1200px;
     }
     main{
-        
+        height: 400px;
     }
     header{
         left: 0px;
-        height: 100px;
+        height: 90px;
     }
     body{
         padding-left: 10px;
@@ -449,6 +449,28 @@ h4{
     html{
         width:1250px ;
         height: 650px;
+    }
+    footer{
+        height: 100px;
+    }
+    #livesBox{
+        height: 90px;
+        
+    }
+    #livesBox> h1{
+        font-size: 20px;
+        
+    }
+    .hearts{
+        padding: 0;
+        height: 10px;
+        width: 10px;
+    }
+    .player{
+        height: 75px;
+        width: 50px;
+        left: 0px;
+        top:100px;
     }
   }
 
