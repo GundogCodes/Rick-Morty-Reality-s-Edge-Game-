@@ -1,7 +1,7 @@
 
 *{
     
-    border: solid red;
+   ! border: solid red;
     
 }
 html{
@@ -10,7 +10,7 @@ html{
     border: solid blue;
     position: relative;
     border-radius: 15px;
-    max-width: 1850px;
+    width: 1850px;
 
 
 }
@@ -428,9 +428,28 @@ h4{
 /*----------------------------- @MEDIA QUERIES -----------------------------*/
 
 
-@media only screen and (min-width:1000){
-   
+@media only screen and (max-width:1460px){
     
+    main,html,footer,header,body{
+        width: 1200px;
+    }
+    main{
+        
+    }
+    header{
+        left: 0px;
+        height: 100px;
+    }
+    body{
+        padding-left: 10px;
+        padding-right: 10px;
+        height: 650px;
+    }
+    
+    html{
+        width:1250px ;
+        height: 650px;
+    }
   }
 
   
