@@ -444,6 +444,7 @@ h4{
         padding-left: 10px;
         padding-right: 10px;
         height: 650px;
+        width:1250px;
     }
     
     html{
@@ -467,11 +468,26 @@ h4{
         width: 10px;
     }
     .player{
-        height: 75px;
-        width: 50px;
+        height: 5px;
+        width: 5px;
         left: 0px;
         top:100px;
     }
+    .startingPage{
+        font-family: 'Bruno Ace', cursive;
+         display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        width: 1250px;
+        height:650px ;
+
+    }
+    #endingScreen{
+        width: 1250px;
+        height: 600px;
+    }
+    
   }
 
   
