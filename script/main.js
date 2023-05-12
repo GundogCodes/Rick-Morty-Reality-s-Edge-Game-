@@ -209,6 +209,7 @@ class Enemy{
 
     }
 
+
     getPosition(){
 
         let xL = parseInt(this.element.style.left)
@@ -435,7 +436,7 @@ const livesEl2 = document.getElementById('heart2')
 const livesEl3 = document.getElementById('heart3')
 const livesEl4 = document.getElementById('heart4')
 const livesEl5 = document.getElementById('heart5')
-const heartsList = [livesEl1,livesEl2,livesEl3,livesEl4,livesEl5]
+const heartsList = []
 
 /*------------------------------------------------------------------- EVENT LISTENERS -------------------------------------------------------------------*/
 //BACKGROUND
@@ -530,9 +531,10 @@ function runGame(){
 
     let enemyList  = createEnemies()
      
-    moveRandomEnemy(enemyList,checkEnemyCollsion())
+    moveRandomEnemy(enemyList)
     console.log(enemyList)
     console.log('moving Enemy and index os the function',movingEnemy,movingEnemyIndex)
+    
 
    
      
@@ -587,28 +589,28 @@ function createEnemies(){
         let leftPos = 1600
         let randomTopPos = getRandomInt(500)
 
-        let newEnemyDiv = document.createElement('img')
+        let newEnemyImg = document.createElement('img')
 
-        newEnemyDiv.style.height = '100px'
-        newEnemyDiv.style.width = '100px'
-        newEnemyDiv.style.position = 'absolute'
-        newEnemyDiv.left = '1000px'
+        newEnemyImg.style.height = '100px'
+        newEnemyImg.style.width = '100px'
+        newEnemyImg.style.position = 'absolute'
+        newEnemyImg.left = '1000px'
 
         if(randoEnemy === ('smwygHead')){
-           newEnemyDiv.src = "./images/head.png"
-           newEnemyDiv.style.transform = 'rotateY(180deg)'
+           newEnemyImg.src = "./images/head.png"
+           newEnemyImg.style.transform = 'rotateY(180deg)'
         } else if (randoEnemy === 'gazorpazorp'){
-            newEnemyDiv.src = "./images/gazorpazorp.png"
-            newEnemyDiv.style.transform = 'rotateY(180deg)'
+            newEnemyImg.src = "./images/gazorpazorp.png"
+            newEnemyImg.style.transform = 'rotateY(180deg)'
         } else if (randoEnemy === 'gromflomite'){
            
-            newEnemyDiv.src = "./images/glomflomite.png"
+            newEnemyImg.src = "./images/glomflomite.png"
         } else if (randoEnemy === 'jerry'){
-            newEnemyDiv.src = "./images/jerry.png"
+            newEnemyImg.src = "./images/jerry.png"
         } 
-        document.querySelector('main').appendChild(newEnemyDiv)
-        newEnemyDiv.style.visibility = 'hidden'
-        let newEnemy = new Enemy(newEnemyDiv,randoEnemy,`${randomTopPos}px`,`${leftPos}px`)
+        document.querySelector('main').appendChild(newEnemyImg)
+        newEnemyImg.style.visibility = 'hidden'
+        let newEnemy = new Enemy(newEnemyImg,randoEnemy,`${randomTopPos}px`,`${leftPos}px`)
         enemyList.push(newEnemy)
 
     }
@@ -672,6 +674,7 @@ function moveRandomEnemy(enemyArr){
             
         }
         checkBulletCollsion(bullet,movingEnemy,movingEnemyIndex,enemyList)
+    checkEnemyCollsion(player,movingEnemy,movingEnemyIndex,enemylist)
         
         
         
