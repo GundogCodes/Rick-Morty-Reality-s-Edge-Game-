@@ -530,10 +530,10 @@ function init(){
 function runGame(){
 
     let enemyList  = createEnemies()
-     
     moveRandomEnemy(enemyList)
     console.log(enemyList)
     console.log('moving Enemy and index os the function',movingEnemy,movingEnemyIndex)
+    
     
 
    
@@ -673,9 +673,9 @@ function moveRandomEnemy(enemyArr){
             }
             
         }
-        checkBulletCollsion(bullet,movingEnemy,movingEnemyIndex,enemyList)
-    checkEnemyCollsion(player,movingEnemy,movingEnemyIndex,enemylist)
         
+    checkBulletCollsion(bullet,movingEnemy,movingEnemyIndex,enemyList)
+    checkPlayerCollsion(player,movingEnemy,movingEnemyIndex,enemyList)
         
         
         
@@ -700,8 +700,7 @@ function checkEnemyOffScreen(movingEnemy){
     },500)
 }
 
-function checkBulletCollsion(bulletEl,movingEnemy,movingEnemyIndex,enemyArr,checkPlayerCollison){
-    
+function checkBulletCollsion(bulletEl,movingEnemy,movingEnemyIndex,enemyArr){
     
     let bulletTimer = setInterval(function(){
         
@@ -718,24 +717,32 @@ function checkBulletCollsion(bulletEl,movingEnemy,movingEnemyIndex,enemyArr,chec
             
             if(((enemyPos[left]< bulletPos[right]) && (enemyPos[right]> bulletPos[left]))&&((enemyPos[bottom])>bulletPos[top]) && (bulletPos[top]<enemyPos[bottom]&&(bulletPos[bottom]> enemyPos[top]))){
                 updatePoints(1)
-                
                 enemyArr[movingEnemyIndex].hideVisibility()
                 enemyArr.splice(movingEnemyIndex, 2)
-                console.log('BULLLLLLEEEEEETTTTTT HIIIIIIIIIITTTTTT')
+                console.log(`
+                
+                
+                
+                BULLLLLLEEEEEETTTTTT HIIIIIIIIIITTTTTT
+                
+                
+                `)
                 points.play()
                 points.volume = 0.5
                 
-            } else{console.log()}
+            } else{
+                playerHit = false
+            }
             //console.log(enemyArr.length)
         }
         
-    },200)
+    },0)
+
     
-    checkEnemyCollsion(player,movingEnemy,movingEnemyIndex,enemyList)
     return bulletTimer
 }
 
-function checkEnemyCollsion(playerEl,movingEnemy,movingEnemyIndex,enemyArr){
+function checkPlayerCollsion(playerEl,movingEnemy,movingEnemyIndex,enemyArr){
     
     let playerTimer = setInterval(function(){
     
@@ -751,11 +758,18 @@ function checkEnemyCollsion(playerEl,movingEnemy,movingEnemyIndex,enemyArr){
                 if((enemyVisiblity === 'visible')&&((enemyPos[0]< playerPos[1]) && (enemyPos[1]> playerPos[0]))&&(enemyPos[3])>playerPos[2] && playerPos[2]<enemyPos[3]){
                     playerHurt = 'yes'
                     hurt.play()
-                    console.log(playerHurt)
+                    console.log(`
+                
+                
+                
+                    PLAYEEEERRRRRRRRRRRRRRRRR HIIIIIIIIIITTTTTT
+                    
+                    
+                    `)
                     loseLife(heartsList)
                 } else{console.log()}
             }
-        },100)
+        },200)
       
   
         return playerTimer
