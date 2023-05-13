@@ -453,7 +453,11 @@ changeBackground.addEventListener('click',function(){
 changeWeaponBtn.addEventListener('click', function(){
     bullet.changeWeapon()
 })
+//MUSIC
 
+musicToggleBtn.addEventListener('click',function(){
+    backgroundMusic.pause()
+})
 
 
 //MOVE PLAYER
