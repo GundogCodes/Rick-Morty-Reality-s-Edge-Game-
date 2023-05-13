@@ -454,6 +454,8 @@ changeWeaponBtn.addEventListener('click', function(){
     bullet.changeWeapon()
 })
 
+
+
 //MOVE PLAYER
 window.addEventListener('keydown',function(e){
 

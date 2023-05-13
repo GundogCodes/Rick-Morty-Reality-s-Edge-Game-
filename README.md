@@ -2,9 +2,19 @@
 /-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
 /-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-REALITY'S EDGE-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-
 /-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
+
+HELP RICK AND MORTY KILL ALL THEIR ENEMIES! IN THIS SIDE SCREEN SHOOTER GAME USE YOU KEYS TO SHOOT AT ENEMIES AND DESTORY THEM!
+
+GAME LINK:
+https://gundogcodes.github.io/project1/ 
+
+
 Picture of Project:
-https://i.imgur.com/QZWls6S.png
-https://i.imgur.com/5xMXEg2.png
+![gameImage]https://i.imgur.com/QZWls6S.png
+![gameImage]https://i.imgur.com/5xMXEg2.png
+
+Tech Used:
+Javascript, CSS, HTML in Microsft VSCode for development. GitHub/gitHub Pages for version control and deployment. 
 
 -----------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------Psuedocode-------------------------------------------------------------------
