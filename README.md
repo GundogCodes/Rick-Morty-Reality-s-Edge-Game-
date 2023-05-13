@@ -2,6 +2,29 @@
 /-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
 /-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-REALITY'S EDGE-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-
 /-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
+Picture of Project:
+https://i.imgur.com/QZWls6S.png
+https://i.imgur.com/5xMXEg2.png
+
+-----------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------Psuedocode-------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------
+
+ If playerHealth is 1 or more,
+    create Enemy's and randomize enemyPositions across the right of screen
+    move them across the screen towards player
+    increase playerPoints by the second
+
+wait for spaceBar to be pressed, when pressed, change player positon to up and down (jump)
+same for click on player
+If player shoot enemy
+    destory enemy
+
+If player collides with enemy playerHealth -= 50, continue at [end]
+animate hurt
+
+If playerHealth =0: gameOn = false
+    display end Message
 
 -----------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------LINKS------------------------------------------------------------------
@@ -83,25 +106,7 @@ https://png2.cleanpng.com/sh/3a28fce4c619efd659dc37898a02a595/L0KzQYm3VME3N6pqj5
 pickleRickPNG: https://www.cleanpng.com/png-rick-sanchez-morty-smith-pickle-rick-youtube-rick-1040505/
 https://banner2.cleanpng.com/20180409/jzq/kisspng-rick-sanchez-morty-smith-pickle-rick-youtube-rick-rick-and-morty-5acb1188b3adf7.996685251523257736736.jpg
 
------------------------------------------------------------------------------------------------------------------------------------
-------------------------------------------------------Psuedocode-------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------
 
- If playerHealth is 1 or more,
-    create Enemy's and randomize enemyPositions across the right of screen
-    move them across the screen towards player
-    increase playerPoints by the second
-
-wait for spaceBar to be pressed, when pressed, change player positon to up and down (jump)
-same for click on player
-If player shoot enemy
-    destory enemy
-
-If player collides with enemy playerHealth -= 50, continue at [end]
-animate hurt
-
-If playerHealth =0: gameOn = false
-    display end Message
 
 
 -----------------------------------------------------------------------------------------------------------------------------------
