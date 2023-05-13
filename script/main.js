@@ -532,8 +532,7 @@ function runGame(){
      
     moveRandomEnemy(enemyList)
     console.log(enemyList)
-    console.log('moving Enemy and index os the function',movingEnemy,movingEnemyIndex)
-
+    
    
      
 }
@@ -618,8 +617,8 @@ function createEnemies(){
  
 function moveRandomEnemy(enemyArr){
 
-   // movingEnemyIndex = getRandomInt(1000) //index of movingEnemy in Enemy Array
-   // movingEnemy = enemyArr[movingEnemyIndex] // the instance of the Enemy Class that is moving
+    movingEnemyIndex = getRandomInt(1000) //index of movingEnemy in Enemy Array
+    movingEnemy = enemyArr[movingEnemyIndex] // the instance of the Enemy Class that is moving
     console.log('movingENEMY and Index os the MOVERANDOMENEMY INTERVAL',movingEnemy,' , ',movingEnemyIndex)
     let enemyTimer = setInterval(function(){
         
@@ -671,10 +670,10 @@ function moveRandomEnemy(enemyArr){
             }
             
         }
+        
+        
         checkBulletCollsion(bullet,movingEnemy,movingEnemyIndex,enemyList)
         checkEnemyCollsion(player,movingEnemy,movingEnemyIndex,enemyList)
-        
-        
         
     },1000)
     return enemyTimer
@@ -697,7 +696,7 @@ function checkEnemyOffScreen(movingEnemy){
     },500)
 }
 
-function checkBulletCollsion(bulletEl,movingEnemy,movingEnemyIndex,enemyArr,checkPlayerCollison){
+function checkBulletCollsion(bulletEl,movingEnemy,movingEnemyIndex,enemyArr){
     
     
     let bulletTimer = setInterval(function(){
@@ -726,13 +725,13 @@ function checkBulletCollsion(bulletEl,movingEnemy,movingEnemyIndex,enemyArr,chec
             //console.log(enemyArr.length)
         }
         
-    },200)
+    },100)
     
     checkEnemyCollsion(player,movingEnemy,movingEnemyIndex,enemyList)
     return bulletTimer
 }
 
-function checkEnemyCollsion(playerEl,movingEnemy,movingEnemyIndex,enemyArr){
+function checkEnemyCollsion(playerEl,movingEnemy,movingEnemyIndex){
     
     let playerTimer = setInterval(function(){
     
@@ -752,7 +751,7 @@ function checkEnemyCollsion(playerEl,movingEnemy,movingEnemyIndex,enemyArr){
                     loseLife(heartsList)
                 } else{console.log()}
             }
-        },100)
+        },200)
       
   
         return playerTimer
