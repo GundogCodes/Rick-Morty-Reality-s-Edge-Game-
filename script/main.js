@@ -209,7 +209,6 @@ class Enemy{
 
     }
 
-
     getPosition(){
 
         let xL = parseInt(this.element.style.left)
@@ -436,7 +435,7 @@ const livesEl2 = document.getElementById('heart2')
 const livesEl3 = document.getElementById('heart3')
 const livesEl4 = document.getElementById('heart4')
 const livesEl5 = document.getElementById('heart5')
-const heartsList = []
+const heartsList = [livesEl1,livesEl2,livesEl3,livesEl4,livesEl5]
 
 /*------------------------------------------------------------------- EVENT LISTENERS -------------------------------------------------------------------*/
 //BACKGROUND
@@ -530,11 +529,10 @@ function init(){
 function runGame(){
 
     let enemyList  = createEnemies()
+     
     moveRandomEnemy(enemyList)
     console.log(enemyList)
     console.log('moving Enemy and index os the function',movingEnemy,movingEnemyIndex)
-    
-    
 
    
      
@@ -589,28 +587,28 @@ function createEnemies(){
         let leftPos = 1600
         let randomTopPos = getRandomInt(500)
 
-        let newEnemyImg = document.createElement('img')
+        let newEnemyDiv = document.createElement('img')
 
-        newEnemyImg.style.height = '100px'
-        newEnemyImg.style.width = '100px'
-        newEnemyImg.style.position = 'absolute'
-        newEnemyImg.left = '1000px'
+        newEnemyDiv.style.height = '100px'
+        newEnemyDiv.style.width = '100px'
+        newEnemyDiv.style.position = 'absolute'
+        newEnemyDiv.left = '1000px'
 
         if(randoEnemy === ('smwygHead')){
-           newEnemyImg.src = "./images/head.png"
-           newEnemyImg.style.transform = 'rotateY(180deg)'
+           newEnemyDiv.src = "./images/head.png"
+           newEnemyDiv.style.transform = 'rotateY(180deg)'
         } else if (randoEnemy === 'gazorpazorp'){
-            newEnemyImg.src = "./images/gazorpazorp.png"
-            newEnemyImg.style.transform = 'rotateY(180deg)'
+            newEnemyDiv.src = "./images/gazorpazorp.png"
+            newEnemyDiv.style.transform = 'rotateY(180deg)'
         } else if (randoEnemy === 'gromflomite'){
            
-            newEnemyImg.src = "./images/glomflomite.png"
+            newEnemyDiv.src = "./images/glomflomite.png"
         } else if (randoEnemy === 'jerry'){
-            newEnemyImg.src = "./images/jerry.png"
+            newEnemyDiv.src = "./images/jerry.png"
         } 
-        document.querySelector('main').appendChild(newEnemyImg)
-        newEnemyImg.style.visibility = 'hidden'
-        let newEnemy = new Enemy(newEnemyImg,randoEnemy,`${randomTopPos}px`,`${leftPos}px`)
+        document.querySelector('main').appendChild(newEnemyDiv)
+        newEnemyDiv.style.visibility = 'hidden'
+        let newEnemy = new Enemy(newEnemyDiv,randoEnemy,`${randomTopPos}px`,`${leftPos}px`)
         enemyList.push(newEnemy)
 
     }
@@ -673,9 +671,8 @@ function moveRandomEnemy(enemyArr){
             }
             
         }
-        
-    checkBulletCollsion(bullet,movingEnemy,movingEnemyIndex,enemyList)
-    checkPlayerCollsion(player,movingEnemy,movingEnemyIndex,enemyList)
+        checkBulletCollsion(bullet,movingEnemy,movingEnemyIndex,enemyList)
+        checkEnemyCollsion(player,movingEnemy,movingEnemyIndex,enemyList)
         
         
         
@@ -700,7 +697,8 @@ function checkEnemyOffScreen(movingEnemy){
     },500)
 }
 
-function checkBulletCollsion(bulletEl,movingEnemy,movingEnemyIndex,enemyArr){
+function checkBulletCollsion(bulletEl,movingEnemy,movingEnemyIndex,enemyArr,checkPlayerCollison){
+    
     
     let bulletTimer = setInterval(function(){
         
@@ -717,32 +715,24 @@ function checkBulletCollsion(bulletEl,movingEnemy,movingEnemyIndex,enemyArr){
             
             if(((enemyPos[left]< bulletPos[right]) && (enemyPos[right]> bulletPos[left]))&&((enemyPos[bottom])>bulletPos[top]) && (bulletPos[top]<enemyPos[bottom]&&(bulletPos[bottom]> enemyPos[top]))){
                 updatePoints(1)
+                
                 enemyArr[movingEnemyIndex].hideVisibility()
                 enemyArr.splice(movingEnemyIndex, 2)
-                console.log(`
-                
-                
-                
-                BULLLLLLEEEEEETTTTTT HIIIIIIIIIITTTTTT
-                
-                
-                `)
+                console.log('BULLLLLLEEEEEETTTTTT HIIIIIIIIIITTTTTT')
                 points.play()
                 points.volume = 0.5
                 
-            } else{
-                playerHit = false
-            }
+            } else{console.log()}
             //console.log(enemyArr.length)
         }
         
-    },0)
-
+    },200)
     
+    checkEnemyCollsion(player,movingEnemy,movingEnemyIndex,enemyList)
     return bulletTimer
 }
 
-function checkPlayerCollsion(playerEl,movingEnemy,movingEnemyIndex,enemyArr){
+function checkEnemyCollsion(playerEl,movingEnemy,movingEnemyIndex,enemyArr){
     
     let playerTimer = setInterval(function(){
     
@@ -758,18 +748,11 @@ function checkPlayerCollsion(playerEl,movingEnemy,movingEnemyIndex,enemyArr){
                 if((enemyVisiblity === 'visible')&&((enemyPos[0]< playerPos[1]) && (enemyPos[1]> playerPos[0]))&&(enemyPos[3])>playerPos[2] && playerPos[2]<enemyPos[3]){
                     playerHurt = 'yes'
                     hurt.play()
-                    console.log(`
-                
-                
-                
-                    PLAYEEEERRRRRRRRRRRRRRRRR HIIIIIIIIIITTTTTT
-                    
-                    
-                    `)
+                    console.log(playerHurt)
                     loseLife(heartsList)
                 } else{console.log()}
             }
-        },200)
+        },100)
       
   
         return playerTimer
@@ -807,9 +790,7 @@ function checkDead(){
     if(player.lives === 0){
 
       //  console.log('Player Lives: ',player.lives,' : GAMEOVER')
-        // clearInterval(enemyTimer)
-        // clearInterval(bulletTimer)
-        // clearInterval(playerTimer)
+
         runEndScreen()
         
     }
