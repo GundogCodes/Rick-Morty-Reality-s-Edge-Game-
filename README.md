@@ -10,8 +10,8 @@ https://gundogcodes.github.io/project1/
 
 
 Picture of Project:
-![gameImage]https://i.imgur.com/QZWls6S.png
-![gameImage]https://i.imgur.com/5xMXEg2.png
+![gameImage] https://i.imgur.com/QZWls6S.png
+![gameImage] https://i.imgur.com/5xMXEg2.png
 
 Tech Used:
 Javascript, CSS, HTML in Microsft VSCode for development. GitHub/gitHub Pages for version control and deployment. 
@@ -20,21 +20,21 @@ Javascript, CSS, HTML in Microsft VSCode for development. GitHub/gitHub Pages fo
 ------------------------------------------------------Psuedocode-------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------
 
- If playerHealth is 1 or more,
+ If playerHealth is greater 0,
     create Enemy's and randomize enemyPositions across the right of screen
     move them across the screen towards player
-    increase playerPoints by the second
+    increase playerPoints by the each kill
 
 wait for spaceBar to be pressed, when pressed, change player positon to up and down (jump)
 same for click on player
 If player shoot enemy
     destory enemy
 
-If player collides with enemy playerHealth -= 50, continue at [end]
+If player collides with enemy playerLives -= 1, continue at [end]
 animate hurt
 
 If playerHealth =0: gameOn = false
-    display end Message
+    display end screen
 
 -----------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------LINKS------------------------------------------------------------------

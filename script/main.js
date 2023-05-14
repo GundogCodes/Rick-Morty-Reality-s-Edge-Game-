@@ -454,9 +454,15 @@ changeWeaponBtn.addEventListener('click', function(){
     bullet.changeWeapon()
 })
 //MUSIC
-
+let m = 1
 musicToggleBtn.addEventListener('click',function(){
-    backgroundMusic.pause()
+    m++
+    if(m%2 === 0){
+
+        backgroundMusic.pause()
+    } else{
+        backgroundMusic.play()
+    }
 })
 
 
@@ -640,8 +646,6 @@ function moveRandomEnemy(enemyArr){
         console.log('movingEnemy & index in the MOVE ENEMYFUNCTION function',movingEnemy,' , ',movingEnemyIndex)
         //console.log(movingEnemy)
         movingEnemy.moveLeft()
-
-        
         
         //Play sound:
         if(movingEnemy.name ==='glomflomite'){
@@ -678,8 +682,8 @@ function moveRandomEnemy(enemyArr){
         }
         
         
-        checkBulletCollsion(bullet,movingEnemy,movingEnemyIndex,enemyList)
-        checkEnemyCollsion(player,movingEnemy,movingEnemyIndex,enemyList)
+        checkBulletCollsion(bullet,movingEnemy,movingEnemyIndex,enemyList) //100
+        checkEnemyCollsion(player,movingEnemy,movingEnemyIndex,enemyList) //200ms
         
     },1000)
     return enemyTimer
@@ -687,20 +691,7 @@ function moveRandomEnemy(enemyArr){
     
 }
 
-//checkEnemyOffScreen(movingEnemy,movingEnemyIndex,enemyArr)
 
-function checkEnemyOffScreen(movingEnemy){
-    setInterval(function(){
-        
-        let enemyPos = movingEnemy.getPosition()
-        //console.log(enemyPos)
-        if(enemyPos[0] < -100){
-            
-            enemyPos[0] =1800
-        }
-        
-    },500)
-}
 
 function checkBulletCollsion(bulletEl,movingEnemy,movingEnemyIndex,enemyArr){
     
@@ -733,11 +724,11 @@ function checkBulletCollsion(bulletEl,movingEnemy,movingEnemyIndex,enemyArr){
         
     },100)
     
-    checkEnemyCollsion(player,movingEnemy,movingEnemyIndex,enemyList)
+    checkPlayerCollsion(player,movingEnemy,movingEnemyIndex,enemyList)
     return bulletTimer
 }
 
-function checkEnemyCollsion(playerEl,movingEnemy,movingEnemyIndex){
+function checkPlayerCollsion(playerEl,movingEnemy,movingEnemyIndex){
     
     let playerTimer = setInterval(function(){
     
@@ -841,3 +832,19 @@ function getRandomInt(range){
     const randoInt = Math.floor(Math.random(0)*range)
     return randoInt
 }
+
+//checkEnemyOffScreen(movingEnemy,movingEnemyIndex,enemyArr)
+
+function checkEnemyOffScreen(movingEnemy){
+    setInterval(function(){
+        
+        let enemyPos = movingEnemy.getPosition()
+        //console.log(enemyPos)
+        if(enemyPos[0] < -100){
+            
+            enemyPos[0] =1800
+        }
+        
+    },500)
+}
+
