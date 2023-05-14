@@ -632,14 +632,12 @@ function moveRandomEnemy(enemyArr){
     movingEnemyIndex = getRandomInt(1000) //index of movingEnemy in Enemy Array
     movingEnemy = enemyArr[movingEnemyIndex] // the instance of the Enemy Class that is moving
     console.log('movingENEMY and Index os the MOVERANDOMENEMY INTERVAL',movingEnemy,' , ',movingEnemyIndex)
+    
     let enemyTimer = setInterval(function(){
         
-        
-        if (player.lives < 0){
+        if (player.lives <= 0){
             clearInterval(enemyTimer)
         }
-        
-
         
         movingEnemyIndex = getRandomInt(1000) //index of movingEnemy in Enemy Array
         movingEnemy = enemyArr[movingEnemyIndex] // the instance of the Enemy Class that is moving
@@ -682,8 +680,9 @@ function moveRandomEnemy(enemyArr){
         }
         
         
-        checkBulletCollsion(bullet,movingEnemy,movingEnemyIndex,enemyList) //100
-        checkEnemyCollsion(player,movingEnemy,movingEnemyIndex,enemyList) //200ms
+        checkBulletCollsion(bullet,movingEnemy,movingEnemyIndex,enemyList) 
+        checkPlayerCollsion(player,movingEnemy,movingEnemyIndex,enemyList)
+       
         
     },1000)
     return enemyTimer
@@ -697,6 +696,9 @@ function checkBulletCollsion(bulletEl,movingEnemy,movingEnemyIndex,enemyArr){
     
     
     let bulletTimer = setInterval(function(){
+        if(player.lives <= 0){
+            clearInterval(bulletTimer)
+        }
         
         const left =0
         const right = 1
@@ -724,14 +726,15 @@ function checkBulletCollsion(bulletEl,movingEnemy,movingEnemyIndex,enemyArr){
         
     },100)
     
-    checkPlayerCollsion(player,movingEnemy,movingEnemyIndex,enemyList)
     return bulletTimer
 }
 
 function checkPlayerCollsion(playerEl,movingEnemy,movingEnemyIndex){
     
     let playerTimer = setInterval(function(){
-    
+        if(player.lives <= 0){
+            clearInterval(playerTimer)
+        }
             console.log('moving Enemy and Index in player collison',movingEnemy,' , ',movingEnemyIndex)
             let enemyVisiblity = movingEnemy.getVisibility()
             
