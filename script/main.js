@@ -406,9 +406,7 @@ musicToggleBtn.addEventListener('click',function(){
         backgroundMusic.play()
     }
 })
-window.addEventListener('keydown',function(){
 
-})
 
 //MOVE PLAYER
 window.addEventListener('keydown',function(e){
@@ -447,6 +445,11 @@ window.addEventListener('keydown',function(e){
     }
 })
 
+window.addEventListener('keydown',function(e){
+    if(e.key === 'f'){
+        player.shoot()
+    }
+})
 
 /*--------------------------------------------------------------- FUNCTIONS ---------------------------------------------------------------*/
 
