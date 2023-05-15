@@ -660,7 +660,7 @@ function checkBulletCollsion(movingEnemy,movingEnemyIndex,enemyArr){
             if(((enemyPos[left]< bulletPos[right]) && (enemyPos[right]> bulletPos[left]))&&((enemyPos[bottom])>bulletPos[top]) && (bulletPos[top]<enemyPos[bottom]&&(bulletPos[bottom]> enemyPos[top]))){
                 
                 
-                enemyArr[movingEnemyIndex].hideVisibility()
+                movingEnemy.hideVisibility()
                 enemyArr.splice(movingEnemyIndex, 2)
                 updatePoints(1)
                 /*console.log(`
