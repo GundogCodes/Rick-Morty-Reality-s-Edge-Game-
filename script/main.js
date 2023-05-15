@@ -251,9 +251,9 @@ class Bullet{
            // let playerPos = player.getPosition()
            // console.log(playerPos)
             let xL = parseInt(this.element.style.left)
-            let xR = parseInt(this.element.style.right) +50
+            let xR = parseInt(this.element.style.right)
             let yT = parseInt(this.element.style.top)
-            let yB = parseInt(this.element.style.bottom) +50
+            let yB = parseInt(this.element.style.bottom) 
             
             //console.log('BulletPos',xL,xR,yT,yB)
         
@@ -535,7 +535,7 @@ function createEnemies(){
     
     const enemyNames = ['jerry','gromflomite','gazorpazorp','smwygHead']
 
-    for (let i =0; i<1000; i++){
+    for (let i =0; i<2000; i++){
 
         let randoEnemy = enemyNames[getRandomInt(4)]
         let leftPos = 1600
@@ -572,9 +572,8 @@ function createEnemies(){
  
 function moveRandomEnemy(enemyArr){
 
-    movingEnemyIndex = getRandomInt(1000) //index of movingEnemy in Enemy Array
-    movingEnemy = enemyArr[movingEnemyIndex] // the instance of the Enemy Class that is moving
-    console.log('movingENEMY and Index os the MOVERANDOMENEMY INTERVAL',movingEnemy,' , ',movingEnemyIndex)
+   
+    //console.log('movingENEMY and Index os the MOVERANDOMENEMY INTERVAL',movingEnemy,' , ',movingEnemyIndex)
     
     let enemyTimer = setInterval(function(){
         
@@ -582,10 +581,13 @@ function moveRandomEnemy(enemyArr){
             clearInterval(enemyTimer)
         }
         
-        movingEnemyIndex = getRandomInt(1000) //index of movingEnemy in Enemy Array
+        movingEnemyIndex = getRandomInt(2000) //index of movingEnemy in Enemy Array
         movingEnemy = enemyArr[movingEnemyIndex] // the instance of the Enemy Class that is moving
-        console.log('movingEnemy & index in the MOVE ENEMYFUNCTION function',movingEnemy,' , ',movingEnemyIndex)
-        //console.log(movingEnemy)
+        console.log(`
+        movingEnemy: ${movingEnemy}
+        movingEnemyIndex: ${movingEnemyIndex}
+        enemyListLength: ${enemyArr.length}`)
+     
         movingEnemy.moveLeft()
         
         //Play sound:
@@ -625,6 +627,7 @@ function moveRandomEnemy(enemyArr){
         
         checkBulletCollsion(movingEnemy,movingEnemyIndex,enemyList) 
         checkPlayerCollsion(movingEnemy)
+        checkEnemyOffScreen(movingEnemy,movingEnemyIndex,enemyArr)
        
         
     },1000)
@@ -650,7 +653,7 @@ function checkBulletCollsion(movingEnemy,movingEnemyIndex,enemyArr){
         
         let bulletPos =  bullet.getPosition()
         let enemyPos =  movingEnemy.getPosition()
-        console.log('enemyPos in bulletCollision',enemyPos,'bulletPos in bulletCollsion',bulletPos)
+       // console.log('enemyPos in bulletCollision',enemyPos,'bulletPos in bulletCollsion',bulletPos)
         if(bulletPos[0]> 1550){return null} else{
             
             
@@ -659,19 +662,19 @@ function checkBulletCollsion(movingEnemy,movingEnemyIndex,enemyArr){
                 
                 enemyArr[movingEnemyIndex].hideVisibility()
                 enemyArr.splice(movingEnemyIndex, 2)
-                console.log(`
+                /*console.log(`
                 
                 
                 BULLLLLLEEEEEETTTTTT HIIIIIIIIIITTTTTT
                 
                 
                 
-                `)
+                `)*/
                 points.play()
                 points.volume = 0.5
                 
             } else{console.log()}
-            //console.log(enemyArr.length)
+            console.log(enemyArr.length)
         }
         
     },100)
@@ -697,7 +700,7 @@ function checkPlayerCollsion(movingEnemy){
                 if((enemyVisiblity === 'visible')&&((enemyPos[0]< playerPos[1]) && (enemyPos[1]> playerPos[0]))&&(enemyPos[3])>playerPos[2] && playerPos[2]<enemyPos[3]){
                     playerHurt = 'yes'
                     hurt.play()
-                    console.log(`
+                   /* console.log(`
                     
 
 
@@ -705,7 +708,7 @@ function checkPlayerCollsion(movingEnemy){
                     
 
 
-                    `)
+                    `)*/
                     loseLife(heartsList)
                 } else{console.log()}
             }
@@ -716,6 +719,22 @@ function checkPlayerCollsion(movingEnemy){
  
     
 }
+
+
+
+function checkEnemyOffScreen(movingEnemy){
+    setInterval(function(){
+        
+        let enemyPos = movingEnemy.getPosition()
+        //console.log(enemyPos)
+        if(enemyPos[0] < -100){
+            
+            enemyPos[0] =1800
+        }
+        
+    },500)
+}
+
 
 function updatePoints(incrementVal){
     let  points = parseInt(pointsCounter.innerHTML)
@@ -794,18 +813,4 @@ function getRandomInt(range){
     return randoInt
 }
 
-//checkEnemyOffScreen(movingEnemy,movingEnemyIndex,enemyArr)
-
-function checkEnemyOffScreen(movingEnemy){
-    setInterval(function(){
-        
-        let enemyPos = movingEnemy.getPosition()
-        //console.log(enemyPos)
-        if(enemyPos[0] < -100){
-            
-            enemyPos[0] =1800
-        }
-        
-    },500)
-}
 
