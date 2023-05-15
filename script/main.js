@@ -8,69 +8,46 @@ class Player{
         this.element.setAttribute('class','player')
         this.element.style.position = 'absolute'
         this.element.style.transform = 'rotateY(180deg)'
+        this.element.style.height = '160px'
+        this.element.style.width = '135px'
+        this.element.style.top = '470px'
+        this.element.style.left = '700px'
         this.lives = 5 
+        document.querySelector('main').appendChild(this.element)
         
     }
     setName(name){
         this.name = name
-        if (this.name  === 'RICK'){this.element.src = "./images/rick.png"
-        this.element.style.height = '160px'
-        this.element.style.width = '135px'
-            this.element.style.top = '470px'
-            this.element.style.left = '700px'
+        if (this.name  === 'RICK'){this.element.src = "./images/rick.png"        
             rickCatchphrase.play()
             rickCatchphrase.volume = 0.5
-            document.querySelector('main').appendChild(this.element)
         }
-        
         else if(this.name === 'MORTY') {this.element.src = "./images/morty.png"
-        this.element.style.height = '160px'
-        this.element.style.width = '135px'
-        this.element.style.top = '475px'
-        this.element.style.left = '700px'
         mortyOhGeez.play()
         mortyOhGeez.volume = 0.5
-        document.querySelector('main').appendChild(this.element)
     } 
     }
     jump() { // Link(1)
-        if(this.name === "RICK"){
 
-            let y =  parseInt(this.element.style.top)
+        let y =  parseInt(this.element.style.top)
             
-            let timer = setInterval(() => {
+        let timer = setInterval(() => {
 
-                if(y <20){
-                    let t2 = setInterval(()=>{
-                        y=y+15
-                        if(y>500){
-                            clearInterval(timer)
-                            clearInterval(t2)
-                        }
-                    },15)
-                }
-                y = y-20
-                this.element.style.top = y + 'px'
+            if(y <20){
+                let t2 = setInterval(()=>{
+                y=y+15
+                if(y>500){
+
+                    clearInterval(timer)
+                    clearInterval(t2)
+                    }
+                },15)
+            }
+            y = y-20
+            this.element.style.top = y + 'px'
             }, 10); 
             
-        } else if(this.name === 'MORTY'){
-            let y =  parseInt(this.element.style.top)
-            
-            let timer = setInterval(() => {
-         
-                if(y <20 ){
-                    let t2 = setInterval(()=>{
-                        y= y+15
-                        if(y>500){
-                            clearInterval(timer)
-                            clearInterval(t2)
-                        }
-                    },10)
-                }
-                y = y-20
-                this.element.style.top = y + 'px'
-            }, 10);
-        }
+        
     }
       shoot(){
         bullet.moveRight()
@@ -85,9 +62,7 @@ class Player{
  }
     
     moveLeft(){
-        if(this.name === 'RICK'){
-
-            let x = parseInt(this.element.style.left)
+        let x = parseInt(this.element.style.left)
             let timer = setInterval(() =>{
                 //console.log('PLAYER x',x)
                 if(x<0){
@@ -97,50 +72,24 @@ class Player{
                 x = x-20
                 this.element.style.left = x +'px'
             },10)
-            return timer
-        } else if (this.name === 'MORTY'){
-            let x = parseInt(this.element.style.left)
-            let timer = setInterval(() =>{
-                //console.log('PLAYER x',x)
-                if(x<0){
-                    x = 0
-                    clearInterval(timer)
-                }
-                x = x-20
-                this.element.style.left = x +'px'
-            },10)
-            return timer
-        }
+        return timer
+         
         
     }
 
     moveRight(){
-        if(this.name === 'RICK'){
-
-            let x = parseInt(this.element.style.left)
+        let x = parseInt(this.element.style.left)
             
-            let timer = setInterval(() =>{
-                if(x>1450){
-                    x = 1450
-                    clearInterval(timer)
+        let timer = setInterval(() =>{
+            if(x>1450){
+                x = 1450
+                clearInterval(timer)
                 }
-                x = x+20
-                this.element.style.left = x +'px'
-            },10)
-            return timer
-        } else if(this.name === 'MORTY'){
-            let x = parseInt(this.element.style.left)
-            
-            let timer = setInterval(() =>{
-                if(x>1460){
-                    x = 1460
-                    clearInterval(timer)
-                }
-                x = x+20
-                this.element.style.left = x +'px'
-            },10)
-            return timer
-        }
+            x = x+20
+            this.element.style.left = x +'px'
+        },10)
+        return timer
+        
     }
     
     setPosition(timer){
@@ -151,17 +100,11 @@ class Player{
 
         let xL = parseInt(this.element.style.left)
         let yT = parseInt(this.element.style.top)
-        if(this.name === 'RICK'){
-            let yB = parseInt(this.element.style.top) + 200
-            let xR = parseInt(this.element.style.left) + 130
+        let yB = parseInt(this.element.style.top) + 160
+        let xR = parseInt(this.element.style.left) + 135
             
-            return [xL,xR,yT,yB]
-        } else if(this.name === 'MORTY'){
-            let yB = parseInt(this.element.style.top) + 160
-            let xR = parseInt(this.element.style.left) + 135
-            return [xL,xR,yT,yB]
-
-        }
+        return [xL,xR,yT,yB]
+        
     }
 
     getEl(){
@@ -213,8 +156,8 @@ class Enemy{
 
         let xL = parseInt(this.element.style.left)
         let yT = parseInt(this.element.style.top)
-        let xR = parseInt(this.element.style.left)
-        let yB = parseInt(this.element.style.top)
+        let xR = parseInt(this.element.style.left) +100
+        let yB = parseInt(this.element.style.top) +100
 
             
         return [xL,xR,yT,yB]
@@ -277,7 +220,7 @@ class Bullet{
         let xL = playerPos[0] +105
         let xR = playerPos[1] +240
         let yT = playerPos[2] +50
-        let yB = playerPos[3]
+        let yB = playerPos[3] 
         
          
          
@@ -308,9 +251,9 @@ class Bullet{
            // let playerPos = player.getPosition()
            // console.log(playerPos)
             let xL = parseInt(this.element.style.left)
-            let xR = parseInt(this.element.style.right)
+            let xR = parseInt(this.element.style.right) +50
             let yT = parseInt(this.element.style.top)
-            let yB = parseInt(this.element.style.bottom)
+            let yB = parseInt(this.element.style.bottom) +50
             
             //console.log('BulletPos',xL,xR,yT,yB)
         
@@ -680,19 +623,19 @@ function moveRandomEnemy(enemyArr){
         }
         
         
-        checkBulletCollsion(bullet,movingEnemy,movingEnemyIndex,enemyList) 
-        checkPlayerCollsion(player,movingEnemy,movingEnemyIndex,enemyList)
+        checkBulletCollsion(movingEnemy,movingEnemyIndex,enemyList) 
+        checkPlayerCollsion(movingEnemy)
        
         
     },1000)
-    return enemyTimer
+    
     
     
 }
 
 
 
-function checkBulletCollsion(bulletEl,movingEnemy,movingEnemyIndex,enemyArr){
+function checkBulletCollsion(movingEnemy,movingEnemyIndex,enemyArr){
     
     
     let bulletTimer = setInterval(function(){
@@ -705,10 +648,10 @@ function checkBulletCollsion(bulletEl,movingEnemy,movingEnemyIndex,enemyArr){
         const top = 2
         const bottom =3
         
-        let bulletPos =  bulletEl.getPosition()
+        let bulletPos =  bullet.getPosition()
         let enemyPos =  movingEnemy.getPosition()
-        console.log('moving Enemy and Index in Bullet collison',movingEnemy,' , ',movingEnemyIndex)
-        if(enemyPos === undefined){return null} else{
+        console.log('enemyPos in bulletCollision',enemyPos,'bulletPos in bulletCollsion',bulletPos)
+        if(bulletPos[0]> 1550){return null} else{
             
             
             if(((enemyPos[left]< bulletPos[right]) && (enemyPos[right]> bulletPos[left]))&&((enemyPos[bottom])>bulletPos[top]) && (bulletPos[top]<enemyPos[bottom]&&(bulletPos[bottom]> enemyPos[top]))){
@@ -716,7 +659,14 @@ function checkBulletCollsion(bulletEl,movingEnemy,movingEnemyIndex,enemyArr){
                 
                 enemyArr[movingEnemyIndex].hideVisibility()
                 enemyArr.splice(movingEnemyIndex, 2)
-                console.log('BULLLLLLEEEEEETTTTTT HIIIIIIIIIITTTTTT')
+                console.log(`
+                
+                
+                BULLLLLLEEEEEETTTTTT HIIIIIIIIIITTTTTT
+                
+                
+                
+                `)
                 points.play()
                 points.volume = 0.5
                 
@@ -729,16 +679,16 @@ function checkBulletCollsion(bulletEl,movingEnemy,movingEnemyIndex,enemyArr){
     return bulletTimer
 }
 
-function checkPlayerCollsion(playerEl,movingEnemy,movingEnemyIndex){
+function checkPlayerCollsion(movingEnemy){
     
     let playerTimer = setInterval(function(){
         if(player.lives <= 0){
             clearInterval(playerTimer)
         }
-            console.log('moving Enemy and Index in player collison',movingEnemy,' , ',movingEnemyIndex)
+           // console.log('moving Enemy and Index in player collison',movingEnemy,' , ',movingEnemyIndex)
             let enemyVisiblity = movingEnemy.getVisibility()
             
-            let playerPos =  playerEl.getPosition()
+            let playerPos =  player.getPosition()
             let enemyPos =  movingEnemy.getPosition()
             
             if(enemyPos === undefined || enemyVisiblity === undefined){return null} else{
@@ -747,7 +697,15 @@ function checkPlayerCollsion(playerEl,movingEnemy,movingEnemyIndex){
                 if((enemyVisiblity === 'visible')&&((enemyPos[0]< playerPos[1]) && (enemyPos[1]> playerPos[0]))&&(enemyPos[3])>playerPos[2] && playerPos[2]<enemyPos[3]){
                     playerHurt = 'yes'
                     hurt.play()
-                    console.log(playerHurt)
+                    console.log(`
+                    
+
+
+                    PLAYYYERRRRRR HITTTT
+                    
+
+
+                    `)
                     loseLife(heartsList)
                 } else{console.log()}
             }
