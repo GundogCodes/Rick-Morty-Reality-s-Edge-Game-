@@ -627,7 +627,7 @@ function moveRandomEnemy(enemyArr){
         
         checkBulletCollsion(movingEnemy,movingEnemyIndex,enemyList) 
         checkPlayerCollsion(movingEnemy)
-        checkEnemyOffScreen(movingEnemy,movingEnemyIndex,enemyArr)
+        //checkEnemyOffScreen(movingEnemy,enemyArr)
        
         
     },1000)
@@ -638,8 +638,8 @@ function moveRandomEnemy(enemyArr){
 
 
 
+
 function checkBulletCollsion(movingEnemy,movingEnemyIndex,enemyArr){
-    
     
     let bulletTimer = setInterval(function(){
         if(player.lives <= 0){
@@ -658,10 +658,11 @@ function checkBulletCollsion(movingEnemy,movingEnemyIndex,enemyArr){
             
             
             if(((enemyPos[left]< bulletPos[right]) && (enemyPos[right]> bulletPos[left]))&&((enemyPos[bottom])>bulletPos[top]) && (bulletPos[top]<enemyPos[bottom]&&(bulletPos[bottom]> enemyPos[top]))){
-                updatePoints(1)
+                
                 
                 enemyArr[movingEnemyIndex].hideVisibility()
                 enemyArr.splice(movingEnemyIndex, 2)
+                updatePoints(1)
                 /*console.log(`
                 
                 
@@ -676,7 +677,7 @@ function checkBulletCollsion(movingEnemy,movingEnemyIndex,enemyArr){
             } else{console.log()}
             console.log(enemyArr.length)
         }
-        
+    
     },100)
     
     return bulletTimer
@@ -722,13 +723,13 @@ function checkPlayerCollsion(movingEnemy){
 
 
 
-function checkEnemyOffScreen(movingEnemy){
+function checkEnemyOffScreen(movingEnemy,enemyArr){
     setInterval(function(){
         
         let enemyPos = movingEnemy.getPosition()
         //console.log(enemyPos)
         if(enemyPos[0] < -100){
-            
+            enemyArr.push(movingEnemy)
             enemyPos[0] =1800
         }
         
