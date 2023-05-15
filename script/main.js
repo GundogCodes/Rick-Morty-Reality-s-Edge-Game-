@@ -178,7 +178,6 @@ class Enemy{
     } 
 }
 
-
 class Bullet{
     constructor(){
         const portal = "./images/portal.png"  
@@ -407,7 +406,9 @@ musicToggleBtn.addEventListener('click',function(){
         backgroundMusic.play()
     }
 })
+window.addEventListener('keydown',function(){
 
+})
 
 //MOVE PLAYER
 window.addEventListener('keydown',function(e){
@@ -445,15 +446,6 @@ window.addEventListener('keydown',function(e){
         let timer = player.jump()
     }
 })
-
-window.addEventListener('keydown',function(e){
-
-    if(e.key === 'f'){
-        player.shoot()
-    } 
-    
-})
-
 
 
 /*--------------------------------------------------------------- FUNCTIONS ---------------------------------------------------------------*/
@@ -636,9 +628,6 @@ function moveRandomEnemy(enemyArr){
     
 }
 
-
-
-
 function checkBulletCollsion(movingEnemy,movingEnemyIndex,enemyArr){
     
     let bulletTimer = setInterval(function(){
@@ -721,8 +710,6 @@ function checkPlayerCollsion(movingEnemy){
     
 }
 
-
-
 function checkEnemyOffScreen(movingEnemy,enemyArr){
     setInterval(function(){
         
@@ -735,7 +722,6 @@ function checkEnemyOffScreen(movingEnemy,enemyArr){
         
     },500)
 }
-
 
 function updatePoints(incrementVal){
     let  points = parseInt(pointsCounter.innerHTML)
@@ -813,5 +799,3 @@ function getRandomInt(range){
     const randoInt = Math.floor(Math.random(0)*range)
     return randoInt
 }
-
-
