@@ -315,8 +315,9 @@ h4{
     font-family: 'Bruno Ace', cursive;
 }
 #endingImg{
-    height: 515px;
-    width: 545px;   
+    height: 615px;
+    width: 745px; 
+    background-image:src("./images/introImg.png")
 }
 
 

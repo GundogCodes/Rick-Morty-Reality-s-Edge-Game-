@@ -505,7 +505,7 @@ function startScreen(){
     startScreen.innerHTML = `<h1 id ='startingHeader'>RICK AND MORTY: REALITY'S EDGE</h1>
     <h2 id = 'choosePlayer'>Choose Your Player</h2>
     <h4>Use Arrow Keys to Move and 'F' Key to Shoot, Goodluck!</h4>
-    <img id='startingImg'style = "scale:0.8;"src ="https://png2.cleanpng.com/sh/697e54f06cdac5f9584e1d6b5a0a9bf1/L0KzQYq3VME3N6h1e5H0aYP2gLBuTgNqbJZnhNHwLXPkgsX2jB4ucZ1xjeV9cnH3ebF1Tfh2dZJzRdRuaHH5ebF5TfNpaaNmReRyY3uwcbBrTf1weqVARdh4cj3kPbn8jvRzbZUykddqcoOwebW0kvVidJ1ARd42NXPlRbXshvUzOmJreag3MEG2R4eAUMkyPWY6TKQ7OUe3QYSCWL5xdpg=/kisspng-sideblog-cartoon-illustration-human-behavior-chara-rick-and-morty-for-a-hundred-years-id-really-l-5cb5defe221fa6.0137670915554229741398.png">
+    <img id='startingImg'style = "scale:0.8;"src ="./images/startscreenImg.png">
     <div id ='buttonBox'>
     <button id ='Rick' >RICK</button>
     <button id = 'Morty' >MORTY</button>
@@ -785,7 +785,7 @@ function runEndScreen(){
         endingScreen.style.alignItems= 'center'
         endingScreen.innerHTML = `<h1 id ="endingHeader">GAMEOVER</h1>
         <h1 id = "endingPoints">Your Score: ${parseInt(playerPoints)}</h1>
-        <img id="endingImg" src="https://png2.cleanpng.com/sh/c4187d48c513cec1a9c625cbb17228ae/L0KzQYm3VsI2N5t5iZH0aYP2gLBuTgJqa5wyi9N3Y3join70jCJ1gV54hdt9aD3meLL5gfN1baMykdHALXvxf8i0lBhifF54RadrM0G2dIm3VcE4bZI1RqM7M0K5Q4mAUcUzQWo6S6gBNEO2Q4m1kP5o/kisspng-rick-sanchez-morty-smith-character-you-know-what-s-5b313d80517ea0.1232638715299536643338.png"> 
+        <img id="endingImg" src="./images/endScreen.webp"> 
         <button id= "playAgain">Play Again?</button>`
         document.querySelector('body').appendChild(endingScreen)
 
