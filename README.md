@@ -6,7 +6,7 @@
 HELP RICK AND MORTY KILL ALL THEIR ENEMIES! IN THIS SIDE SCREEN SHOOTER GAME USE YOU KEYS TO SHOOT AT ENEMIES AND DESTORY THEM!
 
 GAME LINK:
-https://gundogcodes.github.io/project1/ 
+https://gundogcodes.github.io/Rick-Morty-Reality-s-Edge-Game-/
 
 
 Picture of Project:
